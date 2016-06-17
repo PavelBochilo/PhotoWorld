@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0cD-ko-Tqz">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="cPy-j1-1bI">
+            <objects>
+                <navigationController id="0cD-ko-Tqz" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cul-JQ-vkJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Nk9-2u-VO9" kind="relationship" relationship="rootViewController" id="95w-Vi-aPG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Otv-uG-Qat" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="422" y="-161"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="feP-3b-we9">
+            <objects>
+                <viewController storyboardIdentifier="LoginView" id="dPJ-c1-iOs" customClass="LoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Yzy-LJ-2X8"/>
+                        <viewControllerLayoutGuide type="bottom" id="fmC-Js-c3h"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jLd-1C-BXd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9kS-wD-NCM">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Tuk-zd-pDo">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9kS-wD-NCM" firstAttribute="leading" secondItem="jLd-1C-BXd" secondAttribute="leading" id="5re-BF-23K"/>
+                            <constraint firstItem="Tuk-zd-pDo" firstAttribute="centerY" secondItem="jLd-1C-BXd" secondAttribute="centerY" id="OSq-U5-dI4"/>
+                            <constraint firstItem="Tuk-zd-pDo" firstAttribute="centerX" secondItem="jLd-1C-BXd" secondAttribute="centerX" id="a5B-Je-14N"/>
+                            <constraint firstItem="fmC-Js-c3h" firstAttribute="top" secondItem="9kS-wD-NCM" secondAttribute="bottom" id="hIN-6z-rCg"/>
+                            <constraint firstItem="9kS-wD-NCM" firstAttribute="top" secondItem="jLd-1C-BXd" secondAttribute="top" id="i2z-cK-FiG"/>
+                            <constraint firstAttribute="trailing" secondItem="9kS-wD-NCM" secondAttribute="trailing" id="tze-Ev-XBd"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loginIndicator" destination="Tuk-zd-pDo" id="LkJ-nh-CEu"/>
+                        <outlet property="loginWebView" destination="9kS-wD-NCM" id="Ks8-eV-WZ3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LIf-E2-SmI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="422" y="-829"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Fvp-ep-FW6">
+            <objects>
+                <viewController id="Nk9-2u-VO9" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hoN-cT-uEN"/>
+                        <viewControllerLayoutGuide type="bottom" id="SLZ-ED-I7u"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZaI-TY-Hhw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="uaR-UF-d10"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UgR-pJ-axq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1172" y="-172"/>
+        </scene>
+    </scenes>
+</document>
