@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		480E07D3DB0EBEB129BAA562 /* libPods-PhotoWorld.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A815E228FD201CA6249D98C /* libPods-PhotoWorld.a */; };
+		DAEA07521D17D21C00C53EAB /* instagram.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DAEA07511D17D21C00C53EAB /* instagram.ttf */; };
+		DAEA07571D17D87C00C53EAB /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA07561D17D87C00C53EAB /* MainTabBarViewController.m */; };
+		DAEA075A1D17DA8300C53EAB /* UserInfoNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA07591D17DA8300C53EAB /* UserInfoNavigationController.m */; };
+		DAEA075D1D17DAC900C53EAB /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA075C1D17DAC900C53EAB /* UserInfoViewController.m */; };
+		DAEA07601D17EA6F00C53EAB /* WebServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA075F1D17EA6F00C53EAB /* WebServiceManager.m */; };
 		DAF172251D12A118000E848B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF172241D12A117000E848B /* main.m */; };
 		DAF172281D12A118000E848B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF172271D12A118000E848B /* AppDelegate.m */; };
 		DAF1722B1D12A118000E848B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF1722A1D12A118000E848B /* ViewController.m */; };
@@ -41,6 +46,16 @@
 		336265758284650A84D06519 /* Pods-PhotoWorld.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoWorld.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoWorld/Pods-PhotoWorld.debug.xcconfig"; sourceTree = "<group>"; };
 		71AA98D78A0528FB4351EE9B /* Pods-PhotoWorld.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoWorld.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoWorld/Pods-PhotoWorld.release.xcconfig"; sourceTree = "<group>"; };
 		9A815E228FD201CA6249D98C /* libPods-PhotoWorld.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PhotoWorld.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAEA07511D17D21C00C53EAB /* instagram.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = instagram.ttf; sourceTree = "<group>"; };
+		DAEA07541D17D66B00C53EAB /* PH.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PH.pch; sourceTree = "<group>"; };
+		DAEA07551D17D87C00C53EAB /* MainTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarViewController.h; sourceTree = "<group>"; };
+		DAEA07561D17D87C00C53EAB /* MainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewController.m; sourceTree = "<group>"; };
+		DAEA07581D17DA8300C53EAB /* UserInfoNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoNavigationController.h; sourceTree = "<group>"; };
+		DAEA07591D17DA8300C53EAB /* UserInfoNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoNavigationController.m; sourceTree = "<group>"; };
+		DAEA075B1D17DAC900C53EAB /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
+		DAEA075C1D17DAC900C53EAB /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
+		DAEA075E1D17EA6F00C53EAB /* WebServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebServiceManager.h; sourceTree = "<group>"; };
+		DAEA075F1D17EA6F00C53EAB /* WebServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebServiceManager.m; sourceTree = "<group>"; };
 		DAF172201D12A117000E848B /* PhotoWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAF172241D12A117000E848B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DAF172261D12A118000E848B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -106,6 +121,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		DAEA07611D17EA8100C53EAB /* WebServiceManager */ = {
+			isa = PBXGroup;
+			children = (
+				DAEA075E1D17EA6F00C53EAB /* WebServiceManager.h */,
+				DAEA075F1D17EA6F00C53EAB /* WebServiceManager.m */,
+			);
+			name = WebServiceManager;
+			sourceTree = "<group>";
+		};
 		DAF172171D12A117000E848B = {
 			isa = PBXGroup;
 			children = (
@@ -138,10 +162,18 @@
 				DAF1722C1D12A118000E848B /* Main.storyboard */,
 				DAF172591D12D28B000E848B /* LoginViewController.h */,
 				DAF1725A1D12D28B000E848B /* LoginViewController.m */,
+				DAEA07551D17D87C00C53EAB /* MainTabBarViewController.h */,
+				DAEA07561D17D87C00C53EAB /* MainTabBarViewController.m */,
+				DAEA07581D17DA8300C53EAB /* UserInfoNavigationController.h */,
+				DAEA07591D17DA8300C53EAB /* UserInfoNavigationController.m */,
+				DAEA075B1D17DAC900C53EAB /* UserInfoViewController.h */,
+				DAEA075C1D17DAC900C53EAB /* UserInfoViewController.m */,
+				DAEA07611D17EA8100C53EAB /* WebServiceManager */,
 				DAF1722F1D12A118000E848B /* Assets.xcassets */,
 				DAF172311D12A118000E848B /* LaunchScreen.storyboard */,
 				DAF172341D12A118000E848B /* Info.plist */,
 				DAF172231D12A117000E848B /* Supporting Files */,
+				DAEA07541D17D66B00C53EAB /* PH.pch */,
 			);
 			path = PhotoWorld;
 			sourceTree = "<group>";
@@ -149,6 +181,7 @@
 		DAF172231D12A117000E848B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DAEA07511D17D21C00C53EAB /* instagram.ttf */,
 				DAF172561D12A654000E848B /* Defines.h */,
 				DAF172571D12A654000E848B /* Defines.m */,
 				DAF172241D12A117000E848B /* main.m */,
@@ -286,6 +319,7 @@
 				DAF172331D12A118000E848B /* LaunchScreen.storyboard in Resources */,
 				DAF172301D12A118000E848B /* Assets.xcassets in Resources */,
 				DAF1722E1D12A118000E848B /* Main.storyboard in Resources */,
+				DAEA07521D17D21C00C53EAB /* instagram.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,9 +392,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAEA075A1D17DA8300C53EAB /* UserInfoNavigationController.m in Sources */,
 				DAF1722B1D12A118000E848B /* ViewController.m in Sources */,
 				DAF172281D12A118000E848B /* AppDelegate.m in Sources */,
 				DAF172581D12A654000E848B /* Defines.m in Sources */,
+				DAEA07571D17D87C00C53EAB /* MainTabBarViewController.m in Sources */,
+				DAEA075D1D17DAC900C53EAB /* UserInfoViewController.m in Sources */,
+				DAEA07601D17EA6F00C53EAB /* WebServiceManager.m in Sources */,
 				DAF172251D12A118000E848B /* main.m in Sources */,
 				DAF1725B1D12D28B000E848B /* LoginViewController.m in Sources */,
 			);
@@ -506,6 +544,8 @@
 			baseConfigurationReference = 336265758284650A84D06519 /* Pods-PhotoWorld.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = PhotoWorld/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = FBI.PhotoWorld;
@@ -518,6 +558,8 @@
 			baseConfigurationReference = 71AA98D78A0528FB4351EE9B /* Pods-PhotoWorld.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = PhotoWorld/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = FBI.PhotoWorld;

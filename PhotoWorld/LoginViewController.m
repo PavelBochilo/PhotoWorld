@@ -7,6 +7,8 @@
 //
 
 #import "LoginViewController.h"
+#import "UserInfoViewController.h"
+#import "MainTabBarViewController.h"
 
 @interface LoginViewController ()
 
@@ -100,7 +102,9 @@
     loginIndicator.hidden = YES;
     [UIView animateWithDuration: 0.1 animations:^{
         loginWebView.alpha = 1.0;
+        
     }];
+    [self pushToTabBarcontroller];
 }
 
 - (void) webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
@@ -133,9 +137,9 @@
         {
             // extract and handle access token
             NSRange range = [urlString rangeOfString: @"code="];
-            //[self makePostRequest:[urlString substringFromIndex: range.location+range.length]];
-            [self sendPOSTRequestWithCode:[urlString substringFromIndex: range.location+range.length]];
+            [[WebServiceManager sharedInstance] sendPOSTRequestWithCode:[urlString substringFromIndex: range.location+range.length]];
             return NO;
+            
         }
     }
     
@@ -144,68 +148,53 @@
 - (void) handleOnlyToken: (NSString *) myToken {
 
 NSLog(@"My token succesfully recivied, here it is - %@", myToken);
-
-}
-- (void) handleMyTokenAndFullame: (NSString *) myToken andMyName: (NSString *) myFullName {
-
-    NSLog(@"My token succesfully recivied, here it is - %@", myToken);
-    NSLog(@"My Login is == %@", myFullName);
-}
-
-- (void) sendPOSTRequestWithCode: (NSString *) code {
-
-   // NSError *error;
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate: self delegateQueue:nil];
-    NSString *post = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&grant_type=authorization_code&redirect_uri=%@&code=%@",INSTAGRAM_CLIENT_ID,INSTAGRAM_CLIENTSERCRET,INSTAGRAM_REDIRECT_URI,code];
-    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
+     [WebServiceManager sharedInstance].myAccessToken = myToken;
     
-    NSMutableURLRequest *requestData = [NSMutableURLRequest requestWithURL:
-                                        [NSURL URLWithString:@"https://api.instagram.com/oauth/access_token"]];
-    [requestData setHTTPMethod:@"POST"];
-    [requestData setValue:postLength forHTTPHeaderField:@"Content-Length"];
-    [requestData setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    [requestData setHTTPBody:postData];
-//    NSLog(@"Requeat data is === %@", requestData);
-    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:requestData completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-//      NSLog(@"My data from data == %@", data);
-//      NSLog(@"My data from response == %@", response);
-        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-     NSLog(@"This is me Dictionary, JSONSerialization from data === %@", dict);
- //   [self handleMyTokenAndFullame:[dict valueForKey:@"access_token"]];
- 
-        NSMutableDictionary * userDict = [[NSMutableDictionary alloc] init];
-        userDict = [dict valueForKey:@"user"];
-        [self handleMyTokenAndFullame:[dict valueForKey:@"access_token"] andMyName:[userDict valueForKey:@"username"]];
-        
-    }];
-    
-    [postDataTask resume];
 }
+//- (void) handleMyTokenAndFullame: (NSString *) myToken andMyName: (NSString *) myFullName {
+//    _myAccessToken = myToken;
+//    _mySessionID = myFullName;
+//    NSLog(@"My token succesfully saved, here it is - %@", _myAccessToken);
+//    NSLog(@"My ID was saved -- %@", _mySessionID);
+//}
 
-//-(void)makePostRequest:(NSString *)code
-//{
+//- (void) sendPOSTRequestWithCode: (NSString *) code {
 //
+//   // NSError *error;
+//    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+//    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate: self delegateQueue:nil];
 //    NSString *post = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&grant_type=authorization_code&redirect_uri=%@&code=%@",INSTAGRAM_CLIENT_ID,INSTAGRAM_CLIENTSERCRET,INSTAGRAM_REDIRECT_URI,code];
 //    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
 //    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[postData length]];
-//
+//    
 //    NSMutableURLRequest *requestData = [NSMutableURLRequest requestWithURL:
 //                                        [NSURL URLWithString:@"https://api.instagram.com/oauth/access_token"]];
+//    
+//    
 //    [requestData setHTTPMethod:@"POST"];
 //    [requestData setValue:postLength forHTTPHeaderField:@"Content-Length"];
 //    [requestData setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
 //    [requestData setHTTPBody:postData];
-//
-//    NSURLResponse *response = NULL;
-//    NSError *requestError = NULL;
-
-//
-//    NSData *responseData = [NSURLConnection sendSynchronousRequest:requestData returningResponse:&response error:&requestError];
-//    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
-//
+////    NSLog(@"Requeat data is === %@", requestData);
+//    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:requestData completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+////      NSLog(@"My data from data == %@", data);
+////      NSLog(@"My data from response == %@", response);
+//        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+//     NSLog(@"This is me Dictionary, JSONSerialization from data === %@", dict);
+// //   [self handleMyTokenAndFullame:[dict valueForKey:@"access_token"]];
+// 
+//        NSMutableDictionary * userDict = [[NSMutableDictionary alloc] init];
+//        userDict = [dict valueForKey:@"user"];
+//        [self handleMyTokenAndFullame:[dict valueForKey:@"access_token"] andMyName:[userDict valueForKey:@"id"]];
+//        
+//    }];
+//    
+//    [postDataTask resume];
 //}
+
+- (void)pushToTabBarcontroller {
+    [self performSegueWithIdentifier:@"firstSeque" sender:nil];
+}
 
 
 @end

@@ -8,13 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+#import "WebServiceManager.h"
 
 @interface LoginViewController : UIViewController <UIWebViewDelegate, NSURLSessionDataDelegate>  {
 
     IBOutlet UIWebView *loginWebView;
     IBOutlet UIActivityIndicatorView *loginIndicator;
     IBOutlet UILabel *loadingLabel;
+    
 }
 @property (strong,nonatomic) NSString *typeOfAuthentication;
+- (void) pushToTabBarcontroller;
 
 @end

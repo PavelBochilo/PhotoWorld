@@ -15,6 +15,9 @@
 #define INSTAGRAM_REDIRECT_URI                          @"https://instagram.com/"
 #define INSTAGRAM_ACCESS_TOKEN                          @"access_token"
 #define INSTAGRAM_SCOPE                                 @"likes+comments+relationships"
+#define INSTAGRAM_API_USER                              @"https://api.instagram.com/v1/users/{user-id}/?access_token=ACCESS-TOKEN"
+#define INSTAGRAM_MEDIA                                 @"https://api.instagram.com/v1/media/{media-id}?access_token=ACCESS-TOKEN"
+#define INSTAGRAM_API_SELF                              @"https://api.instagram.com/v1/users/self/?access_token=ACCESS-TOKEN"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
