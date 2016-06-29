@@ -18,6 +18,8 @@
 		DAE230D21D227B37001AAFC3 /* UserPhotoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE230D11D227B37001AAFC3 /* UserPhotoDetailViewController.m */; };
 		DAE3B0661D23B51500F68CE7 /* MainTableHeaderReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAE3B0651D23B51500F68CE7 /* MainTableHeaderReusableView.xib */; };
 		DAE3B0691D23B64500F68CE7 /* MainTableHeaderReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE3B0681D23B64500F68CE7 /* MainTableHeaderReusableView.m */; };
+		DAE3B06C1D23DE3B00F68CE7 /* MainTableFooterReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE3B06B1D23DE3B00F68CE7 /* MainTableFooterReusableView.m */; };
+		DAE3B0701D23EC2400F68CE7 /* MainTableFooterReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAE3B06F1D23EC2400F68CE7 /* MainTableFooterReusableView.xib */; };
 		DAEA07571D17D87C00C53EAB /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA07561D17D87C00C53EAB /* MainTabBarViewController.m */; };
 		DAEA075A1D17DA8300C53EAB /* UserInfoNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA07591D17DA8300C53EAB /* UserInfoNavigationController.m */; };
 		DAEA075D1D17DAC900C53EAB /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA075C1D17DAC900C53EAB /* UserInfoViewController.m */; };
@@ -71,6 +73,9 @@
 		DAE3B0651D23B51500F68CE7 /* MainTableHeaderReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTableHeaderReusableView.xib; sourceTree = "<group>"; };
 		DAE3B0671D23B64500F68CE7 /* MainTableHeaderReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableHeaderReusableView.h; sourceTree = "<group>"; };
 		DAE3B0681D23B64500F68CE7 /* MainTableHeaderReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableHeaderReusableView.m; sourceTree = "<group>"; };
+		DAE3B06A1D23DE3B00F68CE7 /* MainTableFooterReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableFooterReusableView.h; sourceTree = "<group>"; };
+		DAE3B06B1D23DE3B00F68CE7 /* MainTableFooterReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableFooterReusableView.m; sourceTree = "<group>"; };
+		DAE3B06F1D23EC2400F68CE7 /* MainTableFooterReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTableFooterReusableView.xib; sourceTree = "<group>"; };
 		DAEA07541D17D66B00C53EAB /* PH.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PH.pch; sourceTree = "<group>"; };
 		DAEA07551D17D87C00C53EAB /* MainTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarViewController.h; sourceTree = "<group>"; };
 		DAEA07561D17D87C00C53EAB /* MainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewController.m; sourceTree = "<group>"; };
@@ -192,6 +197,9 @@
 				DAE3B0671D23B64500F68CE7 /* MainTableHeaderReusableView.h */,
 				DAE3B0681D23B64500F68CE7 /* MainTableHeaderReusableView.m */,
 				DAE3B0651D23B51500F68CE7 /* MainTableHeaderReusableView.xib */,
+				DAE3B06A1D23DE3B00F68CE7 /* MainTableFooterReusableView.h */,
+				DAE3B06B1D23DE3B00F68CE7 /* MainTableFooterReusableView.m */,
+				DAE3B06F1D23EC2400F68CE7 /* MainTableFooterReusableView.xib */,
 			);
 			name = "Main Table Xib Model";
 			sourceTree = "<group>";
@@ -389,6 +397,7 @@
 			files = (
 				DAC1F9101D2135730008CE16 /* UserHeaderCollectionReusableView.xib in Resources */,
 				DA1836161D1C32560032CFB4 /* classic.jpg in Resources */,
+				DAE3B0701D23EC2400F68CE7 /* MainTableFooterReusableView.xib in Resources */,
 				DAF172331D12A118000E848B /* LaunchScreen.storyboard in Resources */,
 				DAE3B0661D23B51500F68CE7 /* MainTableHeaderReusableView.xib in Resources */,
 				DAF172301D12A118000E848B /* Assets.xcassets in Resources */,
@@ -468,6 +477,7 @@
 			files = (
 				DAEA075A1D17DA8300C53EAB /* UserInfoNavigationController.m in Sources */,
 				DAE230D21D227B37001AAFC3 /* UserPhotoDetailViewController.m in Sources */,
+				DAE3B06C1D23DE3B00F68CE7 /* MainTableFooterReusableView.m in Sources */,
 				DAF1722B1D12A118000E848B /* ViewController.m in Sources */,
 				DAE3B0691D23B64500F68CE7 /* MainTableHeaderReusableView.m in Sources */,
 				DA81CB9B1D1ABB8000D71BE3 /* HomeViewViewController.m in Sources */,

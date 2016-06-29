@@ -24,8 +24,10 @@ static NSString *headerIdentifier = @"userHeader";
 
 - (void)setButtonCorners {
     _redactionButton.layer.cornerRadius = 7.0f;
-_redactionButton.clipsToBounds = YES;
+    _redactionButton.clipsToBounds = YES;
 }
+
+
 
 - (void)avatarAppear {
     if ([WebServiceManager sharedInstance].userAvatarImage != nil) {

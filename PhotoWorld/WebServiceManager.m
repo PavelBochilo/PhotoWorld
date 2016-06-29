@@ -26,6 +26,7 @@
 - (void) handleMyTokenAndID:(NSString *)myToken andMyName:(NSString *)myFullName  {
     _myAccessToken = myToken;
     _mySessionID = myFullName;
+    [self sendPOSTRequestUserInfo:_myAccessToken andMyID:_mySessionID];
     NSLog(@"My token succesfully saved, here it is - %@", _myAccessToken);
     NSLog(@"My ID was saved -- %@", _mySessionID);
 }
@@ -102,11 +103,11 @@ dispatch_async(dispatch_get_main_queue(), ^{
 - (void) saveUserData: (NSDictionary *) userDict {
     dispatch_async(dispatch_get_main_queue(), ^{
     _userDataDictionary = userDict;
- //   NSLog(@"Dict saved === %@", _userDataDictionary);
+//    NSLog(@"Dict saved === %@", _userDataDictionary);
     NSDictionary *dict1 = [_userDataDictionary objectForKey:@"data"];
     NSString *urlImage = [dict1 objectForKey:@"profile_picture"];
         [self setMyAvatar:urlImage];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"userNotification" object:nil];
+    
    });
 }
 - (void) setMyAvatar:(NSString *)avatarUrl {
@@ -127,6 +128,7 @@ dispatch_async(dispatch_get_main_queue(), ^{
 - (void)saveUserAvatarImage: (UIImage *)avatar{
   dispatch_async(dispatch_get_main_queue(), ^{
     _userAvatarImage = avatar;
+      [[NSNotificationCenter defaultCenter] postNotificationName:@"userNotification" object:nil];
       
       });
 }

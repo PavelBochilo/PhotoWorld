@@ -35,7 +35,7 @@ static NSString *headerIdentifier = @"userHeader";
     [_userCollectionView setDelegate:self];
     [self registerNibForHeader];
     [self indicatorStartLoading];
-    [[WebServiceManager sharedInstance] sendPOSTRequestUserInfo:[WebServiceManager sharedInstance].myAccessToken andMyID:[WebServiceManager sharedInstance].mySessionID];
+    [[WebServiceManager sharedInstance] sendRequestForUserMedia:[WebServiceManager sharedInstance].myAccessToken andMyID:[WebServiceManager sharedInstance].mySessionID];    
     [self startNoticicationProcess];
 }
 
@@ -104,11 +104,6 @@ static NSString *headerIdentifier = @"userHeader";
 
 - (void)startNoticicationProcess {
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(notificationStartLoadingUserData)
-                                                 name:@"userNotification"
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(notificationStartLoadingMedia)
                                                  name:@"userMediaNotification"
                                                object:nil];
@@ -132,10 +127,6 @@ static NSString *headerIdentifier = @"userHeader";
     _activityIndicator.hidden = YES;
     _userLoadingScreen.hidden = YES;
 
-}
-
-- (void)notificationStartLoadingUserData {
-    [[WebServiceManager sharedInstance] sendRequestForUserMedia:[WebServiceManager sharedInstance].myAccessToken andMyID:[WebServiceManager sharedInstance].mySessionID];
 }
 
 - (void) notificationStartLoadingMedia {

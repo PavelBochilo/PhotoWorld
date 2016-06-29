@@ -9,9 +9,11 @@
 #import "UserPhotoDetailViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "MainTableHeaderReusableView.h"
+#import "MainTableFooterReusableView.h"
 
 static NSString *userCellPhotoDetailIdentifier = @"userDetailPhoto";
 static NSString *userHeaderPhotoDetailIdentifier = @"tableHeaderCell";
+static NSString *userFooterPhotoDetailIdentifier = @"tableFooterCell";
 @interface UserPhotoDetailViewController ()
 
 @end
@@ -23,19 +25,51 @@ static NSString *userHeaderPhotoDetailIdentifier = @"tableHeaderCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self dowloadDetailPhoto];
-    _userDetailPhotoTableView.dataSource = self;
-    _userDetailPhotoTableView.delegate = self;
-    [_userDetailPhotoTableView registerNib:[UINib nibWithNibName:@"MainTableHeaderReusableView" bundle:nil] forCellReuseIdentifier:userHeaderPhotoDetailIdentifier];
-    
+    [self loadTableView];
+    [self setNavigationBar];
+    [self indicatorStartLoading];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (void) indicatorStartLoading {
+    _ind.hidden = NO;
+    [_ind startAnimating];
+}
+- (void) indicatorStopLoading {
+    [_ind stopAnimating];
+    _ind.hidden = YES;
+    _ind.hidden = YES;
+    
+}
 
+-(void)setNavigationBar {
+  //  [UINavigationBar appearance].backIndicatorImage.
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor], NSFontAttributeName: [UIFont fontWithName:@"BillabongW00-Regular" size:20]}];
+    [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
+    [self.navigationItem setTitle:@"Фото"];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@""
+                                                             style:UIBarButtonItemStylePlain
+                                                            target:self
+                                                            action:@selector(lastViewController)];
+    item.image = [UIImage imageNamed:@"back"];
+    item.tintColor = [UIColor blackColor];
+    [self.navigationItem setLeftBarButtonItem:item animated:YES];
+}
+
+- (void)lastViewController {
+[self.navigationController popViewControllerAnimated:YES];
+
+}
+- (void)loadTableView {
+    _userDetailPhotoTableView.dataSource = self;
+    _userDetailPhotoTableView.delegate = self;
+    [_userDetailPhotoTableView registerNib:[UINib nibWithNibName:@"MainTableHeaderReusableView" bundle:nil] forCellReuseIdentifier:userHeaderPhotoDetailIdentifier];
+    [_userDetailPhotoTableView registerNib:[UINib nibWithNibName:@"MainTableFooterReusableView" bundle:nil] forCellReuseIdentifier:userFooterPhotoDetailIdentifier];
+}
 - (void)dowloadDetailPhoto {
-
     SDWebImageDownloader *downloader = [SDWebImageDownloader sharedDownloader];
     NSURL *url = [NSURL URLWithString:_detailUrl];
     [downloader downloadImageWithURL: url
@@ -48,12 +82,11 @@ static NSString *userHeaderPhotoDetailIdentifier = @"tableHeaderCell";
                                   // NSLog(@"Detailed CACHED!!!");
                                }
                            }];
-
 }
-
 - (void) setDetailedPhoto: (UIImage *)photo {
 dispatch_async(dispatch_get_main_queue(), ^{
      _photo = photo;
+    [self indicatorStopLoading];
     [_userDetailPhotoTableView reloadData];
     });
 }
@@ -63,7 +96,6 @@ dispatch_async(dispatch_get_main_queue(), ^{
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
-
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -94,7 +126,12 @@ UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:userCellPho
 }
 -(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
 MainTableHeaderReusableView *header =[tableView dequeueReusableCellWithIdentifier:userHeaderPhotoDetailIdentifier];
+    header.userNameLabel.text = [[WebServiceManager sharedInstance].userDataDictionary valueForKeyPath:@"data.username"];
+    [header avatarAppear];
     return  header;
 }
-
+-(UIView*)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    MainTableFooterReusableView *footer = [tableView dequeueReusableCellWithIdentifier:userFooterPhotoDetailIdentifier];
+    return footer;
+}
 @end

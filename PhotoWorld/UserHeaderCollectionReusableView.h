@@ -20,6 +20,4 @@
 - (void)setButtonCorners;
 - (void)avatarAppear;
 
-
-
 @end

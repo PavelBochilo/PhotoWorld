@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WebServiceManager.h"
 
 
-@interface HomeViewViewController : UIViewController
+@interface HomeViewViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *homeTableView;
 
 @end

@@ -15,4 +15,5 @@
 @property (strong, nonatomic) UIImage *photo;
 @property (weak, nonatomic) IBOutlet UITableView *userDetailPhotoTableView;
 
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *ind;
 @end

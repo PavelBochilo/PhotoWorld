@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableFooterCell" id="Ouu-CR-NnO" customClass="MainTableFooterReusableView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ouu-CR-NnO" id="Xkr-wL-jc7">
+                <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ImR-wv-F6c">
+                        <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="ImR-wv-F6c" secondAttribute="height" multiplier="1:1" id="2F6-Sp-Rc4"/>
+                            <constraint firstAttribute="height" constant="44" id="MtF-rv-MqI"/>
+                        </constraints>
+                        <state key="normal" image="like"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gcu-60-1vU">
+                        <rect key="frame" x="52" y="0.0" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Gcu-60-1vU" secondAttribute="height" multiplier="1:1" id="39v-1r-KCF"/>
+                            <constraint firstAttribute="height" constant="44" id="s0H-nQ-EC9"/>
+                        </constraints>
+                        <state key="normal" image="interface"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lb6-el-QT6">
+                        <rect key="frame" x="104" y="0.0" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="0Hz-3C-o1q"/>
+                            <constraint firstAttribute="width" secondItem="lb6-el-QT6" secondAttribute="height" multiplier="1:1" id="633-tt-Fwc"/>
+                        </constraints>
+                        <state key="normal" image="arrow"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ImR-wv-F6c" firstAttribute="top" secondItem="Xkr-wL-jc7" secondAttribute="top" id="5v4-Zh-T7G"/>
+                    <constraint firstItem="ImR-wv-F6c" firstAttribute="leading" secondItem="Xkr-wL-jc7" secondAttribute="leading" id="E4z-s9-U1Y"/>
+                    <constraint firstItem="Gcu-60-1vU" firstAttribute="leading" secondItem="ImR-wv-F6c" secondAttribute="trailing" constant="8" id="Lld-6r-cce"/>
+                    <constraint firstItem="lb6-el-QT6" firstAttribute="top" secondItem="Xkr-wL-jc7" secondAttribute="top" id="P8k-VM-ibO"/>
+                    <constraint firstItem="Gcu-60-1vU" firstAttribute="top" secondItem="Xkr-wL-jc7" secondAttribute="top" id="eZ6-xu-CQA"/>
+                    <constraint firstItem="lb6-el-QT6" firstAttribute="leading" secondItem="Gcu-60-1vU" secondAttribute="trailing" constant="8" id="fBI-Lr-47O"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="313" y="250"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="arrow" width="24" height="24"/>
+        <image name="interface" width="24" height="24"/>
+        <image name="like" width="24" height="24"/>
+    </resources>
+</document>

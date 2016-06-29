@@ -19,23 +19,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(notificationStartLoadingUserData)
+                                                 name:@"userNotification"
+                                               object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (BOOL)prefersStatusBarHidden {
     return YES;
@@ -95,16 +88,12 @@
 
 - (void) webViewDidFinishLoad:(UIWebView *)webView
 {
-    [loginIndicator stopAnimating];
     loadingLabel.hidden = YES;
     [loginWebView.layer removeAllAnimations];
     loginWebView.userInteractionEnabled = YES;
-    loginIndicator.hidden = YES;
     [UIView animateWithDuration: 0.1 animations:^{
-        loginWebView.alpha = 1.0;
-        
+        loginWebView.alpha = 1.0;        
     }];
-    [self pushToTabBarcontroller];
 }
 
 - (void) webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
@@ -146,10 +135,14 @@
     return YES;
 }
 - (void) handleOnlyToken: (NSString *) myToken {
-
 //NSLog(@"My token succesfully recivied, here it is - %@", myToken);
      [WebServiceManager sharedInstance].myAccessToken = myToken;
-    
+}
+- (void)notificationStartLoadingUserData {
+    NSLog(@"Halo");
+    [loginIndicator stopAnimating];
+      loginIndicator.hidden = YES;
+    [self pushToTabBarcontroller];
 }
 - (void)pushToTabBarcontroller {
     [self performSegueWithIdentifier:@"firstSeque" sender:nil];

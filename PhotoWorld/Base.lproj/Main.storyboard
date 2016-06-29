@@ -232,7 +232,7 @@
         <!--User Info View Controller-->
         <scene sceneID="EWe-gm-Bdk">
             <objects>
-                <viewController id="cgW-ro-1Q4" customClass="UserInfoViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="userProfile" id="cgW-ro-1Q4" customClass="UserInfoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="v5l-FW-nRT"/>
                         <viewControllerLayoutGuide type="bottom" id="YSd-Tu-IaH"/>
@@ -339,16 +339,22 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="XRx-Re-itn">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="erk-Dp-jlU" firstAttribute="leading" secondItem="jcL-On-AEh" secondAttribute="leading" id="6qn-Yy-eXd"/>
                             <constraint firstItem="L8c-Eu-lbg" firstAttribute="top" secondItem="erk-Dp-jlU" secondAttribute="bottom" id="KL5-52-QNR"/>
                             <constraint firstAttribute="trailing" secondItem="erk-Dp-jlU" secondAttribute="trailing" id="LqQ-gQ-xck"/>
+                            <constraint firstItem="XRx-Re-itn" firstAttribute="centerX" secondItem="jcL-On-AEh" secondAttribute="centerX" id="cae-Y6-wxa"/>
                             <constraint firstItem="erk-Dp-jlU" firstAttribute="top" secondItem="jcL-On-AEh" secondAttribute="top" id="esA-OH-65O"/>
+                            <constraint firstItem="XRx-Re-itn" firstAttribute="centerY" secondItem="jcL-On-AEh" secondAttribute="centerY" id="mck-dF-hNP"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="ind" destination="XRx-Re-itn" id="Rbw-LL-Esn"/>
                         <outlet property="userDetailPhotoTableView" destination="erk-Dp-jlU" id="k7h-Mj-WBe"/>
                     </connections>
                 </viewController>
@@ -367,9 +373,34 @@
                     <view key="view" contentMode="scaleToFill" id="vev-jp-DXx">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xgm-df-AI6">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="homeCell" id="Igw-8n-FQi">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Igw-8n-FQi" id="FvE-Pu-m2c">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Xgm-df-AI6" firstAttribute="leading" secondItem="vev-jp-DXx" secondAttribute="leading" id="4uI-qB-W0U"/>
+                            <constraint firstItem="1Dh-GW-8Ei" firstAttribute="top" secondItem="Xgm-df-AI6" secondAttribute="bottom" id="8dV-UP-7fc"/>
+                            <constraint firstItem="Xgm-df-AI6" firstAttribute="top" secondItem="vev-jp-DXx" secondAttribute="top" id="OW9-7n-oZ3"/>
+                            <constraint firstAttribute="trailing" secondItem="Xgm-df-AI6" secondAttribute="trailing" id="puZ-Ep-OcL"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Photo World" id="9nR-mg-MTj"/>
+                    <connections>
+                        <outlet property="homeTableView" destination="Xgm-df-AI6" id="b2j-Vj-LVn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mE8-SP-MaP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
