@@ -7,6 +7,7 @@
 //
 
 #import "WebServiceManager.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation WebServiceManager
 
@@ -89,21 +90,69 @@
 
 - (void) saveMediaDictionary: (NSDictionary *) mediaDict {
 dispatch_async(dispatch_get_main_queue(), ^{
-    _userMediaDictionaty = mediaDict;
-//    NSArray *dict = [_userMediaDictionaty objectForKey:@"data"];
-//    NSDictionary *dict2 = [dict objectAtIndex:0];
-//    NSDictionary *dict3 = [dict2 objectForKey:@"images"];
-        NSLog(@"Dict saved === %@", _userMediaDictionaty);
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"userMediaNotification" object:nil];
+    _userMediaDictionary = mediaDict;
+    _userPhotoUrlArray = [_userMediaDictionary valueForKeyPath:@"data.images.thumbnail.url"];
+    _userStandartPhotoUrlArray = [_userMediaDictionary valueForKeyPath:@"data.images.standard_resolution.url"];
+    //NSLog(@"User photo urls === %@", _userStandartPhotoUrlArray);
+    [self loadingImagesData];
+
 });
 }
 
 - (void) saveUserData: (NSDictionary *) userDict {
     dispatch_async(dispatch_get_main_queue(), ^{
     _userDataDictionary = userDict;
-//    NSLog(@"Dict saved === %@", _userDataDictionary);
+ //   NSLog(@"Dict saved === %@", _userDataDictionary);
+    NSDictionary *dict1 = [_userDataDictionary objectForKey:@"data"];
+    NSString *urlImage = [dict1 objectForKey:@"profile_picture"];
+        [self setMyAvatar:urlImage];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"userNotification" object:nil];
    });
+}
+- (void) setMyAvatar:(NSString *)avatarUrl {
+    
+    SDWebImageDownloader *downloader = [SDWebImageDownloader sharedDownloader];
+    NSURL *url = [NSURL URLWithString:avatarUrl];
+    [downloader downloadImageWithURL: url
+                             options:0
+                            progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                            }
+                           completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
+                               if (image && finished) {
+                                   [self saveUserAvatarImage:image];
+                               }
+                           }];
+}
+
+- (void)saveUserAvatarImage: (UIImage *)avatar{
+  dispatch_async(dispatch_get_main_queue(), ^{
+    _userAvatarImage = avatar;
+      
+      });
+}
+
+- (void)loadingImagesData {
+    for (int i = 0; i < _userPhotoUrlArray.count; i++) {
+    
+    SDWebImageDownloader *downloader = [SDWebImageDownloader sharedDownloader];
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@",_userPhotoUrlArray[i]]];
+        [downloader downloadImageWithURL: url
+                             options:0
+                            progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+}
+            completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
+        if (image && finished) {
+        NSString *localKey = [NSString stringWithFormat:@"Item-%d", i];
+    [[SDImageCache sharedImageCache] storeImage:image forKey:localKey toDisk:NO];
+            NSLog(@"CACHED!!!");
+            if (i == _userPhotoUrlArray.count -1 && finished) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"userMediaNotification" object:nil];
+            }
+    
+}
+}];
+}
+ 
 }
 
 

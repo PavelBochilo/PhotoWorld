@@ -11,6 +11,7 @@
 #import "UserInfoViewController.h"
 
 
+
 @interface WebServiceManager : NSObject <NSURLSessionDataDelegate, NSURLSessionDelegate>
 
 @property (strong, nonatomic) NSString *myAccessToken;
@@ -20,10 +21,12 @@
 - (void) handleMyTokenAndID: (NSString *) myToken andMyName: (NSString *) myFullName;
 - (void) sendPOSTRequestUserInfo: (NSString *) myToken andMyID: (NSString *) myID;
 - (void) sendRequestForUserMedia: (NSString *) myToken andMyID: (NSString *) myID;
+//- (void)loadingImagesData;
 
 + (WebServiceManager *)sharedInstance;
-
+@property (strong, nonatomic) UIImage *userAvatarImage;
 @property (strong, nonatomic) NSDictionary *userDataDictionary;
-@property (strong, nonatomic) NSDictionary *userMediaDictionaty;
-
+@property (strong, nonatomic) NSDictionary *userMediaDictionary;
+@property (strong, nonatomic) NSMutableArray *userPhotoUrlArray;
+@property (strong, nonatomic) NSMutableArray *userStandartPhotoUrlArray;
 @end

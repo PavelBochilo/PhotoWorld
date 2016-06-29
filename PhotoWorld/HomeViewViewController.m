@@ -1,28 +1,36 @@
 //
-//  MainTabBarViewController.m
+//  HomeViewViewController.m
 //  PhotoWorld
 //
-//  Created by Paul on 20.06.16.
+//  Created by Paul on 22.06.16.
 //  Copyright © 2016 Paul. All rights reserved.
 //
 
-#import "MainTabBarViewController.h"
+#import "HomeViewViewController.h"
 
-@interface MainTabBarViewController ()
+@interface HomeViewViewController ()
 
 @end
 
-@implementation MainTabBarViewController
+@implementation HomeViewViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor], NSFontAttributeName: [UIFont fontWithName:@"BillabongW00-Regular" size:30]}];
-    // Do any additional setup after loading the view.
+
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    
+    
+}
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:YES];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor], NSFontAttributeName: [UIFont fontWithName:@"BillabongW00-Regular" size:30]}];
 }
 
 /*

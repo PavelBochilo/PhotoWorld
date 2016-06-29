@@ -9,13 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "LoginViewController.h"
 #import "AppDelegate.h"
+#import "UserCollectionViewCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "UserHeaderCollectionReusableView.h"
 
-@interface UserInfoViewController : UIViewController <NSURLSessionDelegate, NSURLSessionDataDelegate>
+
+
+@interface UserInfoViewController : UIViewController <NSURLSessionDelegate, NSURLSessionDataDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (strong, nonatomic) NSDictionary *userDataDictionary;
-@property (weak, nonatomic) IBOutlet UIImageView *userAvatar;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-- (void) downloadAndLoadAvatar;
-@property (nonatomic, assign) BOOL wasLoaded;
+@property (weak, nonatomic) IBOutlet UICollectionView *userCollectionView;
+@property (weak, nonatomic) IBOutlet UIView *userLoadingScreen;
 
 @end

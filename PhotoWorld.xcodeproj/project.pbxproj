@@ -8,7 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		480E07D3DB0EBEB129BAA562 /* libPods-PhotoWorld.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A815E228FD201CA6249D98C /* libPods-PhotoWorld.a */; };
-		DAEA07521D17D21C00C53EAB /* instagram.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DAEA07511D17D21C00C53EAB /* instagram.ttf */; };
+		DA1836131D1C24C80032CFB4 /* UserCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1836121D1C24C80032CFB4 /* UserCollectionViewCell.m */; };
+		DA1836161D1C32560032CFB4 /* classic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DA1836151D1C32560032CFB4 /* classic.jpg */; };
+		DA81CB9B1D1ABB8000D71BE3 /* HomeViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA81CB9A1D1ABB8000D71BE3 /* HomeViewViewController.m */; };
+		DA81CB9E1D1ABC2700D71BE3 /* HomeNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA81CB9D1D1ABC2700D71BE3 /* HomeNavigationViewController.m */; };
+		DAC1F9081D2117040008CE16 /* UserHeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC1F9071D2117040008CE16 /* UserHeaderCollectionReusableView.m */; };
+		DAC1F9101D2135730008CE16 /* UserHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAC1F90F1D2135730008CE16 /* UserHeaderCollectionReusableView.xib */; };
+		DAE230CD1D2255E3001AAFC3 /* BillabongW00-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DAE230CC1D2255E3001AAFC3 /* BillabongW00-Regular.ttf */; };
+		DAE230D21D227B37001AAFC3 /* UserPhotoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE230D11D227B37001AAFC3 /* UserPhotoDetailViewController.m */; };
+		DAE3B0661D23B51500F68CE7 /* MainTableHeaderReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAE3B0651D23B51500F68CE7 /* MainTableHeaderReusableView.xib */; };
+		DAE3B0691D23B64500F68CE7 /* MainTableHeaderReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE3B0681D23B64500F68CE7 /* MainTableHeaderReusableView.m */; };
 		DAEA07571D17D87C00C53EAB /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA07561D17D87C00C53EAB /* MainTabBarViewController.m */; };
 		DAEA075A1D17DA8300C53EAB /* UserInfoNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA07591D17DA8300C53EAB /* UserInfoNavigationController.m */; };
 		DAEA075D1D17DAC900C53EAB /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA075C1D17DAC900C53EAB /* UserInfoViewController.m */; };
@@ -46,7 +55,22 @@
 		336265758284650A84D06519 /* Pods-PhotoWorld.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoWorld.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoWorld/Pods-PhotoWorld.debug.xcconfig"; sourceTree = "<group>"; };
 		71AA98D78A0528FB4351EE9B /* Pods-PhotoWorld.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoWorld.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoWorld/Pods-PhotoWorld.release.xcconfig"; sourceTree = "<group>"; };
 		9A815E228FD201CA6249D98C /* libPods-PhotoWorld.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PhotoWorld.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DAEA07511D17D21C00C53EAB /* instagram.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = instagram.ttf; sourceTree = "<group>"; };
+		DA1836111D1C24C80032CFB4 /* UserCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCollectionViewCell.h; sourceTree = "<group>"; };
+		DA1836121D1C24C80032CFB4 /* UserCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCollectionViewCell.m; sourceTree = "<group>"; };
+		DA1836151D1C32560032CFB4 /* classic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = classic.jpg; sourceTree = "<group>"; };
+		DA81CB991D1ABB8000D71BE3 /* HomeViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewViewController.h; sourceTree = "<group>"; };
+		DA81CB9A1D1ABB8000D71BE3 /* HomeViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewViewController.m; sourceTree = "<group>"; };
+		DA81CB9C1D1ABC2700D71BE3 /* HomeNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeNavigationViewController.h; sourceTree = "<group>"; };
+		DA81CB9D1D1ABC2700D71BE3 /* HomeNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeNavigationViewController.m; sourceTree = "<group>"; };
+		DAC1F9061D2117040008CE16 /* UserHeaderCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHeaderCollectionReusableView.h; sourceTree = "<group>"; };
+		DAC1F9071D2117040008CE16 /* UserHeaderCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHeaderCollectionReusableView.m; sourceTree = "<group>"; };
+		DAC1F90F1D2135730008CE16 /* UserHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
+		DAE230CC1D2255E3001AAFC3 /* BillabongW00-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BillabongW00-Regular.ttf"; sourceTree = "<group>"; };
+		DAE230D01D227B37001AAFC3 /* UserPhotoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPhotoDetailViewController.h; sourceTree = "<group>"; };
+		DAE230D11D227B37001AAFC3 /* UserPhotoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPhotoDetailViewController.m; sourceTree = "<group>"; };
+		DAE3B0651D23B51500F68CE7 /* MainTableHeaderReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTableHeaderReusableView.xib; sourceTree = "<group>"; };
+		DAE3B0671D23B64500F68CE7 /* MainTableHeaderReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableHeaderReusableView.h; sourceTree = "<group>"; };
+		DAE3B0681D23B64500F68CE7 /* MainTableHeaderReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableHeaderReusableView.m; sourceTree = "<group>"; };
 		DAEA07541D17D66B00C53EAB /* PH.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PH.pch; sourceTree = "<group>"; };
 		DAEA07551D17D87C00C53EAB /* MainTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarViewController.h; sourceTree = "<group>"; };
 		DAEA07561D17D87C00C53EAB /* MainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewController.m; sourceTree = "<group>"; };
@@ -121,6 +145,57 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		DA1836141D1C24D50032CFB4 /* UserModels */ = {
+			isa = PBXGroup;
+			children = (
+				DA1836111D1C24C80032CFB4 /* UserCollectionViewCell.h */,
+				DA1836121D1C24C80032CFB4 /* UserCollectionViewCell.m */,
+				DA81CB841D1A85DF00D71BE3 /* XibClasses */,
+			);
+			name = UserModels;
+			sourceTree = "<group>";
+		};
+		DA81CB841D1A85DF00D71BE3 /* XibClasses */ = {
+			isa = PBXGroup;
+			children = (
+				DAC1F9061D2117040008CE16 /* UserHeaderCollectionReusableView.h */,
+				DAC1F9071D2117040008CE16 /* UserHeaderCollectionReusableView.m */,
+				DAC1F90F1D2135730008CE16 /* UserHeaderCollectionReusableView.xib */,
+			);
+			name = XibClasses;
+			sourceTree = "<group>";
+		};
+		DAE230D31D227B78001AAFC3 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DAF172591D12D28B000E848B /* LoginViewController.h */,
+				DAF1725A1D12D28B000E848B /* LoginViewController.m */,
+				DAEA07551D17D87C00C53EAB /* MainTabBarViewController.h */,
+				DAEA07561D17D87C00C53EAB /* MainTabBarViewController.m */,
+				DA81CB9C1D1ABC2700D71BE3 /* HomeNavigationViewController.h */,
+				DA81CB9D1D1ABC2700D71BE3 /* HomeNavigationViewController.m */,
+				DA81CB991D1ABB8000D71BE3 /* HomeViewViewController.h */,
+				DA81CB9A1D1ABB8000D71BE3 /* HomeViewViewController.m */,
+				DAEA07581D17DA8300C53EAB /* UserInfoNavigationController.h */,
+				DAEA07591D17DA8300C53EAB /* UserInfoNavigationController.m */,
+				DAEA075B1D17DAC900C53EAB /* UserInfoViewController.h */,
+				DAEA075C1D17DAC900C53EAB /* UserInfoViewController.m */,
+				DAE230D01D227B37001AAFC3 /* UserPhotoDetailViewController.h */,
+				DAE230D11D227B37001AAFC3 /* UserPhotoDetailViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		DAE3B0641D23B10100F68CE7 /* Main Table Xib Model */ = {
+			isa = PBXGroup;
+			children = (
+				DAE3B0671D23B64500F68CE7 /* MainTableHeaderReusableView.h */,
+				DAE3B0681D23B64500F68CE7 /* MainTableHeaderReusableView.m */,
+				DAE3B0651D23B51500F68CE7 /* MainTableHeaderReusableView.xib */,
+			);
+			name = "Main Table Xib Model";
+			sourceTree = "<group>";
+		};
 		DAEA07611D17EA8100C53EAB /* WebServiceManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,15 +234,10 @@
 				DAF172271D12A118000E848B /* AppDelegate.m */,
 				DAF172291D12A118000E848B /* ViewController.h */,
 				DAF1722A1D12A118000E848B /* ViewController.m */,
+				DAE230D31D227B78001AAFC3 /* View Controllers */,
 				DAF1722C1D12A118000E848B /* Main.storyboard */,
-				DAF172591D12D28B000E848B /* LoginViewController.h */,
-				DAF1725A1D12D28B000E848B /* LoginViewController.m */,
-				DAEA07551D17D87C00C53EAB /* MainTabBarViewController.h */,
-				DAEA07561D17D87C00C53EAB /* MainTabBarViewController.m */,
-				DAEA07581D17DA8300C53EAB /* UserInfoNavigationController.h */,
-				DAEA07591D17DA8300C53EAB /* UserInfoNavigationController.m */,
-				DAEA075B1D17DAC900C53EAB /* UserInfoViewController.h */,
-				DAEA075C1D17DAC900C53EAB /* UserInfoViewController.m */,
+				DAE3B0641D23B10100F68CE7 /* Main Table Xib Model */,
+				DA1836141D1C24D50032CFB4 /* UserModels */,
 				DAEA07611D17EA8100C53EAB /* WebServiceManager */,
 				DAF1722F1D12A118000E848B /* Assets.xcassets */,
 				DAF172311D12A118000E848B /* LaunchScreen.storyboard */,
@@ -181,7 +251,8 @@
 		DAF172231D12A117000E848B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				DAEA07511D17D21C00C53EAB /* instagram.ttf */,
+				DA1836151D1C32560032CFB4 /* classic.jpg */,
+				DAE230CC1D2255E3001AAFC3 /* BillabongW00-Regular.ttf */,
 				DAF172561D12A654000E848B /* Defines.h */,
 				DAF172571D12A654000E848B /* Defines.m */,
 				DAF172241D12A117000E848B /* main.m */,
@@ -316,10 +387,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAC1F9101D2135730008CE16 /* UserHeaderCollectionReusableView.xib in Resources */,
+				DA1836161D1C32560032CFB4 /* classic.jpg in Resources */,
 				DAF172331D12A118000E848B /* LaunchScreen.storyboard in Resources */,
+				DAE3B0661D23B51500F68CE7 /* MainTableHeaderReusableView.xib in Resources */,
 				DAF172301D12A118000E848B /* Assets.xcassets in Resources */,
+				DAE230CD1D2255E3001AAFC3 /* BillabongW00-Regular.ttf in Resources */,
 				DAF1722E1D12A118000E848B /* Main.storyboard in Resources */,
-				DAEA07521D17D21C00C53EAB /* instagram.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,13 +467,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAEA075A1D17DA8300C53EAB /* UserInfoNavigationController.m in Sources */,
+				DAE230D21D227B37001AAFC3 /* UserPhotoDetailViewController.m in Sources */,
 				DAF1722B1D12A118000E848B /* ViewController.m in Sources */,
+				DAE3B0691D23B64500F68CE7 /* MainTableHeaderReusableView.m in Sources */,
+				DA81CB9B1D1ABB8000D71BE3 /* HomeViewViewController.m in Sources */,
 				DAF172281D12A118000E848B /* AppDelegate.m in Sources */,
 				DAF172581D12A654000E848B /* Defines.m in Sources */,
 				DAEA07571D17D87C00C53EAB /* MainTabBarViewController.m in Sources */,
 				DAEA075D1D17DAC900C53EAB /* UserInfoViewController.m in Sources */,
 				DAEA07601D17EA6F00C53EAB /* WebServiceManager.m in Sources */,
+				DA1836131D1C24C80032CFB4 /* UserCollectionViewCell.m in Sources */,
+				DAC1F9081D2117040008CE16 /* UserHeaderCollectionReusableView.m in Sources */,
 				DAF172251D12A118000E848B /* main.m in Sources */,
+				DA81CB9E1D1ABC2700D71BE3 /* HomeNavigationViewController.m in Sources */,
 				DAF1725B1D12D28B000E848B /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
