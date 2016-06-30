@@ -26,6 +26,7 @@
 - (void) handleMyTokenAndID:(NSString *)myToken andMyName:(NSString *)myFullName  {
     _myAccessToken = myToken;
     _mySessionID = myFullName;
+    _allFollowsUserUrlArray = [[NSMutableArray alloc]init];
     [self sendPOSTRequestUserInfo:_myAccessToken andMyID:_mySessionID];
     NSLog(@"My token succesfully saved, here it is - %@", _myAccessToken);
     NSLog(@"My ID was saved -- %@", _mySessionID);
@@ -61,7 +62,7 @@
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate: self delegateQueue:nil];
     NSMutableURLRequest *requestData = [NSMutableURLRequest requestWithURL:
-                                        [NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/v1/users/%@/?access_token=%@",myID, myToken]]];
+                                        [NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/v1/users/%@/?access_token=%@", myID, myToken]]];
     [requestData setHTTPMethod:@"GET"];
     NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:requestData completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSDictionary *userDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
@@ -76,7 +77,7 @@
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate: self delegateQueue:nil];
     NSMutableURLRequest *requestData = [NSMutableURLRequest requestWithURL:
-                                        [NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/v1/users/%@/media/recent/?access_token=%@",myID, myToken]]];
+                                        [NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/v1/users/self/media/recent/?access_token=%@", myToken]]];
     [requestData setHTTPMethod:@"GET"];
     NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:requestData completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSDictionary *userDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
@@ -85,8 +86,6 @@
     }];
     
     [postDataTask resume];
-
-
 }
 
 - (void) saveMediaDictionary: (NSDictionary *) mediaDict {
@@ -103,7 +102,7 @@ dispatch_async(dispatch_get_main_queue(), ^{
 - (void) saveUserData: (NSDictionary *) userDict {
     dispatch_async(dispatch_get_main_queue(), ^{
     _userDataDictionary = userDict;
-//    NSLog(@"Dict saved === %@", _userDataDictionary);
+   // NSLog(@"Dict saved === %@", _userDataDictionary);
     NSDictionary *dict1 = [_userDataDictionary objectForKey:@"data"];
     NSString *urlImage = [dict1 objectForKey:@"profile_picture"];
         [self setMyAvatar:urlImage];
@@ -128,10 +127,71 @@ dispatch_async(dispatch_get_main_queue(), ^{
 - (void)saveUserAvatarImage: (UIImage *)avatar{
   dispatch_async(dispatch_get_main_queue(), ^{
     _userAvatarImage = avatar;
+      [self sendRequestForUserFollows:_myAccessToken andMyID:_mySessionID];
       [[NSNotificationCenter defaultCenter] postNotificationName:@"userNotification" object:nil];
       
       });
 }
+
+
+- (void) sendRequestForUserFollows: (NSString *) myToken andMyID: (NSString *) myID {
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate: self delegateQueue:nil];
+    NSMutableURLRequest *requestData = [NSMutableURLRequest requestWithURL:
+                                        [NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/v1/users/self/follows?access_token=%@", myToken]]];
+    [requestData setHTTPMethod:@"GET"];
+    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:requestData completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSDictionary *followsDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+        _followsIDArray = [followsDict valueForKeyPath:@"data.id"];
+        _followsAvatarUrlArray = [followsDict valueForKeyPath:@"data.profile_picture"];
+        _followsUserNameArray = [followsDict valueForKeyPath:@"data.full_name"];
+       // NSLog(@"ID== %@, %@, %@", _followsIDArray, followsDict, _followsUserNameArray);
+        });
+        if (_followsIDArray != nil) {
+            for (int i = 0; i < _followsIDArray.count; i++) {
+                [self sendRequestForFollowUserMedia:_myAccessToken andUserID:_followsIDArray[i]];
+            }
+        }
+    }];
+    
+    [postDataTask resume];
+}
+
+- (void) sendRequestForFollowUserMedia: (NSString *) myToken andUserID: (NSString *) userID {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate: self delegateQueue:nil];
+    NSMutableURLRequest *requestData = [NSMutableURLRequest requestWithURL:
+                                        [NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/v1/users/%@/media/recent/?access_token=%@", userID, myToken]]];
+    [requestData setHTTPMethod:@"GET"];
+    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:requestData completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSDictionary *userDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+        NSMutableArray *array = [userDict valueForKeyPath:@"data.images.standard_resolution.url"];
+        [self addArray:array];
+//        for (int i = 0; i < array.count; i++) {
+//            NSString * urlString = array[i];
+//            [self updateBigArray:urlString];
+//        }
+    }];
+    [postDataTask resume];
+        });
+}
+
+- (void)addArray:(NSArray *)value {
+    @synchronized (value) {
+    
+    [_allFollowsUserUrlArray addObjectsFromArray:value];
+    }
+}
+
+- (void)updateBigArray:(NSString *)value {
+    @synchronized (value) {
+       [self.allFollowsUserUrlArray addObject:value];
+    }
+}
+
+
 
 - (void)loadingImagesData {
     for (int i = 0; i < _userPhotoUrlArray.count; i++) {

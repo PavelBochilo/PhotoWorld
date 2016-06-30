@@ -14,11 +14,13 @@
 #define INSTAGRAM_CLIENTSERCRET                         @"00e28302f5bf41ceb5288379c41b74e1"
 #define INSTAGRAM_REDIRECT_URI                          @"https://instagram.com/"
 #define INSTAGRAM_ACCESS_TOKEN                          @"access_token"
-#define INSTAGRAM_SCOPE                                 @"likes+comments+relationships"
+#define INSTAGRAM_SCOPE                                 @"basic+public_content+follower_list+comments+relationships+likes"
 #define INSTAGRAM_API_USER                              @"https://api.instagram.com/v1/users/{user-id}/?access_token=ACCESS-TOKEN"
 #define INSTAGRAM_MEDIA                                 @"https://api.instagram.com/v1/media/{media-id}?access_token=ACCESS-TOKEN"
 #define INSTAGRAM_API_SELF                              @"https://api.instagram.com/v1/users/self/?access_token=ACCESS-TOKEN"
 
+#define INSTAGRAM_USER_FOLLOWES                         @"https://api.instagram.com/v1/users/self/follows?access_token=ACCESS-TOKEN"
+#define INSTAGRAM_USER_FOLLOWES_BY                      @"https://api.instagram.com/v1/users/self/followed-by?access_token=ACCESS-TOKEN"
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

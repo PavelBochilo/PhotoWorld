@@ -139,7 +139,6 @@
      [WebServiceManager sharedInstance].myAccessToken = myToken;
 }
 - (void)notificationStartLoadingUserData {
-    NSLog(@"Halo");
     [loginIndicator stopAnimating];
       loginIndicator.hidden = YES;
     [self pushToTabBarcontroller];

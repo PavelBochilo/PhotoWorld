@@ -18,8 +18,8 @@ static NSString *headerIdentifier = @"userHeader";
     _bio.text = bio;
     _fullName.text = fullName;
     _media.text = [NSString stringWithFormat:@"%ld", (long)media];
-    _follows.text = [NSString stringWithFormat:@"%ld", (long)follows];
-    _followedBy.text = [NSString stringWithFormat:@"%ld", (long)followedBy];
+    _follows.text = [NSString stringWithFormat:@"%ld", (long)followedBy];
+    _followedBy.text = [NSString stringWithFormat:@"%ld",  (long)follows]; // people, user peffear
 }
 
 - (void)setButtonCorners {

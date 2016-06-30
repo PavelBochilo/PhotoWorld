@@ -29,4 +29,8 @@
 @property (strong, nonatomic) NSDictionary *userMediaDictionary;
 @property (strong, nonatomic) NSMutableArray *userPhotoUrlArray;
 @property (strong, nonatomic) NSMutableArray *userStandartPhotoUrlArray;
+@property (strong, nonatomic) NSMutableArray *followsIDArray;
+@property (strong, nonatomic) NSMutableArray *followsUserNameArray;
+@property (strong, nonatomic) NSMutableArray *followsAvatarUrlArray;
+@property (strong) NSMutableArray *allFollowsUserUrlArray;
 @end
