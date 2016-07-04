@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "WebServiceManager.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface MainTableHeaderReusableView : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *optionButton;
-- (void)avatarAppear;
 @property (weak, nonatomic) IBOutlet UIImageView *avatarImage;
+- (void)dowloadAvatarWithUrl: (NSString *)url;
+-(void)setUserNameLabelWithName: (NSString *)name;
+- (void)avatarAppear;
 @end

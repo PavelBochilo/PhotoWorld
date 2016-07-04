@@ -28,7 +28,7 @@ static NSString *userFooterPhotoDetailIdentifier = @"tableFooterCell";
     [self loadTableView];
     [self setNavigationBar];
     [self indicatorStartLoading];
-    NSLog(@"%@", [WebServiceManager sharedInstance].allFollowsUserUrlArray);
+  //  NSLog(@"%@", [WebServiceManager sharedInstance].allFollowsUserUrlArray);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,13 +42,11 @@ static NSString *userFooterPhotoDetailIdentifier = @"tableFooterCell";
 - (void) indicatorStopLoading {
     [_ind stopAnimating];
     _ind.hidden = YES;
-    _ind.hidden = YES;
     
 }
 
 -(void)setNavigationBar {
-  //  [UINavigationBar appearance].backIndicatorImage.
-    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor], NSFontAttributeName: [UIFont fontWithName:@"BillabongW00-Regular" size:20]}];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor], NSFontAttributeName: [UIFont fontWithName:@"BillabongW00-Regular" size:30]}];
     [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
     [self.navigationItem setTitle:@"Фото"];
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@""

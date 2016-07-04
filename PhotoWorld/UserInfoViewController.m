@@ -77,10 +77,51 @@ static NSString *headerIdentifier = @"userHeader";
             NSDictionary *dict = [[WebServiceManager sharedInstance].userDataDictionary valueForKeyPath:@"data.counts"];
             [header setDataBio:[[WebServiceManager sharedInstance].userDataDictionary valueForKeyPath:@"data.bio"] setFullName:[[WebServiceManager sharedInstance].userDataDictionary valueForKeyPath:@"data.full_name"] setMedia:[[dict valueForKey:@"media"]intValue] setFollows:[[dict valueForKey:@"follows"]intValue] setFoolowedBy:[[dict valueForKey:@"followed_by"]intValue] ];
             [header setButtonCorners];
-//            [header.redactionButton addTarget:<#(nullable id)#> action:<#(nonnull SEL)#> forControlEvents:<#(UIControlEvents)#>]
+            [header.redactionButton addTarget:nil action:@selector(editProfile) forControlEvents:UIControlEventTouchUpInside];
+            [self addTapToLabel:header.media withLabelIndex:1];
+            [self addTapToLabel:header.followedBy withLabelIndex:3]; //follows
+            [self addTapToLabel:header.follows withLabelIndex:2]; //followed_by
         }
     }
     return view;
+}
+
+- (void)addTapToLabel: (UILabel *)label withLabelIndex: (int)index {
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] init];
+    [tapRecognizer setNumberOfTapsRequired:1];
+    [label addGestureRecognizer:tapRecognizer];
+    label.userInteractionEnabled = YES;
+    switch (index) {
+        case 1: {
+            [tapRecognizer addTarget:self action:@selector(scrollToPosition)];
+            break;}
+        case 2: {
+            [tapRecognizer addTarget:self action:@selector(moveTouserFollowedBy)];
+            break;}
+        case 3: {
+            [tapRecognizer addTarget:self action:@selector(moveToUserFollows)];
+            break;}
+    }
+}
+
+- (void)scrollToPosition {
+    NSLog(@"tapped");
+    UIScrollView* v = (UIScrollView*) _userCollectionView ;
+    float width = CGRectGetWidth(_userCollectionView.frame);
+    float height = 240;
+    float newPosition = _userCollectionView.contentOffset.y+height;
+    CGRect toVisible = CGRectMake(0, newPosition, width, self.view.frame.size.height);
+    [v scrollRectToVisible:toVisible animated:YES];
+
+}
+- (void)moveTouserFollowedBy {
+    [self performSegueWithIdentifier:@"userFollowedBy" sender:nil];
+}
+- (void)moveToUserFollows {
+[self performSegueWithIdentifier:@"userFollows" sender:nil];
+}
+- (void)editProfile {
+    [self performSegueWithIdentifier:@"edit" sender:nil];
 }
 
 - (void) collectionViewLayout {
@@ -112,10 +153,6 @@ static NSString *headerIdentifier = @"userHeader";
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-}
-
-- (void) setUserData {
-
 }
 
 - (void) indicatorStartLoading {
@@ -161,11 +198,9 @@ static NSString *headerIdentifier = @"userHeader";
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 UserCollectionViewCell *cell = (UserCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
-    
     [cell setMyImageForKey:indexPath.row];
 //    NSLog(@"Cell------- %@", cell);
     return cell;
 }
-
 
 @end

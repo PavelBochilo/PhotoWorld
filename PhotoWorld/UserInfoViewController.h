@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSDictionary *userDataDictionary;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UICollectionView *userCollectionView;
-@property (weak, nonatomic) IBOutlet UIView *userLoadingScreen;
-
+@property (weak, nonatomic) IBOutlet UIImageView *userLoadingScreen;
+- (void)scrollToPosition;
+- (void)addTapToLabel: (UILabel *)label withLabelIndex: (int)index;
 @end

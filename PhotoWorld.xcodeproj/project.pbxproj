@@ -8,12 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		480E07D3DB0EBEB129BAA562 /* libPods-PhotoWorld.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A815E228FD201CA6249D98C /* libPods-PhotoWorld.a */; };
+		DA0671931D2A6E590008AA97 /* UserFollowsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0671921D2A6E590008AA97 /* UserFollowsViewController.m */; };
+		DA0671961D2A6E820008AA97 /* UserFolloweByViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0671951D2A6E820008AA97 /* UserFolloweByViewController.m */; };
+		DA0671981D2AAE710008AA97 /* commonTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA0671971D2AAE710008AA97 /* commonTableCell.xib */; };
+		DA06719B1D2AAED80008AA97 /* commonTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA06719A1D2AAED70008AA97 /* commonTableCell.m */; };
 		DA1836131D1C24C80032CFB4 /* UserCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1836121D1C24C80032CFB4 /* UserCollectionViewCell.m */; };
 		DA1836161D1C32560032CFB4 /* classic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DA1836151D1C32560032CFB4 /* classic.jpg */; };
 		DA81CB9B1D1ABB8000D71BE3 /* HomeViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA81CB9A1D1ABB8000D71BE3 /* HomeViewViewController.m */; };
 		DA81CB9E1D1ABC2700D71BE3 /* HomeNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA81CB9D1D1ABC2700D71BE3 /* HomeNavigationViewController.m */; };
 		DAC1F9081D2117040008CE16 /* UserHeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC1F9071D2117040008CE16 /* UserHeaderCollectionReusableView.m */; };
 		DAC1F9101D2135730008CE16 /* UserHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAC1F90F1D2135730008CE16 /* UserHeaderCollectionReusableView.xib */; };
+		DAD35C671D26B43C0067CC68 /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD35C661D26B43C0067CC68 /* EditProfileViewController.m */; };
 		DAE230CD1D2255E3001AAFC3 /* BillabongW00-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DAE230CC1D2255E3001AAFC3 /* BillabongW00-Regular.ttf */; };
 		DAE230D21D227B37001AAFC3 /* UserPhotoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE230D11D227B37001AAFC3 /* UserPhotoDetailViewController.m */; };
 		DAE3B0661D23B51500F68CE7 /* MainTableHeaderReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAE3B0651D23B51500F68CE7 /* MainTableHeaderReusableView.xib */; };
@@ -57,6 +62,13 @@
 		336265758284650A84D06519 /* Pods-PhotoWorld.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoWorld.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoWorld/Pods-PhotoWorld.debug.xcconfig"; sourceTree = "<group>"; };
 		71AA98D78A0528FB4351EE9B /* Pods-PhotoWorld.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoWorld.release.xcconfig"; path = "Pods/Target Support Files/Pods-PhotoWorld/Pods-PhotoWorld.release.xcconfig"; sourceTree = "<group>"; };
 		9A815E228FD201CA6249D98C /* libPods-PhotoWorld.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PhotoWorld.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA0671911D2A6E580008AA97 /* UserFollowsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserFollowsViewController.h; sourceTree = "<group>"; };
+		DA0671921D2A6E590008AA97 /* UserFollowsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserFollowsViewController.m; sourceTree = "<group>"; };
+		DA0671941D2A6E820008AA97 /* UserFolloweByViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserFolloweByViewController.h; sourceTree = "<group>"; };
+		DA0671951D2A6E820008AA97 /* UserFolloweByViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserFolloweByViewController.m; sourceTree = "<group>"; };
+		DA0671971D2AAE710008AA97 /* commonTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = commonTableCell.xib; sourceTree = "<group>"; };
+		DA0671991D2AAED70008AA97 /* commonTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commonTableCell.h; sourceTree = "<group>"; };
+		DA06719A1D2AAED70008AA97 /* commonTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commonTableCell.m; sourceTree = "<group>"; };
 		DA1836111D1C24C80032CFB4 /* UserCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCollectionViewCell.h; sourceTree = "<group>"; };
 		DA1836121D1C24C80032CFB4 /* UserCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCollectionViewCell.m; sourceTree = "<group>"; };
 		DA1836151D1C32560032CFB4 /* classic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = classic.jpg; sourceTree = "<group>"; };
@@ -67,6 +79,8 @@
 		DAC1F9061D2117040008CE16 /* UserHeaderCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHeaderCollectionReusableView.h; sourceTree = "<group>"; };
 		DAC1F9071D2117040008CE16 /* UserHeaderCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHeaderCollectionReusableView.m; sourceTree = "<group>"; };
 		DAC1F90F1D2135730008CE16 /* UserHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
+		DAD35C651D26B43C0067CC68 /* EditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
+		DAD35C661D26B43C0067CC68 /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
 		DAE230CC1D2255E3001AAFC3 /* BillabongW00-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BillabongW00-Regular.ttf"; sourceTree = "<group>"; };
 		DAE230D01D227B37001AAFC3 /* UserPhotoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPhotoDetailViewController.h; sourceTree = "<group>"; };
 		DAE230D11D227B37001AAFC3 /* UserPhotoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPhotoDetailViewController.m; sourceTree = "<group>"; };
@@ -187,6 +201,12 @@
 				DAEA075C1D17DAC900C53EAB /* UserInfoViewController.m */,
 				DAE230D01D227B37001AAFC3 /* UserPhotoDetailViewController.h */,
 				DAE230D11D227B37001AAFC3 /* UserPhotoDetailViewController.m */,
+				DAD35C651D26B43C0067CC68 /* EditProfileViewController.h */,
+				DAD35C661D26B43C0067CC68 /* EditProfileViewController.m */,
+				DA0671911D2A6E580008AA97 /* UserFollowsViewController.h */,
+				DA0671921D2A6E590008AA97 /* UserFollowsViewController.m */,
+				DA0671941D2A6E820008AA97 /* UserFolloweByViewController.h */,
+				DA0671951D2A6E820008AA97 /* UserFolloweByViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -200,6 +220,9 @@
 				DAE3B06A1D23DE3B00F68CE7 /* MainTableFooterReusableView.h */,
 				DAE3B06B1D23DE3B00F68CE7 /* MainTableFooterReusableView.m */,
 				DAE3B06F1D23EC2400F68CE7 /* MainTableFooterReusableView.xib */,
+				DA0671991D2AAED70008AA97 /* commonTableCell.h */,
+				DA06719A1D2AAED70008AA97 /* commonTableCell.m */,
+				DA0671971D2AAE710008AA97 /* commonTableCell.xib */,
 			);
 			name = "Main Table Xib Model";
 			sourceTree = "<group>";
@@ -396,6 +419,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAC1F9101D2135730008CE16 /* UserHeaderCollectionReusableView.xib in Resources */,
+				DA0671981D2AAE710008AA97 /* commonTableCell.xib in Resources */,
 				DA1836161D1C32560032CFB4 /* classic.jpg in Resources */,
 				DAE3B0701D23EC2400F68CE7 /* MainTableFooterReusableView.xib in Resources */,
 				DAF172331D12A118000E848B /* LaunchScreen.storyboard in Resources */,
@@ -477,11 +501,14 @@
 			files = (
 				DAEA075A1D17DA8300C53EAB /* UserInfoNavigationController.m in Sources */,
 				DAE230D21D227B37001AAFC3 /* UserPhotoDetailViewController.m in Sources */,
+				DA0671931D2A6E590008AA97 /* UserFollowsViewController.m in Sources */,
 				DAE3B06C1D23DE3B00F68CE7 /* MainTableFooterReusableView.m in Sources */,
 				DAF1722B1D12A118000E848B /* ViewController.m in Sources */,
+				DA06719B1D2AAED80008AA97 /* commonTableCell.m in Sources */,
 				DAE3B0691D23B64500F68CE7 /* MainTableHeaderReusableView.m in Sources */,
 				DA81CB9B1D1ABB8000D71BE3 /* HomeViewViewController.m in Sources */,
 				DAF172281D12A118000E848B /* AppDelegate.m in Sources */,
+				DAD35C671D26B43C0067CC68 /* EditProfileViewController.m in Sources */,
 				DAF172581D12A654000E848B /* Defines.m in Sources */,
 				DAEA07571D17D87C00C53EAB /* MainTabBarViewController.m in Sources */,
 				DAEA075D1D17DAC900C53EAB /* UserInfoViewController.m in Sources */,
@@ -490,6 +517,7 @@
 				DAC1F9081D2117040008CE16 /* UserHeaderCollectionReusableView.m in Sources */,
 				DAF172251D12A118000E848B /* main.m in Sources */,
 				DA81CB9E1D1ABC2700D71BE3 /* HomeNavigationViewController.m in Sources */,
+				DA0671961D2A6E820008AA97 /* UserFolloweByViewController.m in Sources */,
 				DAF1725B1D12D28B000E848B /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

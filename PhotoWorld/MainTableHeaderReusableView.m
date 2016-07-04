@@ -21,24 +21,32 @@
 
     // Configure the view for the selected state
 }
-- (void)avatarAppear {
-    if ([WebServiceManager sharedInstance].userAvatarImage != nil) {
-        _avatarImage.image = [WebServiceManager sharedInstance].userAvatarImage;
-        _avatarImage.layer.cornerRadius = _avatarImage.frame.size.width/2;
-        _avatarImage.clipsToBounds = YES;
-    }
+
+- (void)dowloadAvatarWithUrl: (NSString *)url {
+    SDWebImageDownloader *downloader = [SDWebImageDownloader sharedDownloader];
+    NSURL *url1 = [NSURL URLWithString:url];
+    [downloader downloadImageWithURL: url1
+                             options:0
+                            progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                            }
+                           completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
+                               if (image && finished) {
+                             dispatch_async(dispatch_get_main_queue(),  ^{
+                                   _avatarImage.image = image;
+                                   _avatarImage.layer.cornerRadius = _avatarImage.frame.size.width/2;
+                                   _avatarImage.clipsToBounds = YES;
+                                  });
+                               }
+                           }];
 }
 
-//- (IBAction)profileButton:(id)sender {
-//    //userProfile
-//    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main"
-//                                                         bundle:nil];
-//    UserInfoViewController *add =
-//    [storyboard instantiateViewControllerWithIdentifier:@"userProfile"];
-//    UINavigationController *navCntrlr = [[UINavigationController alloc] initWithRootViewController:add];
-//    
-//    [navCntrlr pushViewController:add  animated:YES];
-//}
+- (void)avatarAppear {
+    _avatarImage.image = [WebServiceManager sharedInstance].userAvatarImage;
+    _avatarImage.layer.cornerRadius = _avatarImage.frame.size.width/2;
+    _avatarImage.clipsToBounds = YES;
+}
 
-
+-(void)setUserNameLabelWithName: (NSString *)name {
+    _userNameLabel.text = name;
+}
 @end

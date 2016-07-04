@@ -27,6 +27,7 @@
     _myAccessToken = myToken;
     _mySessionID = myFullName;
     _allFollowsUserUrlArray = [[NSMutableArray alloc]init];
+    _progressCount = 0;
     [self sendPOSTRequestUserInfo:_myAccessToken andMyID:_mySessionID];
     NSLog(@"My token succesfully saved, here it is - %@", _myAccessToken);
     NSLog(@"My ID was saved -- %@", _mySessionID);
@@ -93,7 +94,7 @@ dispatch_async(dispatch_get_main_queue(), ^{
     _userMediaDictionary = mediaDict;
     _userPhotoUrlArray = [_userMediaDictionary valueForKeyPath:@"data.images.thumbnail.url"];
     _userStandartPhotoUrlArray = [_userMediaDictionary valueForKeyPath:@"data.images.standard_resolution.url"];
-    //NSLog(@"User photo urls === %@", _userStandartPhotoUrlArray);
+ //   NSLog(@"User photo urls === %@", _userStandartPhotoUrlArray);
     [self loadingImagesData];
 
 });
@@ -102,7 +103,7 @@ dispatch_async(dispatch_get_main_queue(), ^{
 - (void) saveUserData: (NSDictionary *) userDict {
     dispatch_async(dispatch_get_main_queue(), ^{
     _userDataDictionary = userDict;
-   // NSLog(@"Dict saved === %@", _userDataDictionary);
+//    NSLog(@"Dict saved === %@", _userDataDictionary);
     NSDictionary *dict1 = [_userDataDictionary objectForKey:@"data"];
     NSString *urlImage = [dict1 objectForKey:@"profile_picture"];
         [self setMyAvatar:urlImage];
@@ -128,8 +129,6 @@ dispatch_async(dispatch_get_main_queue(), ^{
   dispatch_async(dispatch_get_main_queue(), ^{
     _userAvatarImage = avatar;
       [self sendRequestForUserFollows:_myAccessToken andMyID:_mySessionID];
-      [[NSNotificationCenter defaultCenter] postNotificationName:@"userNotification" object:nil];
-      
       });
 }
 
@@ -145,12 +144,13 @@ dispatch_async(dispatch_get_main_queue(), ^{
         dispatch_sync(dispatch_get_main_queue(), ^{
         _followsIDArray = [followsDict valueForKeyPath:@"data.id"];
         _followsAvatarUrlArray = [followsDict valueForKeyPath:@"data.profile_picture"];
-        _followsUserNameArray = [followsDict valueForKeyPath:@"data.full_name"];
-       // NSLog(@"ID== %@, %@, %@", _followsIDArray, followsDict, _followsUserNameArray);
+        _followsUserNameArray = [followsDict valueForKeyPath:@"data.username"];
+        _followsFullName = [followsDict valueForKeyPath:@"data.full_name"];
+//        NSLog(@"ID== %@", followsDict);
         });
         if (_followsIDArray != nil) {
             for (int i = 0; i < _followsIDArray.count; i++) {
-                [self sendRequestForFollowUserMedia:_myAccessToken andUserID:_followsIDArray[i]];
+                [self sendRequestForFollowUserMedia:_myAccessToken andUserID:_followsIDArray[i] andIndex:i];
             }
         }
     }];
@@ -158,7 +158,7 @@ dispatch_async(dispatch_get_main_queue(), ^{
     [postDataTask resume];
 }
 
-- (void) sendRequestForFollowUserMedia: (NSString *) myToken andUserID: (NSString *) userID {
+- (void) sendRequestForFollowUserMedia: (NSString *) myToken andUserID: (NSString *) userID andIndex: (int)Index {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate: self delegateQueue:nil];
@@ -168,11 +168,22 @@ dispatch_async(dispatch_get_main_queue(), ^{
     NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:requestData completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSDictionary *userDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
         NSMutableArray *array = [userDict valueForKeyPath:@"data.images.standard_resolution.url"];
-        [self addArray:array];
-//        for (int i = 0; i < array.count; i++) {
-//            NSString * urlString = array[i];
-//            [self updateBigArray:urlString];
-//        }
+        NSMutableArray *array2 = [[NSMutableArray alloc] init];
+        for (int i = 0; i < array.count; i++) {
+            NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+            [dict setObject:array[i] forKey:@"url"];
+            [dict setObject:_followsIDArray[Index] forKey:@"id"];
+            [dict setObject:_followsFullName[Index] forKey:@"name"];
+            [dict setObject:_followsAvatarUrlArray[Index] forKey:@"avatar"];
+            [array2 addObject:dict];
+            if (i == array.count - 1) {
+                [self addArray:array2];
+            }
+        }
+//        NSMutableDictionary * dict = [[NSMutableDictionary alloc] init];
+//        dict = [array objectAtIndex:2];
+//        NSString * myURL = [dict objectForKey:"URL"];
+        
     }];
     [postDataTask resume];
         });
@@ -180,19 +191,16 @@ dispatch_async(dispatch_get_main_queue(), ^{
 
 - (void)addArray:(NSArray *)value {
     @synchronized (value) {
-    
     [_allFollowsUserUrlArray addObjectsFromArray:value];
     }
-}
-
-- (void)updateBigArray:(NSString *)value {
-    @synchronized (value) {
-       [self.allFollowsUserUrlArray addObject:value];
+    dispatch_async(dispatch_get_main_queue(),  ^{
+        _progressCount =  _progressCount + 1;
+        if (_progressCount == _followsIDArray.count) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"userNotification" object:nil];
+          //  NSLog(@"!!!!! === %@", _allFollowsUserUrlArray);
+        }
+        });
     }
-}
-
-
-
 - (void)loadingImagesData {
     for (int i = 0; i < _userPhotoUrlArray.count; i++) {
     
@@ -210,13 +218,8 @@ dispatch_async(dispatch_get_main_queue(), ^{
             if (i == _userPhotoUrlArray.count -1 && finished) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"userMediaNotification" object:nil];
             }
-    
 }
 }];
 }
- 
 }
-
-
-
 @end

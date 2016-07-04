@@ -19,5 +19,8 @@
 - (void) setDataBio: (NSString *)bio setFullName: (NSString *)fullName setMedia:(NSInteger)media setFollows:(NSInteger)follows setFoolowedBy: (NSInteger)followedBy;
 - (void)setButtonCorners;
 - (void)avatarAppear;
-
+@property (strong, nonatomic) IBOutlet UIButton *firstButton;
+@property (strong, nonatomic) IBOutlet UIButton *secondButton;
+@property (strong, nonatomic) IBOutlet UIButton *thirdButton;
+@property (strong, nonatomic) IBOutlet UIButton *fouthButton;
 @end

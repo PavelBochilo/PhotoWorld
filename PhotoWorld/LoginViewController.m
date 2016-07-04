@@ -139,12 +139,16 @@
      [WebServiceManager sharedInstance].myAccessToken = myToken;
 }
 - (void)notificationStartLoadingUserData {
-    [loginIndicator stopAnimating];
-      loginIndicator.hidden = YES;
-    [self pushToTabBarcontroller];
+     dispatch_async(dispatch_get_main_queue(), ^{
+    [self performSelector:@selector(pushToTabBarcontroller) withObject:nil afterDelay:1];
+          });
 }
 - (void)pushToTabBarcontroller {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [loginIndicator stopAnimating];
+        loginIndicator.hidden = YES;
     [self performSegueWithIdentifier:@"firstSeque" sender:nil];
+        });
 }
 
 

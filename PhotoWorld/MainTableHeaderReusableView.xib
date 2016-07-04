@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -19,20 +18,12 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tdh-X7-4Wf">
                         <rect key="frame" x="52" y="11" width="496" height="22"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="22" id="Xyi-KK-1tS"/>
+                            <constraint firstAttribute="height" constant="22" id="Xil-xa-jE3"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GCL-9N-mSx">
-                        <rect key="frame" x="556" y="0.0" width="44" height="44"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="GCL-9N-mSx" secondAttribute="height" multiplier="1:1" id="CEx-px-iEo"/>
-                            <constraint firstAttribute="height" constant="44" id="qi5-EX-6Da"/>
-                        </constraints>
-                        <state key="normal" image="three"/>
-                    </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pEe-e1-Bmb">
                         <rect key="frame" x="8" y="7" width="30" height="30"/>
                         <gestureRecognizers/>
@@ -41,15 +32,23 @@
                             <constraint firstAttribute="width" constant="30" id="myn-Ny-C17"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GCL-9N-mSx">
+                        <rect key="frame" x="556" y="0.0" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="44" id="Gmh-7Y-7aQ"/>
+                            <constraint firstAttribute="height" constant="44" id="bhP-dv-uTx"/>
+                        </constraints>
+                        <state key="normal" image="three"/>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="GCL-9N-mSx" firstAttribute="top" secondItem="g1W-W2-y5E" secondAttribute="top" id="0Az-tT-jhe"/>
                     <constraint firstItem="pEe-e1-Bmb" firstAttribute="top" secondItem="g1W-W2-y5E" secondAttribute="top" constant="7" id="BQF-Wn-O3f"/>
-                    <constraint firstItem="Tdh-X7-4Wf" firstAttribute="top" secondItem="g1W-W2-y5E" secondAttribute="topMargin" constant="3" id="BgL-dr-w5o"/>
-                    <constraint firstAttribute="trailing" secondItem="GCL-9N-mSx" secondAttribute="trailing" id="BlK-2P-Tjy"/>
-                    <constraint firstItem="Tdh-X7-4Wf" firstAttribute="leading" secondItem="pEe-e1-Bmb" secondAttribute="trailing" constant="14" id="c55-3c-uCZ"/>
+                    <constraint firstItem="GCL-9N-mSx" firstAttribute="top" secondItem="g1W-W2-y5E" secondAttribute="top" id="PE9-gV-zKF"/>
+                    <constraint firstItem="Tdh-X7-4Wf" firstAttribute="leading" secondItem="pEe-e1-Bmb" secondAttribute="trailing" constant="14" id="Pwt-Xi-thN"/>
+                    <constraint firstAttribute="trailing" secondItem="GCL-9N-mSx" secondAttribute="trailing" id="Vm3-ou-v1a"/>
+                    <constraint firstItem="Tdh-X7-4Wf" firstAttribute="top" secondItem="g1W-W2-y5E" secondAttribute="topMargin" constant="3" id="XbN-fs-B9r"/>
                     <constraint firstItem="pEe-e1-Bmb" firstAttribute="leading" secondItem="g1W-W2-y5E" secondAttribute="leading" constant="8" id="ipC-DL-KDC"/>
-                    <constraint firstItem="GCL-9N-mSx" firstAttribute="leading" secondItem="Tdh-X7-4Wf" secondAttribute="trailing" constant="8" id="xdL-WV-cYZ"/>
+                    <constraint firstItem="GCL-9N-mSx" firstAttribute="leading" secondItem="Tdh-X7-4Wf" secondAttribute="trailing" constant="8" id="xwx-kv-vu2"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

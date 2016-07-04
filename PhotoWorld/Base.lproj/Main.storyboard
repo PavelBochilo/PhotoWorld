@@ -229,6 +229,90 @@
             </objects>
             <point key="canvasLocation" x="1912" y="-935"/>
         </scene>
+        <!--User Followe By View Controller-->
+        <scene sceneID="rvi-Ik-bgI">
+            <objects>
+                <viewController id="trk-A9-PwE" customClass="UserFolloweByViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="spc-Gx-her"/>
+                        <viewControllerLayoutGuide type="bottom" id="NYB-gR-4Fc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iTZ-g9-sWR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="J85-Nd-84S">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="J85-Nd-84S" firstAttribute="top" secondItem="iTZ-g9-sWR" secondAttribute="top" id="1gp-tu-ZLK"/>
+                            <constraint firstItem="J85-Nd-84S" firstAttribute="leading" secondItem="iTZ-g9-sWR" secondAttribute="leading" id="5l3-yc-FKa"/>
+                            <constraint firstItem="NYB-gR-4Fc" firstAttribute="top" secondItem="J85-Nd-84S" secondAttribute="bottom" id="HOc-tC-qOs"/>
+                            <constraint firstAttribute="trailing" secondItem="J85-Nd-84S" secondAttribute="trailing" id="TeH-ie-HkA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="userFollowedByTableView" destination="J85-Nd-84S" id="0AX-er-F73"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z5n-A2-z11" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1846" y="-2436"/>
+        </scene>
+        <!--Edit Profile View Controller-->
+        <scene sceneID="27J-UB-jla">
+            <objects>
+                <viewController id="okb-Cw-hGz" customClass="EditProfileViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FQM-JM-0lK"/>
+                        <viewControllerLayoutGuide type="bottom" id="pL3-Xy-uJG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="t8Y-8I-3bd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hRN-Eo-yFi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2484" y="-2340"/>
+        </scene>
+        <!--User Follows View Controller-->
+        <scene sceneID="QNU-zI-JbB">
+            <objects>
+                <viewController id="Jda-qF-cHb" customClass="UserFollowsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6jX-Eg-z4n"/>
+                        <viewControllerLayoutGuide type="bottom" id="gal-HT-jUU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="29b-qc-2Jz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mIb-n7-3GC">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="mIb-n7-3GC" secondAttribute="trailing" id="Msp-ph-k6d"/>
+                            <constraint firstItem="mIb-n7-3GC" firstAttribute="leading" secondItem="29b-qc-2Jz" secondAttribute="leading" id="PIx-El-fA0"/>
+                            <constraint firstItem="mIb-n7-3GC" firstAttribute="top" secondItem="29b-qc-2Jz" secondAttribute="top" id="fVT-Fm-osa"/>
+                            <constraint firstItem="gal-HT-jUU" firstAttribute="top" secondItem="mIb-n7-3GC" secondAttribute="bottom" id="h12-tp-7Yo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="userFollowsTableView" destination="mIb-n7-3GC" id="Yw6-vH-2l7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oar-SP-Se4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3165" y="-2340"/>
+        </scene>
         <!--User Info View Controller-->
         <scene sceneID="EWe-gm-Bdk">
             <objects>
@@ -242,7 +326,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="F87-wa-jsF">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eQP-FV-QN5">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -276,42 +360,37 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ch3-4B-RzR">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kMo-N1-eN5">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="tH5-Cc-BYH">
-                                        <rect key="frame" x="290" y="290" width="20" height="20"/>
-                                    </activityIndicatorView>
-                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="tH5-Cc-BYH" firstAttribute="centerX" secondItem="ch3-4B-RzR" secondAttribute="centerX" id="YJb-k8-PEa"/>
-                                    <constraint firstItem="tH5-Cc-BYH" firstAttribute="centerY" secondItem="ch3-4B-RzR" secondAttribute="centerY" id="Z2K-uo-Vgr"/>
-                                </constraints>
-                            </view>
+                            </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="tH5-Cc-BYH">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="ch3-4B-RzR" secondAttribute="trailing" id="2fM-i5-jzG"/>
-                            <constraint firstAttribute="trailing" secondItem="F87-wa-jsF" secondAttribute="trailing" id="3b5-H1-To0"/>
-                            <constraint firstItem="YSd-Tu-IaH" firstAttribute="top" secondItem="F87-wa-jsF" secondAttribute="bottom" id="5Ia-JM-bzB"/>
-                            <constraint firstItem="ch3-4B-RzR" firstAttribute="top" secondItem="etx-PP-FeR" secondAttribute="top" id="7Tl-Gd-QUV"/>
-                            <constraint firstItem="F87-wa-jsF" firstAttribute="top" secondItem="etx-PP-FeR" secondAttribute="top" id="HWl-D1-ew6"/>
-                            <constraint firstItem="ch3-4B-RzR" firstAttribute="leading" secondItem="etx-PP-FeR" secondAttribute="leading" id="S91-TB-R61"/>
-                            <constraint firstItem="F87-wa-jsF" firstAttribute="leading" secondItem="etx-PP-FeR" secondAttribute="leading" id="XS7-Mq-KUG"/>
-                            <constraint firstAttribute="bottom" secondItem="ch3-4B-RzR" secondAttribute="bottom" id="pLa-Qv-eg8"/>
+                            <constraint firstAttribute="bottom" secondItem="F87-wa-jsF" secondAttribute="bottom" id="0uv-gX-ROc"/>
+                            <constraint firstItem="F87-wa-jsF" firstAttribute="leading" secondItem="etx-PP-FeR" secondAttribute="leading" id="IXD-YH-xbb"/>
+                            <constraint firstAttribute="trailing" secondItem="F87-wa-jsF" secondAttribute="trailing" id="Rij-eq-dbm"/>
+                            <constraint firstItem="F87-wa-jsF" firstAttribute="top" secondItem="etx-PP-FeR" secondAttribute="top" id="vhy-I6-0tf"/>
+                            <constraint firstItem="tH5-Cc-BYH" firstAttribute="centerY" secondItem="etx-PP-FeR" secondAttribute="centerY" id="y9g-eZ-2Oa"/>
+                            <constraint firstItem="tH5-Cc-BYH" firstAttribute="centerX" secondItem="etx-PP-FeR" secondAttribute="centerX" id="znt-YP-ZFd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rVq-pG-y4V"/>
                     <connections>
                         <outlet property="activityIndicator" destination="tH5-Cc-BYH" id="aq3-cK-62Y"/>
                         <outlet property="userCollectionView" destination="F87-wa-jsF" id="NyX-6u-SNR"/>
-                        <outlet property="userLoadingScreen" destination="ch3-4B-RzR" id="2GZ-fE-QFA"/>
+                        <outlet property="userLoadingScreen" destination="kMo-N1-eN5" id="PUW-7x-9oD"/>
+                        <segue destination="okb-Cw-hGz" kind="show" identifier="edit" id="Rs3-Lb-n06"/>
+                        <segue destination="Jda-qF-cHb" kind="show" identifier="userFollows" id="QrC-dg-tqD"/>
+                        <segue destination="trk-A9-PwE" kind="show" identifier="userFollowedBy" id="GR8-WG-OSG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pzU-bk-OVA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2484" y="-1630"/>
+            <point key="canvasLocation" x="2476" y="-1646"/>
         </scene>
         <!--User Photo Detail View Controller-->
         <scene sceneID="X9W-GX-UEW">
@@ -360,7 +439,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Dr-aE-7Gu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3208" y="-1630"/>
+            <point key="canvasLocation" x="3259" y="-1658"/>
         </scene>
         <!--Photo World-->
         <scene sceneID="5y3-xp-sQw">
@@ -374,12 +453,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xgm-df-AI6">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Xgm-df-AI6">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="homeCell" id="Igw-8n-FQi">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="114" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Igw-8n-FQi" id="FvE-Pu-m2c">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -404,7 +483,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mE8-SP-MaP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2640" y="-935"/>
+            <point key="canvasLocation" x="2588" y="-892"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Fvp-ep-FW6">

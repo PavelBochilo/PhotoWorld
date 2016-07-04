@@ -33,4 +33,6 @@
 @property (strong, nonatomic) NSMutableArray *followsUserNameArray;
 @property (strong, nonatomic) NSMutableArray *followsAvatarUrlArray;
 @property (strong) NSMutableArray *allFollowsUserUrlArray;
+@property (strong, nonatomic) NSMutableArray *followsFullName;
+@property  NSUInteger progressCount;
 @end

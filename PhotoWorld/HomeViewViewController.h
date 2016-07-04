@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "WebServiceManager.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 
 @interface HomeViewViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *homeTableView;
+-(UIImage *)resizeImage:(UIImage *)image;
+@property (strong, nonatomic) NSMutableArray *rowHeights;
+@property (nonatomic) CGFloat height;
 
 @end

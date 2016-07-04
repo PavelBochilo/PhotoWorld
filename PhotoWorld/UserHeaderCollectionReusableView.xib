@@ -188,11 +188,15 @@
             <connections>
                 <outlet property="avatar" destination="2Ec-EO-J7v" id="LHa-Jf-RR1"/>
                 <outlet property="bio" destination="dCg-xQ-xlq" id="ODH-co-L6v"/>
+                <outlet property="firstButton" destination="7lO-Tq-mJj" id="zYu-45-cdF"/>
                 <outlet property="followedBy" destination="hGo-AT-Mkb" id="7zb-BH-BsB"/>
                 <outlet property="follows" destination="1EZ-8l-YwF" id="eAc-jP-mvA"/>
+                <outlet property="fouthButton" destination="Ba3-6a-3w4" id="dEb-bW-Yj4"/>
                 <outlet property="fullName" destination="euR-6b-Qvy" id="yzO-ih-6UA"/>
                 <outlet property="media" destination="lrh-OP-9uy" id="kau-Th-e37"/>
                 <outlet property="redactionButton" destination="7Lo-Xg-G6C" id="gs4-bZ-Ojb"/>
+                <outlet property="secondButton" destination="ouR-vd-AlR" id="zjY-Og-rF4"/>
+                <outlet property="thirdButton" destination="bva-4E-4Vn" id="cRB-hh-Sps"/>
             </connections>
             <point key="canvasLocation" x="520" y="162"/>
         </collectionReusableView>
