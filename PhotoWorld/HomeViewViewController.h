@@ -16,5 +16,6 @@
 -(UIImage *)resizeImage:(UIImage *)image;
 @property (strong, nonatomic) NSMutableArray *rowHeights;
 @property (nonatomic) CGFloat height;
+- (IBAction)directButton:(id)sender;
 
 @end

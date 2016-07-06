@@ -1,14 +1,14 @@
 //
-//  commonTableCell.m
+//  EditTableViewCell.m
 //  PhotoWorld
 //
-//  Created by Paul on 04.07.16.
+//  Created by Paul on 05.07.16.
 //  Copyright © 2016 Paul. All rights reserved.
 //
 
-#import "commonTableCell.h"
+#import "EditTableViewCell.h"
 
-@implementation commonTableCell
+@implementation EditTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -30,11 +30,24 @@
                            completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
                                if (image && finished) {
                                    dispatch_async(dispatch_get_main_queue(),  ^{
-                                       _userAvatar.image = image;
-                                       _userAvatar.layer.cornerRadius = _userAvatar.frame.size.width/2;
-                                       _userAvatar.clipsToBounds = YES;
+                                       _avatarImage.image = image;
+                                       _avatarImage.layer.cornerRadius = _avatarImage.frame.size.width/2;
+                                       _avatarImage.clipsToBounds = YES;
                                    });
                                }
                            }];
+}
+
+- (void)setUseravatar {
+    _avatarImage.image = [WebServiceManager sharedInstance].userAvatarImage;
+    _avatarImage.layer.cornerRadius = _avatarImage.frame.size.width/2;
+    _avatarImage.clipsToBounds = YES;
+}
+
+- (void)setUserDataWithName {
+    NSDictionary *dict = [WebServiceManager sharedInstance].userDataDictionary;
+    _userNick.text = [dict valueForKeyPath:@"data.username"];
+    _userFullName.text = [dict valueForKeyPath:@"data.full_name"];
+    _userBio.text = [dict valueForKeyPath:@"data.bio"];
 }
 @end

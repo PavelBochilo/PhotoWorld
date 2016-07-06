@@ -9,8 +9,10 @@
 #import "UserFollowsViewController.h"
 #import "UserInfoViewController.h"
 #import "WebServiceManager.h"
+#import "SearchBarTableViewHeader.h"
 
 static NSString *followsCell = @"commonTableCell";
+static NSString *searchheader = @"SearchBarTableViewHeader";
 @interface UserFollowsViewController ()
 
 
@@ -36,17 +38,27 @@ static NSString *followsCell = @"commonTableCell";
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
+-(CGFloat)tableView:(UITableView*)tableView heightForHeaderInSection:(NSInteger)section {
+    return 44;
+}
 
 - (void)loadTableView {
     _userFollowsTableView.delegate = self;
     _userFollowsTableView.dataSource = self;
 [_userFollowsTableView registerNib:[UINib nibWithNibName:@"commonTableCell" bundle:nil] forCellReuseIdentifier:followsCell];
+[_userFollowsTableView registerNib:[UINib nibWithNibName:@"SearchBarTableViewHeader" bundle:nil] forCellReuseIdentifier:searchheader];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     commonTableCell *cell = [_userFollowsTableView dequeueReusableCellWithIdentifier:followsCell];
-    
+    cell.userName.text = [WebServiceManager sharedInstance].followsUserNameArray[indexPath.row];
+    [cell dowloadAvatarWithUrl:[WebServiceManager sharedInstance].followsAvatarUrlArray[indexPath.row]];
     return cell;
+}
+-(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    SearchBarTableViewHeader *header = [tableView dequeueReusableCellWithIdentifier:searchheader];
+    header.separatorInset = UIEdgeInsetsZero;
+    return header;
 }
 
 -(void)setNavigationBar {

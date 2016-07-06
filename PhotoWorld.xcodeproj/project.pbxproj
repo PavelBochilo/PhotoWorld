@@ -29,6 +29,10 @@
 		DAEA075A1D17DA8300C53EAB /* UserInfoNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA07591D17DA8300C53EAB /* UserInfoNavigationController.m */; };
 		DAEA075D1D17DAC900C53EAB /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA075C1D17DAC900C53EAB /* UserInfoViewController.m */; };
 		DAEA07601D17EA6F00C53EAB /* WebServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA075F1D17EA6F00C53EAB /* WebServiceManager.m */; };
+		DAF090201D2BAA2500DBD8F6 /* SearchBarTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF0901F1D2BAA2500DBD8F6 /* SearchBarTableViewHeader.m */; };
+		DAF090221D2BAA3600DBD8F6 /* SearchBarTableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAF090211D2BAA3600DBD8F6 /* SearchBarTableViewHeader.xib */; };
+		DAF090251D2BB78E00DBD8F6 /* EditTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF090241D2BB78E00DBD8F6 /* EditTableViewCell.m */; };
+		DAF090271D2BB7BB00DBD8F6 /* EditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAF090261D2BB7BB00DBD8F6 /* EditTableViewCell.xib */; };
 		DAF172251D12A118000E848B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF172241D12A117000E848B /* main.m */; };
 		DAF172281D12A118000E848B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF172271D12A118000E848B /* AppDelegate.m */; };
 		DAF1722B1D12A118000E848B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF1722A1D12A118000E848B /* ViewController.m */; };
@@ -99,6 +103,12 @@
 		DAEA075C1D17DAC900C53EAB /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
 		DAEA075E1D17EA6F00C53EAB /* WebServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebServiceManager.h; sourceTree = "<group>"; };
 		DAEA075F1D17EA6F00C53EAB /* WebServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebServiceManager.m; sourceTree = "<group>"; };
+		DAF0901E1D2BAA2500DBD8F6 /* SearchBarTableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBarTableViewHeader.h; sourceTree = "<group>"; };
+		DAF0901F1D2BAA2500DBD8F6 /* SearchBarTableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBarTableViewHeader.m; sourceTree = "<group>"; };
+		DAF090211D2BAA3600DBD8F6 /* SearchBarTableViewHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchBarTableViewHeader.xib; sourceTree = "<group>"; };
+		DAF090231D2BB78E00DBD8F6 /* EditTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTableViewCell.h; sourceTree = "<group>"; };
+		DAF090241D2BB78E00DBD8F6 /* EditTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTableViewCell.m; sourceTree = "<group>"; };
+		DAF090261D2BB7BB00DBD8F6 /* EditTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditTableViewCell.xib; sourceTree = "<group>"; };
 		DAF172201D12A117000E848B /* PhotoWorld.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoWorld.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAF172241D12A117000E848B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		DAF172261D12A118000E848B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -223,6 +233,12 @@
 				DA0671991D2AAED70008AA97 /* commonTableCell.h */,
 				DA06719A1D2AAED70008AA97 /* commonTableCell.m */,
 				DA0671971D2AAE710008AA97 /* commonTableCell.xib */,
+				DAF0901E1D2BAA2500DBD8F6 /* SearchBarTableViewHeader.h */,
+				DAF0901F1D2BAA2500DBD8F6 /* SearchBarTableViewHeader.m */,
+				DAF090211D2BAA3600DBD8F6 /* SearchBarTableViewHeader.xib */,
+				DAF090231D2BB78E00DBD8F6 /* EditTableViewCell.h */,
+				DAF090241D2BB78E00DBD8F6 /* EditTableViewCell.m */,
+				DAF090261D2BB7BB00DBD8F6 /* EditTableViewCell.xib */,
 			);
 			name = "Main Table Xib Model";
 			sourceTree = "<group>";
@@ -418,10 +434,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAF090271D2BB7BB00DBD8F6 /* EditTableViewCell.xib in Resources */,
 				DAC1F9101D2135730008CE16 /* UserHeaderCollectionReusableView.xib in Resources */,
 				DA0671981D2AAE710008AA97 /* commonTableCell.xib in Resources */,
 				DA1836161D1C32560032CFB4 /* classic.jpg in Resources */,
 				DAE3B0701D23EC2400F68CE7 /* MainTableFooterReusableView.xib in Resources */,
+				DAF090221D2BAA3600DBD8F6 /* SearchBarTableViewHeader.xib in Resources */,
 				DAF172331D12A118000E848B /* LaunchScreen.storyboard in Resources */,
 				DAE3B0661D23B51500F68CE7 /* MainTableHeaderReusableView.xib in Resources */,
 				DAF172301D12A118000E848B /* Assets.xcassets in Resources */,
@@ -510,9 +528,11 @@
 				DAF172281D12A118000E848B /* AppDelegate.m in Sources */,
 				DAD35C671D26B43C0067CC68 /* EditProfileViewController.m in Sources */,
 				DAF172581D12A654000E848B /* Defines.m in Sources */,
+				DAF090201D2BAA2500DBD8F6 /* SearchBarTableViewHeader.m in Sources */,
 				DAEA07571D17D87C00C53EAB /* MainTabBarViewController.m in Sources */,
 				DAEA075D1D17DAC900C53EAB /* UserInfoViewController.m in Sources */,
 				DAEA07601D17EA6F00C53EAB /* WebServiceManager.m in Sources */,
+				DAF090251D2BB78E00DBD8F6 /* EditTableViewCell.m in Sources */,
 				DA1836131D1C24C80032CFB4 /* UserCollectionViewCell.m in Sources */,
 				DAC1F9081D2117040008CE16 /* UserHeaderCollectionReusableView.m in Sources */,
 				DAF172251D12A118000E848B /* main.m in Sources */,

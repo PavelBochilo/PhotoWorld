@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface commonTableCell : UITableViewCell
+@property (strong, nonatomic) IBOutlet UIImageView *userAvatar;
+@property (strong, nonatomic) IBOutlet UILabel *userName;
+@property (strong, nonatomic) IBOutlet UIButton *followsButton;
+- (void)dowloadAvatarWithUrl: (NSString *)url;
 
 @end

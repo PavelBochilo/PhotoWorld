@@ -159,4 +159,6 @@ static NSString *userFooterPhotoDetailIdentifier = @"tableFooterCell";
 //
 //[imgView addGestureRecognizer:tapRecognizer];
 
+- (IBAction)directButton:(id)sender {
+}
 @end

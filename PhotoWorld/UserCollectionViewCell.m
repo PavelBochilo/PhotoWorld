@@ -29,4 +29,20 @@
 //    NSLog(@"%@", image);
     userImage.image = image;
 }
+
+- (void)dowloadUserStandartResolutionPhotoWithUrl: (NSString *)url {
+    SDWebImageDownloader *downloader = [SDWebImageDownloader sharedDownloader];
+    NSURL *url1 = [NSURL URLWithString:url];
+    [downloader downloadImageWithURL: url1
+                             options:0
+                            progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                            }
+                           completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
+                               if (image && finished) {
+                                   dispatch_async(dispatch_get_main_queue(),  ^{
+                                       userImage.image = image;
+                                   });
+                               }
+                           }];
+}
 @end

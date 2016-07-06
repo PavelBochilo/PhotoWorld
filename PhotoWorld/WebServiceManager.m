@@ -94,7 +94,7 @@ dispatch_async(dispatch_get_main_queue(), ^{
     _userMediaDictionary = mediaDict;
     _userPhotoUrlArray = [_userMediaDictionary valueForKeyPath:@"data.images.thumbnail.url"];
     _userStandartPhotoUrlArray = [_userMediaDictionary valueForKeyPath:@"data.images.standard_resolution.url"];
- //   NSLog(@"User photo urls === %@", _userStandartPhotoUrlArray);
+  //  NSLog(@"User photo urls === %@", _userStandartPhotoUrlArray);
     [self loadingImagesData];
 
 });
@@ -139,7 +139,7 @@ dispatch_async(dispatch_get_main_queue(), ^{
     NSMutableURLRequest *requestData = [NSMutableURLRequest requestWithURL:
                                         [NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/v1/users/self/follows?access_token=%@", myToken]]];
     [requestData setHTTPMethod:@"GET"];
-    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:requestData completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    NSURLSessionDataTask *getDataTask = [session dataTaskWithRequest:requestData completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSDictionary *followsDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
         dispatch_sync(dispatch_get_main_queue(), ^{
         _followsIDArray = [followsDict valueForKeyPath:@"data.id"];
@@ -155,7 +155,7 @@ dispatch_async(dispatch_get_main_queue(), ^{
         }
     }];
     
-    [postDataTask resume];
+    [getDataTask resume];
 }
 
 - (void) sendRequestForFollowUserMedia: (NSString *) myToken andUserID: (NSString *) userID andIndex: (int)Index {
@@ -165,7 +165,7 @@ dispatch_async(dispatch_get_main_queue(), ^{
     NSMutableURLRequest *requestData = [NSMutableURLRequest requestWithURL:
                                         [NSURL URLWithString:[NSString stringWithFormat:@"https://api.instagram.com/v1/users/%@/media/recent/?access_token=%@", userID, myToken]]];
     [requestData setHTTPMethod:@"GET"];
-    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:requestData completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    NSURLSessionDataTask *getDataTask = [session dataTaskWithRequest:requestData completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSDictionary *userDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
         NSMutableArray *array = [userDict valueForKeyPath:@"data.images.standard_resolution.url"];
         NSMutableArray *array2 = [[NSMutableArray alloc] init];
@@ -185,7 +185,7 @@ dispatch_async(dispatch_get_main_queue(), ^{
 //        NSString * myURL = [dict objectForKey:"URL"];
         
     }];
-    [postDataTask resume];
+    [getDataTask resume];
         });
 }
 
@@ -214,7 +214,7 @@ dispatch_async(dispatch_get_main_queue(), ^{
         if (image && finished) {
         NSString *localKey = [NSString stringWithFormat:@"Item-%d", i];
     [[SDImageCache sharedImageCache] storeImage:image forKey:localKey toDisk:NO];
-            NSLog(@"CACHED!!!");
+            //NSLog(@"CACHED!!!");
             if (i == _userPhotoUrlArray.count -1 && finished) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"userMediaNotification" object:nil];
             }

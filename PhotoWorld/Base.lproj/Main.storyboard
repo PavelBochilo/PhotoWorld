@@ -273,8 +273,23 @@
                     <view key="view" contentMode="scaleToFill" id="t8Y-8I-3bd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="6Xo-P9-n4C">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="6Xo-P9-n4C" secondAttribute="trailing" id="HUh-5k-Nzh"/>
+                            <constraint firstItem="pL3-Xy-uJG" firstAttribute="top" secondItem="6Xo-P9-n4C" secondAttribute="bottom" id="HdC-K9-QeH"/>
+                            <constraint firstItem="6Xo-P9-n4C" firstAttribute="top" secondItem="t8Y-8I-3bd" secondAttribute="top" id="JIz-IX-20X"/>
+                            <constraint firstItem="6Xo-P9-n4C" firstAttribute="leading" secondItem="t8Y-8I-3bd" secondAttribute="leading" id="WBM-gz-koi"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="editTableView" destination="6Xo-P9-n4C" id="TPB-RJ-9Ez"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hRN-Eo-yFi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -378,7 +393,14 @@
                             <constraint firstItem="tH5-Cc-BYH" firstAttribute="centerX" secondItem="etx-PP-FeR" secondAttribute="centerX" id="znt-YP-ZFd"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="rVq-pG-y4V"/>
+                    <navigationItem key="navigationItem" id="rVq-pG-y4V">
+                        <barButtonItem key="rightBarButtonItem" image="nut-icon" id="R31-Mp-6pO">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="paramButton:" destination="cgW-ro-1Q4" id="dJn-y2-mWW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="tH5-Cc-BYH" id="aq3-cK-62Y"/>
                         <outlet property="userCollectionView" destination="F87-wa-jsF" id="NyX-6u-SNR"/>
@@ -455,7 +477,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Xgm-df-AI6">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="homeCell" id="Igw-8n-FQi">
                                         <rect key="frame" x="0.0" y="114" width="600" height="44"/>
@@ -476,7 +498,14 @@
                             <constraint firstAttribute="trailing" secondItem="Xgm-df-AI6" secondAttribute="trailing" id="puZ-Ep-OcL"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Photo World" id="9nR-mg-MTj"/>
+                    <navigationItem key="navigationItem" title="Photo World" id="9nR-mg-MTj">
+                        <barButtonItem key="rightBarButtonItem" image="direct1x" id="dbL-Ls-OSn">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="directButton:" destination="Gk6-XC-Gfp" id="Vjl-HO-UO3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="homeTableView" destination="Xgm-df-AI6" id="b2j-Vj-LVn"/>
                     </connections>
@@ -506,8 +535,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="direct1x" width="24" height="24"/>
         <image name="home" width="24" height="24"/>
         <image name="magnifying-glass" width="24" height="24"/>
+        <image name="nut-icon" width="24" height="24"/>
         <image name="photo-camera" width="24" height="24"/>
         <image name="thumbs-up" width="24" height="24"/>
         <image name="user-shape" width="24" height="24"/>

@@ -21,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UICollectionView *userCollectionView;
 @property (weak, nonatomic) IBOutlet UIImageView *userLoadingScreen;
+@property (nonatomic) BOOL standartFlowlayout;
 - (void)scrollToPosition;
 - (void)addTapToLabel: (UILabel *)label withLabelIndex: (int)index;
+- (IBAction)paramButton:(id)sender;
 @end

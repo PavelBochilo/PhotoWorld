@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "UserInfoViewController.h"
+#import "EditTableViewCell.h"
 
-@interface EditProfileViewController : UIViewController
+@interface EditProfileViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@property (strong, nonatomic) IBOutlet UITableView *editTableView;
 
 @end

@@ -14,5 +14,5 @@
     IBOutlet UIImageView *userImage;
 }
 - (void) setMyImageForKey: (NSUInteger)key;
-
+- (void)dowloadUserStandartResolutionPhotoWithUrl: (NSString *)url;
 @end

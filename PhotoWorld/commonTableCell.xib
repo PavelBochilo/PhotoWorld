@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,19 +15,50 @@
                 <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cqc-Tf-uqu">
-                        <rect key="frame" x="279" y="11" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lXU-hp-fBR">
+                        <rect key="frame" x="8" y="7" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="2QT-py-cBO"/>
+                            <constraint firstAttribute="height" constant="30" id="OAU-xP-NMJ"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A58-GW-ibc">
+                        <rect key="frame" x="46" y="11" width="332" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="22" id="IFo-2d-nx3"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3su-88-XcY">
+                        <rect key="frame" x="469" y="11" width="123" height="22"/>
+                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="123" id="cBx-8t-R2l"/>
+                            <constraint firstAttribute="height" constant="22" id="dWu-PR-74f"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                        <state key="normal" title="follows">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Cqc-Tf-uqu" firstAttribute="centerY" secondItem="Uyx-3x-hXv" secondAttribute="centerY" id="HVF-Kn-iTU"/>
-                    <constraint firstItem="Cqc-Tf-uqu" firstAttribute="centerX" secondItem="Uyx-3x-hXv" secondAttribute="centerX" id="y9o-CN-o6B"/>
+                    <constraint firstItem="3su-88-XcY" firstAttribute="leading" secondItem="A58-GW-ibc" secondAttribute="trailing" constant="91" id="3B6-HK-i1C"/>
+                    <constraint firstItem="lXU-hp-fBR" firstAttribute="leading" secondItem="Uyx-3x-hXv" secondAttribute="leadingMargin" id="7UH-bA-b5N"/>
+                    <constraint firstItem="3su-88-XcY" firstAttribute="trailing" secondItem="Uyx-3x-hXv" secondAttribute="trailingMargin" id="FIi-x4-VwO"/>
+                    <constraint firstItem="3su-88-XcY" firstAttribute="top" secondItem="Uyx-3x-hXv" secondAttribute="topMargin" constant="3" id="FKA-kR-qMP"/>
+                    <constraint firstItem="A58-GW-ibc" firstAttribute="leading" secondItem="lXU-hp-fBR" secondAttribute="trailing" constant="8" id="L31-q1-L47"/>
+                    <constraint firstItem="lXU-hp-fBR" firstAttribute="top" secondItem="Uyx-3x-hXv" secondAttribute="topMargin" constant="-1" id="cjR-VI-9ct"/>
+                    <constraint firstItem="A58-GW-ibc" firstAttribute="top" secondItem="Uyx-3x-hXv" secondAttribute="topMargin" constant="3" id="yML-Vp-E3H"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="followsButton" destination="3su-88-XcY" id="e5d-jE-edP"/>
+                <outlet property="userAvatar" destination="lXU-hp-fBR" id="BzU-hi-BZS"/>
+                <outlet property="userName" destination="A58-GW-ibc" id="r1t-L8-FAJ"/>
+            </connections>
             <point key="canvasLocation" x="330" y="170"/>
         </tableViewCell>
     </objects>

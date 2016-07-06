@@ -65,8 +65,8 @@
                         <constraint firstAttribute="width" secondItem="7Lo-Xg-G6C" secondAttribute="height" multiplier="59:9" id="fYv-SK-GUU"/>
                         <constraint firstAttribute="height" constant="36" id="yXi-K7-ksK"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                    <state key="normal" title="Редактировать профиль">
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="Edit profile">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
