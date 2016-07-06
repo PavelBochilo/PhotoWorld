@@ -12,6 +12,8 @@
 		DA0671961D2A6E820008AA97 /* UserFolloweByViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0671951D2A6E820008AA97 /* UserFolloweByViewController.m */; };
 		DA0671981D2AAE710008AA97 /* commonTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA0671971D2AAE710008AA97 /* commonTableCell.xib */; };
 		DA06719B1D2AAED80008AA97 /* commonTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA06719A1D2AAED70008AA97 /* commonTableCell.m */; };
+		DA1067871D2D55FE001A3446 /* UserCollectionViewCommonHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA1067861D2D55FE001A3446 /* UserCollectionViewCommonHeader.xib */; };
+		DA10678A1D2D568F001A3446 /* UserCollectionViewCommonHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1067891D2D568F001A3446 /* UserCollectionViewCommonHeader.m */; };
 		DA1836131D1C24C80032CFB4 /* UserCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1836121D1C24C80032CFB4 /* UserCollectionViewCell.m */; };
 		DA1836161D1C32560032CFB4 /* classic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DA1836151D1C32560032CFB4 /* classic.jpg */; };
 		DA81CB9B1D1ABB8000D71BE3 /* HomeViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA81CB9A1D1ABB8000D71BE3 /* HomeViewViewController.m */; };
@@ -73,6 +75,9 @@
 		DA0671971D2AAE710008AA97 /* commonTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = commonTableCell.xib; sourceTree = "<group>"; };
 		DA0671991D2AAED70008AA97 /* commonTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commonTableCell.h; sourceTree = "<group>"; };
 		DA06719A1D2AAED70008AA97 /* commonTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = commonTableCell.m; sourceTree = "<group>"; };
+		DA1067861D2D55FE001A3446 /* UserCollectionViewCommonHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCollectionViewCommonHeader.xib; sourceTree = "<group>"; };
+		DA1067881D2D568F001A3446 /* UserCollectionViewCommonHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCollectionViewCommonHeader.h; sourceTree = "<group>"; };
+		DA1067891D2D568F001A3446 /* UserCollectionViewCommonHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCollectionViewCommonHeader.m; sourceTree = "<group>"; };
 		DA1836111D1C24C80032CFB4 /* UserCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCollectionViewCell.h; sourceTree = "<group>"; };
 		DA1836121D1C24C80032CFB4 /* UserCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCollectionViewCell.m; sourceTree = "<group>"; };
 		DA1836151D1C32560032CFB4 /* classic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = classic.jpg; sourceTree = "<group>"; };
@@ -190,6 +195,9 @@
 				DAC1F9061D2117040008CE16 /* UserHeaderCollectionReusableView.h */,
 				DAC1F9071D2117040008CE16 /* UserHeaderCollectionReusableView.m */,
 				DAC1F90F1D2135730008CE16 /* UserHeaderCollectionReusableView.xib */,
+				DA1067881D2D568F001A3446 /* UserCollectionViewCommonHeader.h */,
+				DA1067891D2D568F001A3446 /* UserCollectionViewCommonHeader.m */,
+				DA1067861D2D55FE001A3446 /* UserCollectionViewCommonHeader.xib */,
 			);
 			name = XibClasses;
 			sourceTree = "<group>";
@@ -441,6 +449,7 @@
 				DAE3B0701D23EC2400F68CE7 /* MainTableFooterReusableView.xib in Resources */,
 				DAF090221D2BAA3600DBD8F6 /* SearchBarTableViewHeader.xib in Resources */,
 				DAF172331D12A118000E848B /* LaunchScreen.storyboard in Resources */,
+				DA1067871D2D55FE001A3446 /* UserCollectionViewCommonHeader.xib in Resources */,
 				DAE3B0661D23B51500F68CE7 /* MainTableHeaderReusableView.xib in Resources */,
 				DAF172301D12A118000E848B /* Assets.xcassets in Resources */,
 				DAE230CD1D2255E3001AAFC3 /* BillabongW00-Regular.ttf in Resources */,
@@ -529,6 +538,7 @@
 				DAD35C671D26B43C0067CC68 /* EditProfileViewController.m in Sources */,
 				DAF172581D12A654000E848B /* Defines.m in Sources */,
 				DAF090201D2BAA2500DBD8F6 /* SearchBarTableViewHeader.m in Sources */,
+				DA10678A1D2D568F001A3446 /* UserCollectionViewCommonHeader.m in Sources */,
 				DAEA07571D17D87C00C53EAB /* MainTabBarViewController.m in Sources */,
 				DAEA075D1D17DAC900C53EAB /* UserInfoViewController.m in Sources */,
 				DAEA07601D17EA6F00C53EAB /* WebServiceManager.m in Sources */,

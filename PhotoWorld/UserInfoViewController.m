@@ -10,10 +10,9 @@
 #import "WebServiceManager.h"
 #import "UserCollectionViewCell.h"
 #import "UserPhotoDetailViewController.h"
+#import "UserCollectionViewCommonHeader.h"
 
-
-
-
+static NSString *commonHeader = @"UserCollectionViewCommonHeader";
 static NSString *CellIdentifier = @"userView";
 static NSString *headerIdentifier = @"userHeader";
 
@@ -34,11 +33,12 @@ static NSString *headerIdentifier = @"userHeader";
     _standartFlowlayout = true;
     [_userCollectionView setDataSource:self];
     [_userCollectionView setDelegate:self];
+    _userCollectionView.backgroundColor = [UIColor whiteColor];
     [self registerNibForHeader];
     [self indicatorStartLoading];
     [[WebServiceManager sharedInstance] sendRequestForUserMedia:[WebServiceManager sharedInstance].myAccessToken andMyID:[WebServiceManager sharedInstance].mySessionID];    
     [self startNoticicationProcess];
-    [self collectionViewLayout];
+  // [self collectionViewLayout];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -66,15 +66,18 @@ static NSString *headerIdentifier = @"userHeader";
 - (void) registerNibForHeader {
     UINib *nib = [UINib nibWithNibName:NSStringFromClass([UserHeaderCollectionReusableView class]) bundle:[NSBundle mainBundle]];
     [_userCollectionView registerNib:nib forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerIdentifier];
+    UINib *nib1 = [UINib nibWithNibName:NSStringFromClass([UserCollectionViewCommonHeader class]) bundle:[NSBundle mainBundle]];
+    [_userCollectionView registerNib:nib1 forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:commonHeader];
 }
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     NSString *reuseID = headerIdentifier;
-    
+    if (indexPath.section == 0) {
     UICollectionReusableView *view = [_userCollectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:reuseID forIndexPath:indexPath];
-    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader] && indexPath.section == 0) {
         UserHeaderCollectionReusableView *header = (UserHeaderCollectionReusableView *)view;
         if ([WebServiceManager sharedInstance].userDataDictionary != 0) {
             [header avatarAppear];
+            header.backgroundColor = [UIColor whiteColor];
             NSDictionary *dict = [[WebServiceManager sharedInstance].userDataDictionary valueForKeyPath:@"data.counts"];
             [header setDataBio:[[WebServiceManager sharedInstance].userDataDictionary valueForKeyPath:@"data.bio"] setFullName:[[WebServiceManager sharedInstance].userDataDictionary valueForKeyPath:@"data.full_name"] setMedia:[[dict valueForKey:@"media"]intValue] setFollows:[[dict valueForKey:@"follows"]intValue] setFoolowedBy:[[dict valueForKey:@"followed_by"]intValue] ];
             [header setButtonCorners];
@@ -85,42 +88,57 @@ static NSString *headerIdentifier = @"userHeader";
             [self addTapToLabel:header.followedBy withLabelIndex:3]; //follows
             [self addTapToLabel:header.follows withLabelIndex:2]; //followed_by
         }
+        return view;
     }
-    return view;
+    }
+ UICollectionReusableView * viewCommon = [_userCollectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:commonHeader forIndexPath:indexPath];
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+        UserCollectionViewCommonHeader *commonHeader = (UserCollectionViewCommonHeader *)viewCommon;
+        [commonHeader avatarAppear];
+        [commonHeader setUserNameLabelWithName:[[WebServiceManager sharedInstance].userDataDictionary valueForKeyPath:@"data.username"]];
+    }
+    return viewCommon;
 }
-- (void)changeStyleToStandart {
-        _standartFlowlayout = true;
-    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (_standartFlowlayout == false) {
+        return CGSizeMake(self.view.frame.size.width, self.view.frame.size.width);
+    }
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
     float cellWidth = screenWidth / 3.0 - 1;
     CGSize size = CGSizeMake(cellWidth, cellWidth);
-    flowLayout.itemSize = size;
-    flowLayout.minimumLineSpacing = 1;
-    flowLayout.minimumInteritemSpacing = 1;
-    flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    flowLayout.headerReferenceSize = CGSizeMake(self.view.frame.size.width, 240);
-    flowLayout.sectionInset = UIEdgeInsetsZero; // after headerReferenceSize always
-    _userCollectionView.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height);
-    _userCollectionView.backgroundColor = [UIColor whiteColor];
-    [_userCollectionView setCollectionViewLayout:flowLayout];
+    return size;
+}
+- (CGFloat)collectionView:(UICollectionView *)collectionView
+                   layout:(UICollectionViewLayout *)collectionViewLayout
+minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+
+    return 1;
+}
+- (CGFloat)collectionView:(UICollectionView *)collectionView
+                   layout:(UICollectionViewLayout *)collectionViewLayout
+minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    return 1;
+}
+
+ - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+     if (_standartFlowlayout == false) {
+         if (section == 0) {
+             return CGSizeMake(self.view.frame.size.width, 240);
+         } else {
+         return CGSizeMake(self.view.frame.size.width, 44);
+         }
+     }
+         return CGSizeMake(self.view.frame.size.width, 240);
+ }
+- (void)changeStyleToStandart {
+        _standartFlowlayout = true;
     [_userCollectionView reloadData];
 }
 - (void)changeStyle {
     _standartFlowlayout = false;
-    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenWidth = screenRect.size.width;
-    CGSize size = CGSizeMake(screenWidth, screenWidth);
-    flowLayout.itemSize = size;
-    flowLayout.minimumLineSpacing = 0;
-    flowLayout.minimumInteritemSpacing = 0;
-    flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    flowLayout.headerReferenceSize = CGSizeMake(self.view.frame.size.width, 240);
-    flowLayout.sectionInset = UIEdgeInsetsZero; // after headerReferenceSize always
-    _userCollectionView.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height);
-    _userCollectionView.backgroundColor = [UIColor whiteColor];
-    [_userCollectionView setCollectionViewLayout:flowLayout];
     UIScrollView* v = (UIScrollView*) _userCollectionView ;
     float width = CGRectGetWidth(_userCollectionView.frame);
     CGRect toVisible = CGRectMake(0, 0, width, self.view.frame.size.height);
@@ -168,21 +186,34 @@ static NSString *headerIdentifier = @"userHeader";
     
 }
 
-- (void) collectionViewLayout {
-    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-        CGRect screenRect = [[UIScreen mainScreen] bounds];
-        CGFloat screenWidth = screenRect.size.width;
-        float cellWidth = screenWidth / 3.0 - 1;
-        CGSize size = CGSizeMake(cellWidth, cellWidth);
-        flowLayout.itemSize = size;
-        flowLayout.minimumLineSpacing = 1;
-        flowLayout.minimumInteritemSpacing = 1;
-        flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
-        flowLayout.headerReferenceSize = CGSizeMake(self.view.frame.size.width, 240);
-        flowLayout.sectionInset = UIEdgeInsetsZero; // after headerReferenceSize always
-        _userCollectionView.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height);
-        _userCollectionView.backgroundColor = [UIColor whiteColor];
-        [_userCollectionView setCollectionViewLayout:flowLayout];
+-(NSArray*)layoutAttributesForElementsInRect:(CGRect)rect
+{
+    NSMutableArray* elementsInRect = [NSMutableArray array];
+    
+    //iterate over all cells in this collection
+    for(NSUInteger i = 0; i < [_userCollectionView numberOfSections]; i++)
+    {
+        for(NSUInteger j = 0; j < [_userCollectionView numberOfItemsInSection:i]; j++)
+        {
+            
+            //this is the cell at row j in section i
+            CGRect cellFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width);
+            
+            //see if the collection view needs this cell
+            if(CGRectIntersectsRect(cellFrame, rect))
+            {
+                //create the attributes object
+                NSIndexPath* indexPath = [NSIndexPath indexPathForRow:j inSection:i];
+                UICollectionViewLayoutAttributes* attr = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
+                
+                //set the frame for this attributes object
+                attr.frame = cellFrame;
+                [elementsInRect addObject:attr];
+            }
+        }
+    }
+    
+    return elementsInRect;
 }
 - (void)startNoticicationProcess {
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -217,7 +248,6 @@ static NSString *headerIdentifier = @"userHeader";
 - (void) reloadAllDataCell {
 [_userCollectionView reloadData];
     [self indicatorStopLoading];
-NSLog(@"standartUrlarray== %@", [WebServiceManager sharedInstance].userStandartPhotoUrlArray);
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
@@ -225,21 +255,22 @@ NSLog(@"standartUrlarray== %@", [WebServiceManager sharedInstance].userStandartP
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-
+    if ([WebServiceManager sharedInstance].userPhotoUrlArray && _standartFlowlayout == false) {
+        return [WebServiceManager sharedInstance].userPhotoUrlArray.count;
+    }
     return 1;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    if ([WebServiceManager sharedInstance].userPhotoUrlArray != 0) {
+    if ([WebServiceManager sharedInstance].userPhotoUrlArray && _standartFlowlayout == true) {
         return [WebServiceManager sharedInstance].userPhotoUrlArray.count;
     } else
-    return 1;
+        return 1;
 }
-
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 UserCollectionViewCell *cell = (UserCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     if (_standartFlowlayout == false) {
-        [cell dowloadUserStandartResolutionPhotoWithUrl:[WebServiceManager sharedInstance].userStandartPhotoUrlArray[indexPath.row]];
+        [cell dowloadUserStandartResolutionPhotoWithUrl:[WebServiceManager sharedInstance].userStandartPhotoUrlArray[indexPath.section]];
         return cell;
     } else {
     [cell setMyImageForKey:indexPath.row];

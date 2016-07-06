@@ -32,13 +32,13 @@
                             <constraint firstAttribute="width" constant="30" id="myn-Ny-C17"/>
                         </constraints>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GCL-9N-mSx">
+                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GCL-9N-mSx">
                         <rect key="frame" x="556" y="0.0" width="44" height="44"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="44" id="Gmh-7Y-7aQ"/>
                             <constraint firstAttribute="height" constant="44" id="bhP-dv-uTx"/>
                         </constraints>
-                        <state key="normal" image="three"/>
+                        <state key="normal" image="three-2"/>
                     </button>
                 </subviews>
                 <constraints>
@@ -60,6 +60,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="three" width="24" height="24"/>
+        <image name="three-2" width="16" height="16"/>
     </resources>
 </document>

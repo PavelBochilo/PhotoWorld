@@ -153,12 +153,6 @@ static NSString *userFooterPhotoDetailIdentifier = @"tableFooterCell";
     MainTableFooterReusableView *footer = [tableView dequeueReusableCellWithIdentifier:userFooterPhotoDetailIdentifier];
     return footer;
 }
-//UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
-//[tapRecognizer setNumberOfTapsRequired:1];
-//[tapRecognizer setDelegate:self];
-//
-//[imgView addGestureRecognizer:tapRecognizer];
-
 - (IBAction)directButton:(id)sender {
 }
 @end
