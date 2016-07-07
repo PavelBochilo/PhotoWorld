@@ -23,7 +23,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="SN8-Az-0JS"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>

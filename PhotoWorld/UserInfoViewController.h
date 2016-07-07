@@ -15,7 +15,7 @@
 
 
 
-@interface UserInfoViewController : UIViewController <NSURLSessionDelegate, NSURLSessionDataDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface UserInfoViewController : UIViewController <NSURLSessionDelegate, NSURLSessionDataDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate>
 
 @property (strong, nonatomic) NSDictionary *userDataDictionary;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;

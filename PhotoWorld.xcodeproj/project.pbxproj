@@ -45,6 +45,8 @@
 		DAF172491D12A118000E848B /* PhotoWorldUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF172481D12A118000E848B /* PhotoWorldUITests.m */; };
 		DAF172581D12A654000E848B /* Defines.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF172571D12A654000E848B /* Defines.m */; };
 		DAF1725B1D12D28B000E848B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF1725A1D12D28B000E848B /* LoginViewController.m */; };
+		DAF46A571D2E2CC60095EEC6 /* UserCollectionReusableViewCommonFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF46A561D2E2CC60095EEC6 /* UserCollectionReusableViewCommonFooter.m */; };
+		DAF46A591D2E2CF30095EEC6 /* UserCollectionReusableViewCommonFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAF46A581D2E2CF30095EEC6 /* UserCollectionReusableViewCommonFooter.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +136,9 @@
 		DAF172571D12A654000E848B /* Defines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Defines.m; sourceTree = "<group>"; };
 		DAF172591D12D28B000E848B /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		DAF1725A1D12D28B000E848B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		DAF46A551D2E2CC60095EEC6 /* UserCollectionReusableViewCommonFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCollectionReusableViewCommonFooter.h; sourceTree = "<group>"; };
+		DAF46A561D2E2CC60095EEC6 /* UserCollectionReusableViewCommonFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCollectionReusableViewCommonFooter.m; sourceTree = "<group>"; };
+		DAF46A581D2E2CF30095EEC6 /* UserCollectionReusableViewCommonFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCollectionReusableViewCommonFooter.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +203,9 @@
 				DA1067881D2D568F001A3446 /* UserCollectionViewCommonHeader.h */,
 				DA1067891D2D568F001A3446 /* UserCollectionViewCommonHeader.m */,
 				DA1067861D2D55FE001A3446 /* UserCollectionViewCommonHeader.xib */,
+				DAF46A551D2E2CC60095EEC6 /* UserCollectionReusableViewCommonFooter.h */,
+				DAF46A561D2E2CC60095EEC6 /* UserCollectionReusableViewCommonFooter.m */,
+				DAF46A581D2E2CF30095EEC6 /* UserCollectionReusableViewCommonFooter.xib */,
 			);
 			name = XibClasses;
 			sourceTree = "<group>";
@@ -447,6 +455,7 @@
 				DA0671981D2AAE710008AA97 /* commonTableCell.xib in Resources */,
 				DA1836161D1C32560032CFB4 /* classic.jpg in Resources */,
 				DAE3B0701D23EC2400F68CE7 /* MainTableFooterReusableView.xib in Resources */,
+				DAF46A591D2E2CF30095EEC6 /* UserCollectionReusableViewCommonFooter.xib in Resources */,
 				DAF090221D2BAA3600DBD8F6 /* SearchBarTableViewHeader.xib in Resources */,
 				DAF172331D12A118000E848B /* LaunchScreen.storyboard in Resources */,
 				DA1067871D2D55FE001A3446 /* UserCollectionViewCommonHeader.xib in Resources */,
@@ -530,6 +539,7 @@
 				DAE230D21D227B37001AAFC3 /* UserPhotoDetailViewController.m in Sources */,
 				DA0671931D2A6E590008AA97 /* UserFollowsViewController.m in Sources */,
 				DAE3B06C1D23DE3B00F68CE7 /* MainTableFooterReusableView.m in Sources */,
+				DAF46A571D2E2CC60095EEC6 /* UserCollectionReusableViewCommonFooter.m in Sources */,
 				DAF1722B1D12A118000E848B /* ViewController.m in Sources */,
 				DA06719B1D2AAED80008AA97 /* commonTableCell.m in Sources */,
 				DAE3B0691D23B64500F68CE7 /* MainTableHeaderReusableView.m in Sources */,

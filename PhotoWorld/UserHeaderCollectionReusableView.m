@@ -37,4 +37,12 @@ static NSString *headerIdentifier = @"userHeader";
     }
 }
 
+- (IBAction)firstButtonTapped:(id)sender {
+    [_firstButton setTintColor:[UIColor blueColor]];
+    [_secondButton setTintColor:[UIColor lightGrayColor]];
+     }
+- (IBAction)secondButtonTapped:(id)sender {
+    [_secondButton setTintColor:[UIColor blueColor]];
+    [_firstButton setTintColor:[UIColor lightGrayColor]];
+}
 @end

@@ -11,7 +11,9 @@
 #import "UserCollectionViewCell.h"
 #import "UserPhotoDetailViewController.h"
 #import "UserCollectionViewCommonHeader.h"
+#import "UserCollectionReusableViewCommonFooter.h"
 
+static NSString *commonFooter = @"UserCollectionReusableViewCommonFooter";
 static NSString *commonHeader = @"UserCollectionViewCommonHeader";
 static NSString *CellIdentifier = @"userView";
 static NSString *headerIdentifier = @"userHeader";
@@ -30,10 +32,7 @@ static NSString *headerIdentifier = @"userHeader";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _standartFlowlayout = true;
-    [_userCollectionView setDataSource:self];
-    [_userCollectionView setDelegate:self];
-    _userCollectionView.backgroundColor = [UIColor whiteColor];
+    [self setCollectionViewData];
     [self registerNibForHeader];
     [self indicatorStartLoading];
     [[WebServiceManager sharedInstance] sendRequestForUserMedia:[WebServiceManager sharedInstance].myAccessToken andMyID:[WebServiceManager sharedInstance].mySessionID];    
@@ -47,12 +46,26 @@ static NSString *headerIdentifier = @"userHeader";
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:YES];
-    
+}
+- (void)setCollectionViewData {
+    _standartFlowlayout = true;
+    [_userCollectionView setDataSource:self];
+    [_userCollectionView setDelegate:self];
+    _userCollectionView.backgroundColor = [UIColor whiteColor];
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"userPhotodetail"]) {
         NSIndexPath *indexPath = [[_userCollectionView indexPathsForSelectedItems] lastObject];
+        if (_standartFlowlayout == false) {
+            NSInteger pathTwo = indexPath.section - 1;
+            NSString *stringTwo = [WebServiceManager sharedInstance].userStandartPhotoUrlArray[pathTwo];
+            if ([segue.destinationViewController isKindOfClass:[UserPhotoDetailViewController class]]) {
+                UserPhotoDetailViewController * imageVC = [[UserPhotoDetailViewController alloc] init];
+                imageVC = segue.destinationViewController;
+                imageVC.detailUrl = stringTwo;
+            }
+        } else {
         NSInteger path = indexPath.row;
         NSString *string = [WebServiceManager sharedInstance].userStandartPhotoUrlArray[path];        
         if ([segue.destinationViewController isKindOfClass:[UserPhotoDetailViewController class]]) {
@@ -62,16 +75,25 @@ static NSString *headerIdentifier = @"userHeader";
         }
     }
 }
-
+}
 - (void) registerNibForHeader {
     UINib *nib = [UINib nibWithNibName:NSStringFromClass([UserHeaderCollectionReusableView class]) bundle:[NSBundle mainBundle]];
     [_userCollectionView registerNib:nib forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerIdentifier];
     UINib *nib1 = [UINib nibWithNibName:NSStringFromClass([UserCollectionViewCommonHeader class]) bundle:[NSBundle mainBundle]];
     [_userCollectionView registerNib:nib1 forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:commonHeader];
+    UINib * nib2 = [UINib nibWithNibName:NSStringFromClass([UserCollectionReusableViewCommonFooter class]) bundle:[NSBundle mainBundle]];
+    [_userCollectionView registerNib:nib2 forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:commonFooter];
+}
+-(void)reloadCollectionViewData {
+    NSLog(@"Tapped");
+    
+    [_userCollectionView reloadData];
+    
+    [_userCollectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:1]]];
 }
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    NSString *reuseID = headerIdentifier;
     if (indexPath.section == 0) {
+        NSString *reuseID = headerIdentifier;
     UICollectionReusableView *view = [_userCollectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:reuseID forIndexPath:indexPath];
     if ([kind isEqualToString:UICollectionElementKindSectionHeader] && indexPath.section == 0) {
         UserHeaderCollectionReusableView *header = (UserHeaderCollectionReusableView *)view;
@@ -83,6 +105,7 @@ static NSString *headerIdentifier = @"userHeader";
             [header setButtonCorners];
             [header.redactionButton addTarget:nil action:@selector(editProfile) forControlEvents:UIControlEventTouchUpInside];
             [header.firstButton addTarget:nil action:@selector(changeStyleToStandart) forControlEvents:UIControlEventTouchUpInside];
+            [header.thirdButton addTarget:nil action:@selector(reloadCollectionViewData) forControlEvents:UIControlEventTouchUpInside];
             [header.secondButton addTarget:nil action:@selector(changeStyle) forControlEvents:UIControlEventTouchUpInside];
             [self addTapToLabel:header.media withLabelIndex:1];
             [self addTapToLabel:header.followedBy withLabelIndex:3]; //follows
@@ -91,25 +114,38 @@ static NSString *headerIdentifier = @"userHeader";
         return view;
     }
     }
- UICollectionReusableView * viewCommon = [_userCollectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:commonHeader forIndexPath:indexPath];
-    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+    if (indexPath.section > 0 && _standartFlowlayout == false) {
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader] && indexPath.section > 0) {
+        UICollectionReusableView * viewCommon = [_userCollectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:commonHeader forIndexPath:indexPath];
         UserCollectionViewCommonHeader *commonHeader = (UserCollectionViewCommonHeader *)viewCommon;
         [commonHeader avatarAppear];
         [commonHeader setUserNameLabelWithName:[[WebServiceManager sharedInstance].userDataDictionary valueForKeyPath:@"data.username"]];
+        return viewCommon;
     }
-    return viewCommon;
+    if ([kind isEqualToString:UICollectionElementKindSectionFooter] && _standartFlowlayout == false && indexPath.section > 0) {
+        UICollectionReusableView *simpleFooter = [_userCollectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:commonFooter forIndexPath:indexPath];
+    //    UserCollectionReusableViewCommonFooter *footer = (UserCollectionReusableViewCommonFooter *)commonFooter;
+        return simpleFooter;
+    }
+    }
+
+    return  nil;
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (_standartFlowlayout == false) {
+        if (indexPath.section == 0) {
+            return  CGSizeZero;
+        } else
         return CGSizeMake(self.view.frame.size.width, self.view.frame.size.width);
-    }
+    } else {
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
     float cellWidth = screenWidth / 3.0 - 1;
     CGSize size = CGSizeMake(cellWidth, cellWidth);
     return size;
+    }
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView
                    layout:(UICollectionViewLayout *)collectionViewLayout
@@ -133,17 +169,32 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
      }
          return CGSizeMake(self.view.frame.size.width, 240);
  }
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
+    if (_standartFlowlayout == false) {
+        if (section == 0) {
+            return CGSizeZero;
+        } else
+        return CGSizeMake(self.view.frame.size.width, 44);
+    } else
+        return CGSizeZero;
+}
 - (void)changeStyleToStandart {
         _standartFlowlayout = true;
+[_userCollectionView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
     [_userCollectionView reloadData];
+}
+- (BOOL) scrollViewShouldScrollToTop:(UIScrollView*) scrollView {
+    if (scrollView == _userCollectionView) {
+        return YES;
+    }
+    return NO;
 }
 - (void)changeStyle {
     _standartFlowlayout = false;
-    UIScrollView* v = (UIScrollView*) _userCollectionView ;
-    float width = CGRectGetWidth(_userCollectionView.frame);
-    CGRect toVisible = CGRectMake(0, 0, width, self.view.frame.size.height);
-    [v scrollRectToVisible:toVisible animated:NO];
+    [_userCollectionView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
     [_userCollectionView reloadData];
+    [_userCollectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:1]]];
+    [_userCollectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:2]]];
 }
 - (void)addTapToLabel: (UILabel *)label withLabelIndex: (int)index {
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] init];
@@ -183,38 +234,37 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
 }
 - (void)editProfile {
     [self performSegueWithIdentifier:@"edit" sender:nil];
-    
 }
 
--(NSArray*)layoutAttributesForElementsInRect:(CGRect)rect
-{
-    NSMutableArray* elementsInRect = [NSMutableArray array];
-    
-    //iterate over all cells in this collection
-    for(NSUInteger i = 0; i < [_userCollectionView numberOfSections]; i++)
-    {
-        for(NSUInteger j = 0; j < [_userCollectionView numberOfItemsInSection:i]; j++)
-        {
-            
-            //this is the cell at row j in section i
-            CGRect cellFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width);
-            
-            //see if the collection view needs this cell
-            if(CGRectIntersectsRect(cellFrame, rect))
-            {
-                //create the attributes object
-                NSIndexPath* indexPath = [NSIndexPath indexPathForRow:j inSection:i];
-                UICollectionViewLayoutAttributes* attr = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
-                
-                //set the frame for this attributes object
-                attr.frame = cellFrame;
-                [elementsInRect addObject:attr];
-            }
-        }
-    }
-    
-    return elementsInRect;
-}
+//-(NSArray*)layoutAttributesForElementsInRect:(CGRect)rect
+//{
+//    NSMutableArray* elementsInRect = [NSMutableArray array];
+//    
+//    //iterate over all cells in this collection
+//    for(NSUInteger i = 0; i < [_userCollectionView numberOfSections]; i++)
+//    {
+//        for(NSUInteger j = 0; j < [_userCollectionView numberOfItemsInSection:i]; j++)
+//        {
+//            
+//            //this is the cell at row j in section i
+//            CGRect cellFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width);
+//            
+//            //see if the collection view needs this cell
+//            if(CGRectIntersectsRect(cellFrame, rect))
+//            {
+//                //create the attributes object
+//                NSIndexPath* indexPath = [NSIndexPath indexPathForRow:j inSection:i];
+//                UICollectionViewLayoutAttributes* attr = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
+//                
+//                //set the frame for this attributes object
+//                attr.frame = cellFrame;
+//                [elementsInRect addObject:attr];
+//            }
+//        }
+//    }
+//    
+//    return elementsInRect;
+//}
 - (void)startNoticicationProcess {
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(notificationStartLoadingMedia)
@@ -256,7 +306,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     if ([WebServiceManager sharedInstance].userPhotoUrlArray && _standartFlowlayout == false) {
-        return [WebServiceManager sharedInstance].userPhotoUrlArray.count;
+        return [WebServiceManager sharedInstance].userPhotoUrlArray.count + 1;
     }
     return 1;
 }
@@ -270,12 +320,16 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
 UserCollectionViewCell *cell = (UserCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     if (_standartFlowlayout == false) {
-        [cell dowloadUserStandartResolutionPhotoWithUrl:[WebServiceManager sharedInstance].userStandartPhotoUrlArray[indexPath.section]];
-        return cell;
-    } else {
+        if (indexPath.section == 0) {
+            return nil;
+        }
+        if (indexPath.section >= 1) {
+            [cell dowloadUserStandartResolutionPhotoWithUrl:[WebServiceManager sharedInstance].userStandartPhotoUrlArray[indexPath.section - 1]];
+            //            NSLog(@"%@, %lu",cell, indexPath.section);
+            return cell;
+        }
+    } else
     [cell setMyImageForKey:indexPath.row];
      return cell;
-    }
 }
-
 @end

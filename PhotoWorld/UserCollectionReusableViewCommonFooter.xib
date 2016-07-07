@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UserCollectionReusableViewCommonFooter" id="cSK-RK-oyv" customClass="UserCollectionReusableViewCommonFooter">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lSg-j0-pUR">
+                    <rect key="frame" x="8" y="0.0" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="YXd-Mm-oPE"/>
+                        <constraint firstAttribute="height" constant="44" id="d6M-jm-5NE"/>
+                    </constraints>
+                    <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="Button" image="like"/>
+                </button>
+                <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2V-Qn-HaM">
+                    <rect key="frame" x="60" y="0.0" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="bOx-LN-1u4"/>
+                        <constraint firstAttribute="width" constant="44" id="tWn-14-ep4"/>
+                    </constraints>
+                    <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="Button" image="interface"/>
+                </button>
+                <button opaque="NO" alpha="0.75" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKh-P1-bW0">
+                    <rect key="frame" x="112" y="0.0" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="b13-Os-OEq"/>
+                        <constraint firstAttribute="height" constant="44" id="oj7-0S-Heo"/>
+                    </constraints>
+                    <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="Button" image="arrow"/>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="lSg-j0-pUR" firstAttribute="top" secondItem="cSK-RK-oyv" secondAttribute="top" id="08J-kb-Zai"/>
+                <constraint firstItem="CKh-P1-bW0" firstAttribute="leading" secondItem="t2V-Qn-HaM" secondAttribute="trailing" constant="8" id="IL6-J9-uVl"/>
+                <constraint firstItem="t2V-Qn-HaM" firstAttribute="top" secondItem="cSK-RK-oyv" secondAttribute="top" id="JjI-az-OiJ"/>
+                <constraint firstItem="CKh-P1-bW0" firstAttribute="top" secondItem="cSK-RK-oyv" secondAttribute="top" id="c3S-eO-kxt"/>
+                <constraint firstItem="t2V-Qn-HaM" firstAttribute="leading" secondItem="lSg-j0-pUR" secondAttribute="trailing" constant="8" id="jfY-G4-iSA"/>
+                <constraint firstItem="lSg-j0-pUR" firstAttribute="leading" secondItem="cSK-RK-oyv" secondAttribute="leading" constant="8" id="p2G-EI-Ech"/>
+            </constraints>
+            <point key="canvasLocation" x="225" y="239"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <image name="arrow" width="24" height="24"/>
+        <image name="interface" width="24" height="24"/>
+        <image name="like" width="24" height="24"/>
+    </resources>
+</document>
