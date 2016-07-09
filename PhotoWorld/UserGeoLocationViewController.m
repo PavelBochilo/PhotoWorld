@@ -33,7 +33,6 @@
     self.view = mapView;
     for (int i = 0; i < _resultArray.count; i++) {
         NSMutableDictionary *indexDict = _resultArray[i];
-        NSLog(@"%@", indexDict);
         double lat = [[indexDict valueForKeyPath:@"location.latitude"] doubleValue];
         double lon = [[indexDict valueForKeyPath:@"location.longitude"] doubleValue];
         [self makeMarkersWithLatitude:lat andWithLongitude:lon];
@@ -60,9 +59,9 @@
 - (void)makeMarkersWithLatitude: (double)Latitude andWithLongitude: (double)Longitude {
     GMSMarker *marker = [[GMSMarker alloc] init];
     marker.position = CLLocationCoordinate2DMake(Latitude, Longitude);
-    NSLog(@"Marker %@", marker);
     marker.map = mapView;
-//marker.iconView
+    NSLog(@"%@", _resultArray);
+    marker.icon = [UIImage imageNamed:@"classic"];
 }
 
 @end
