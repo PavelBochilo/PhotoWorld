@@ -408,6 +408,7 @@
                         <segue destination="okb-Cw-hGz" kind="show" identifier="edit" id="Rs3-Lb-n06"/>
                         <segue destination="Jda-qF-cHb" kind="show" identifier="userFollows" id="QrC-dg-tqD"/>
                         <segue destination="trk-A9-PwE" kind="show" identifier="userFollowedBy" id="GR8-WG-OSG"/>
+                        <segue destination="EWs-nr-Mmu" kind="show" identifier="userGeo" id="kft-0c-829"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pzU-bk-OVA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -462,6 +463,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Dr-aE-7Gu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3259" y="-1658"/>
+        </scene>
+        <!--User Geo Location View Controller-->
+        <scene sceneID="w8o-1k-X2X">
+            <objects>
+                <viewController id="EWs-nr-Mmu" customClass="UserGeoLocationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uCI-Eu-zh9"/>
+                        <viewControllerLayoutGuide type="bottom" id="P3J-aH-eU3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yBX-fP-phZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cAf-vk-FMa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3259" y="-907"/>
         </scene>
         <!--Photo World-->
         <scene sceneID="5y3-xp-sQw">

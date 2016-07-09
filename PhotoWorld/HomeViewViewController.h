@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "WebServiceManager.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <AVFoundation/AVFoundation.h>
 
 
 @interface HomeViewViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
@@ -17,5 +18,6 @@
 @property (strong, nonatomic) NSMutableArray *rowHeights;
 @property (nonatomic) CGFloat height;
 - (IBAction)directButton:(id)sender;
-
+@property (nonatomic, strong) AVPlayer *playerCellVideo;
+@property (nonatomic, strong) AVPlayerLayer *playerCellVideoLayer;
 @end

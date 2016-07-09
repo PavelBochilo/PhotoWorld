@@ -25,4 +25,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *fouthButton;
 - (IBAction)firstButtonTapped:(id)sender;
 - (IBAction)secondButtonTapped:(id)sender;
+- (IBAction)thirdButtonAction:(id)sender;
+- (IBAction)fouthButtonTapped:(id)sender;
 @end

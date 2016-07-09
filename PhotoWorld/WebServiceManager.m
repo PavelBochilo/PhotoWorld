@@ -167,23 +167,31 @@ dispatch_async(dispatch_get_main_queue(), ^{
     [requestData setHTTPMethod:@"GET"];
     NSURLSessionDataTask *getDataTask = [session dataTaskWithRequest:requestData completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSDictionary *userDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+        //NSLog(@"%@", userDict);
+        NSMutableArray *userArray = [userDict valueForKey:@"data"];
         NSMutableArray *array = [userDict valueForKeyPath:@"data.images.standard_resolution.url"];
+        NSMutableArray *arrayType = [userDict valueForKeyPath:@"data.type"];
         NSMutableArray *array2 = [[NSMutableArray alloc] init];
         for (int i = 0; i < array.count; i++) {
             NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+            NSDictionary *indexDict = userArray[i];
+            [dict setObject:[indexDict valueForKey:@"id"] forKey:@"images_id"];
             [dict setObject:array[i] forKey:@"url"];
+            [dict setObject:arrayType[i] forKey:@"type"];
+            if ([arrayType[i] isEqualToString:@"video"]) {
+                NSString *stringVideoUrl = [indexDict valueForKeyPath:@"videos.standard_resolution.url"];
+                [dict setObject:stringVideoUrl forKey:@"video_url"];
+            }
+            [dict setObject:[indexDict valueForKey:@"location"] forKey:@"location"];
             [dict setObject:_followsIDArray[Index] forKey:@"id"];
             [dict setObject:_followsFullName[Index] forKey:@"name"];
             [dict setObject:_followsAvatarUrlArray[Index] forKey:@"avatar"];
+            [dict setObject:[indexDict valueForKeyPath:@"likes.count"] forKey:@"likes_count"];
             [array2 addObject:dict];
             if (i == array.count - 1) {
                 [self addArray:array2];
             }
-        }
-//        NSMutableDictionary * dict = [[NSMutableDictionary alloc] init];
-//        dict = [array objectAtIndex:2];
-//        NSString * myURL = [dict objectForKey:"URL"];
-        
+        }  
     }];
     [getDataTask resume];
         });

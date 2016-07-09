@@ -17,6 +17,7 @@ PODS:
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
+  - GoogleMaps (1.13.2)
   - SDWebImage (3.7.6):
     - SDWebImage/Core (= 3.7.6)
   - SDWebImage/Core (3.7.6)
@@ -24,13 +25,15 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - FMDB
+  - GoogleMaps
   - SDWebImage
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  GoogleMaps: b20a103ff307f58392e603cf142e59d7e30374c1
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
 
-PODFILE CHECKSUM: 1e0c8ab4b6c045a49983362de49add55d6cb910c
+PODFILE CHECKSUM: a2729fa28f91f9acb8939a59329d70426a5c2c65
 
 COCOAPODS: 1.0.1
