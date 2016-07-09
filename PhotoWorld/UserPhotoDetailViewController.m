@@ -79,6 +79,7 @@ static NSString *userFooterPhotoDetailIdentifier = @"tableFooterCell";
                                if (image && finished) {
                                    [self setDetailedPhoto:image];
                                   // NSLog(@"Detailed CACHED!!!");
+                                   
                                }
                            }];
 }

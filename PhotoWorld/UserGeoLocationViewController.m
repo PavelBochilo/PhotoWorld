@@ -35,7 +35,7 @@
         NSMutableDictionary *indexDict = _resultArray[i];
         double lat = [[indexDict valueForKeyPath:@"location.latitude"] doubleValue];
         double lon = [[indexDict valueForKeyPath:@"location.longitude"] doubleValue];
-        [self makeMarkersWithLatitude:lat andWithLongitude:lon];
+        [self makeMarkersWithLatitude:lat andWithLongitude:lon withUrlIndex:i];
     }
 }
 
@@ -56,12 +56,33 @@
     [self setCameraAndMapViewOfGoogleMaps:latitude andWith:longitude];
     
 }
-- (void)makeMarkersWithLatitude: (double)Latitude andWithLongitude: (double)Longitude {
+- (void)makeMarkersWithLatitude: (double)Latitude andWithLongitude: (double)Longitude withUrlIndex: (int)IndexUrl {
     GMSMarker *marker = [[GMSMarker alloc] init];
     marker.position = CLLocationCoordinate2DMake(Latitude, Longitude);
-    marker.map = mapView;
+    NSString *imageUrlString = [_resultArray[IndexUrl] valueForKey:@"image_url"];
+    SDWebImageDownloader *downloader = [SDWebImageDownloader sharedDownloader];
+    NSURL *url = [NSURL URLWithString:imageUrlString];
+    [downloader downloadImageWithURL: url
+                             options:0
+                            progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                            }
+                           completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
+                               if (image && finished) {
+                               dispatch_async(dispatch_get_main_queue(), ^{
+                                   UIImageView *markeView = [[UIImageView alloc] initWithImage:image];
+                                   markeView.frame = CGRectMake(0, 0, 50, 50);
+                                   markeView.layer.borderWidth = 4.0;
+                                   markeView.layer.borderColor = [UIColor whiteColor].CGColor;
+                                   markeView.layer.cornerRadius = 5;
+                                   markeView.clipsToBounds = YES;
+                                   marker.iconView = markeView;
+//                                   marker.appearAnimation = kGMSMarkerAnimationPop;
+                                   marker.map = mapView;
+                                });
+                               }
+                           }];
+    
     NSLog(@"%@", _resultArray);
-    marker.icon = [UIImage imageNamed:@"classic"];
 }
 
 @end
