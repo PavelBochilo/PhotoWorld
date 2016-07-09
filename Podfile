@@ -5,5 +5,5 @@ target 'PhotoWorld' do
  pod 'FMDB'
  pod 'SDWebImage'
  pod 'AFNetworking'
-
+ pod 'GoogleMaps'
 end

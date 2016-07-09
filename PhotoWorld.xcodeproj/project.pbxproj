@@ -18,6 +18,7 @@
 		DA1836161D1C32560032CFB4 /* classic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DA1836151D1C32560032CFB4 /* classic.jpg */; };
 		DA81CB9B1D1ABB8000D71BE3 /* HomeViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA81CB9A1D1ABB8000D71BE3 /* HomeViewViewController.m */; };
 		DA81CB9E1D1ABC2700D71BE3 /* HomeNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA81CB9D1D1ABC2700D71BE3 /* HomeNavigationViewController.m */; };
+		DAA946DE1D2FC67400B5C2E7 /* UserGeoLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA946DD1D2FC67400B5C2E7 /* UserGeoLocationViewController.m */; };
 		DAC1F9081D2117040008CE16 /* UserHeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC1F9071D2117040008CE16 /* UserHeaderCollectionReusableView.m */; };
 		DAC1F9101D2135730008CE16 /* UserHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAC1F90F1D2135730008CE16 /* UserHeaderCollectionReusableView.xib */; };
 		DAD35C671D26B43C0067CC68 /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD35C661D26B43C0067CC68 /* EditProfileViewController.m */; };
@@ -87,6 +88,8 @@
 		DA81CB9A1D1ABB8000D71BE3 /* HomeViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewViewController.m; sourceTree = "<group>"; };
 		DA81CB9C1D1ABC2700D71BE3 /* HomeNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeNavigationViewController.h; sourceTree = "<group>"; };
 		DA81CB9D1D1ABC2700D71BE3 /* HomeNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeNavigationViewController.m; sourceTree = "<group>"; };
+		DAA946DC1D2FC67400B5C2E7 /* UserGeoLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserGeoLocationViewController.h; sourceTree = "<group>"; };
+		DAA946DD1D2FC67400B5C2E7 /* UserGeoLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserGeoLocationViewController.m; sourceTree = "<group>"; };
 		DAC1F9061D2117040008CE16 /* UserHeaderCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserHeaderCollectionReusableView.h; sourceTree = "<group>"; };
 		DAC1F9071D2117040008CE16 /* UserHeaderCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserHeaderCollectionReusableView.m; sourceTree = "<group>"; };
 		DAC1F90F1D2135730008CE16 /* UserHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
@@ -233,6 +236,8 @@
 				DA0671921D2A6E590008AA97 /* UserFollowsViewController.m */,
 				DA0671941D2A6E820008AA97 /* UserFolloweByViewController.h */,
 				DA0671951D2A6E820008AA97 /* UserFolloweByViewController.m */,
+				DAA946DC1D2FC67400B5C2E7 /* UserGeoLocationViewController.h */,
+				DAA946DD1D2FC67400B5C2E7 /* UserGeoLocationViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -553,6 +558,7 @@
 				DAEA075D1D17DAC900C53EAB /* UserInfoViewController.m in Sources */,
 				DAEA07601D17EA6F00C53EAB /* WebServiceManager.m in Sources */,
 				DAF090251D2BB78E00DBD8F6 /* EditTableViewCell.m in Sources */,
+				DAA946DE1D2FC67400B5C2E7 /* UserGeoLocationViewController.m in Sources */,
 				DA1836131D1C24C80032CFB4 /* UserCollectionViewCell.m in Sources */,
 				DAC1F9081D2117040008CE16 /* UserHeaderCollectionReusableView.m in Sources */,
 				DAF172251D12A118000E848B /* main.m in Sources */,

@@ -28,7 +28,7 @@ static NSString *userFooterPhotoDetailIdentifier = @"tableFooterCell";
     [self loadTableView];
     [self setNavigationBar];
     [self indicatorStartLoading];
-  //  NSLog(@"%@", [WebServiceManager sharedInstance].allFollowsUserUrlArray);
+   //NSLog(@"%@", [WebServiceManager sharedInstance].allFollowsUserUrlArray);
 }
 
 - (void)didReceiveMemoryWarning {

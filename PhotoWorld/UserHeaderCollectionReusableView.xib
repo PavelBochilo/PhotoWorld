@@ -19,6 +19,9 @@
                     </constraints>
                     <color key="tintColor" red="0.65518830130000005" green="0.65518830130000005" blue="0.65518830130000005" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" image="location"/>
+                    <connections>
+                        <action selector="thirdButtonAction:" destination="fpZ-Om-iRY" eventType="touchUpInside" id="2H5-Rv-uKa"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ba3-6a-3w4">
                     <rect key="frame" x="450" y="198" width="150" height="42"/>
@@ -27,6 +30,9 @@
                     </constraints>
                     <color key="tintColor" red="0.65518830130000005" green="0.65518830130000005" blue="0.65518830130000005" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" image="shape"/>
+                    <connections>
+                        <action selector="fouthButtonTapped:" destination="fpZ-Om-iRY" eventType="touchUpInside" id="mq9-aC-4Av"/>
+                    </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Ec-EO-J7v">
                     <rect key="frame" x="8" y="8" width="100" height="100"/>

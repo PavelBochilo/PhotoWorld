@@ -84,13 +84,6 @@ static NSString *headerIdentifier = @"userHeader";
     UINib * nib2 = [UINib nibWithNibName:NSStringFromClass([UserCollectionReusableViewCommonFooter class]) bundle:[NSBundle mainBundle]];
     [_userCollectionView registerNib:nib2 forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:commonFooter];
 }
--(void)reloadCollectionViewData {
-    NSLog(@"Tapped");
-    
-    [_userCollectionView reloadData];
-    
-    [_userCollectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:1]]];
-}
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         NSString *reuseID = headerIdentifier;
@@ -105,7 +98,7 @@ static NSString *headerIdentifier = @"userHeader";
             [header setButtonCorners];
             [header.redactionButton addTarget:nil action:@selector(editProfile) forControlEvents:UIControlEventTouchUpInside];
             [header.firstButton addTarget:nil action:@selector(changeStyleToStandart) forControlEvents:UIControlEventTouchUpInside];
-            [header.thirdButton addTarget:nil action:@selector(reloadCollectionViewData) forControlEvents:UIControlEventTouchUpInside];
+            [header.thirdButton addTarget:nil action:@selector(moveToGeoLocation) forControlEvents:UIControlEventTouchUpInside];
             [header.secondButton addTarget:nil action:@selector(changeStyle) forControlEvents:UIControlEventTouchUpInside];
             [self addTapToLabel:header.media withLabelIndex:1];
             [self addTapToLabel:header.followedBy withLabelIndex:3]; //follows
@@ -234,6 +227,9 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
 }
 - (void)editProfile {
     [self performSegueWithIdentifier:@"edit" sender:nil];
+}
+- (void)moveToGeoLocation {
+    [self performSegueWithIdentifier:@"userGeo" sender:nil];
 }
 
 //-(NSArray*)layoutAttributesForElementsInRect:(CGRect)rect

@@ -66,6 +66,17 @@ static NSString *userFooterPhotoDetailIdentifier = @"tableFooterCell";
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:homeCellPhotoDetailIdentifier];
+    NSMutableDictionary *indexDict = [WebServiceManager sharedInstance].allFollowsUserUrlArray[indexPath.section];
+    if ([[indexDict valueForKey:@"type"] isEqualToString:@"video"]) {
+        dispatch_async(dispatch_get_main_queue(),  ^{
+        cell.contentView.layer.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width);
+        _playerCellVideo = [AVPlayer playerWithURL:[NSURL URLWithString:[indexDict valueForKey:@"video_url"]]];
+        _playerCellVideoLayer = [AVPlayerLayer playerLayerWithPlayer:_playerCellVideo];
+        _playerCellVideoLayer.frame = cell.contentView.layer.bounds;
+        [cell.contentView.layer addSublayer:_playerCellVideoLayer];
+        [_playerCellVideo play];
+        });    
+    } else {
     UIImageView *imageView = [[UIImageView alloc] init];
     NSString * urlString = [[[WebServiceManager sharedInstance].allFollowsUserUrlArray objectAtIndex:indexPath.section] objectForKey:@"url"];
     [imageView sd_setImageWithURL:[NSURL URLWithString:urlString]
@@ -73,14 +84,7 @@ static NSString *userFooterPhotoDetailIdentifier = @"tableFooterCell";
                           options:0
                         completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         [self resizeImage:image];
-//  dispatch_async(dispatch_get_main_queue(), ^{      
-//        _height = image.size.height;
-//        NSLog(@"height, %f", _height);
-//        [_rowHeights addObject:[NSNumber numberWithDouble:_height]];
-//      if (_rowHeights.count == [WebServiceManager sharedInstance].allFollowsUserUrlArray.count) {
-//          [self reloadTableView];
-//      }
-//      });
+
     }];
     cell.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width);
     imageView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width);
@@ -88,6 +92,7 @@ static NSString *userFooterPhotoDetailIdentifier = @"tableFooterCell";
     cell.contentView.layer.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width);
     cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [cell.contentView addSubview:imageView];
+    }
     return cell;
 }
 
