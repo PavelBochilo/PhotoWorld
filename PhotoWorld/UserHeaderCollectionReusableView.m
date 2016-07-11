@@ -27,7 +27,12 @@ static NSString *headerIdentifier = @"userHeader";
     _redactionButton.clipsToBounds = YES;
 }
 
-
+- (void)setFirstButtonTapped {
+    [_firstButton setTintColor:[UIColor blueColor]];
+    [_secondButton setTintColor:[UIColor lightGrayColor]];
+    [_thirdButton setTintColor:[UIColor lightGrayColor]];
+    [_fouthButton setTintColor:[UIColor lightGrayColor]];
+}
 
 - (void)avatarAppear {
     if ([WebServiceManager sharedInstance].userAvatarImage != nil) {
@@ -51,10 +56,7 @@ static NSString *headerIdentifier = @"userHeader";
 }
 
 - (IBAction)thirdButtonAction:(id)sender {
-    [_firstButton setTintColor:[UIColor lightGrayColor]];
-    [_secondButton setTintColor:[UIColor lightGrayColor]];
-    [_thirdButton setTintColor:[UIColor blueColor]];
-    [_fouthButton setTintColor:[UIColor lightGrayColor]];
+
 }
 
 - (IBAction)fouthButtonTapped:(id)sender {

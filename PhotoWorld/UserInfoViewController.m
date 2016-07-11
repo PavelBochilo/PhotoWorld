@@ -17,7 +17,8 @@ static NSString *commonFooter = @"UserCollectionReusableViewCommonFooter";
 static NSString *commonHeader = @"UserCollectionViewCommonHeader";
 static NSString *CellIdentifier = @"userView";
 static NSString *headerIdentifier = @"userHeader";
-
+int FIRST_STATE = 1;
+int SECOND_STATE = 2;
 @interface UserInfoViewController ()
 
 @end
@@ -46,8 +47,15 @@ static NSString *headerIdentifier = @"userHeader";
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:YES];
+    
+}
+
+- (void)headerFirstButtonTapped {
+    UserHeaderCollectionReusableView *header = [[UserHeaderCollectionReusableView alloc] init];
+    [header setFirstButtonTapped];
 }
 - (void)setCollectionViewData {
+    _currentCondition = FIRST_STATE;
     _standartFlowlayout = true;
     [_userCollectionView setDataSource:self];
     [_userCollectionView setDelegate:self];
@@ -103,6 +111,10 @@ static NSString *headerIdentifier = @"userHeader";
             [self addTapToLabel:header.media withLabelIndex:1];
             [self addTapToLabel:header.followedBy withLabelIndex:3]; //follows
             [self addTapToLabel:header.follows withLabelIndex:2]; //followed_by
+            if (_currentCondition == FIRST_STATE) {
+                [header setFirstButtonTapped];
+            }
+            
         }
         return view;
     }
@@ -174,6 +186,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
 - (void)changeStyleToStandart {
         _standartFlowlayout = true;
 [_userCollectionView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+    _currentCondition = FIRST_STATE;
     [_userCollectionView reloadData];
 }
 - (BOOL) scrollViewShouldScrollToTop:(UIScrollView*) scrollView {
@@ -185,6 +198,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
 - (void)changeStyle {
     _standartFlowlayout = false;
     [_userCollectionView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+    _currentCondition = SECOND_STATE;
     [_userCollectionView reloadData];
     [_userCollectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:1]]];
     [_userCollectionView reloadItemsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:2]]];
@@ -217,6 +231,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     float newPosition = _userCollectionView.contentOffset.y+height;
     CGRect toVisible = CGRectMake(0, newPosition, width, self.view.frame.size.height);
     [v scrollRectToVisible:toVisible animated:YES];
+    [self headerFirstButtonTapped];
 
 }
 - (void)moveTouserFollowedBy {
@@ -293,6 +308,7 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
 
 - (void) reloadAllDataCell {
 [_userCollectionView reloadData];
+    
     [self indicatorStopLoading];
 }
 

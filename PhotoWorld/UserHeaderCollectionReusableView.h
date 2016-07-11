@@ -27,4 +27,5 @@
 - (IBAction)secondButtonTapped:(id)sender;
 - (IBAction)thirdButtonAction:(id)sender;
 - (IBAction)fouthButtonTapped:(id)sender;
+- (void)setFirstButtonTapped;
 @end

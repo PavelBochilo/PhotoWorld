@@ -44,6 +44,7 @@ static NSString *userFooterPhotoDetailIdentifier = @"tableFooterCell";
    // _homeTableView
     _homeTableView.dataSource = self;
     _homeTableView.delegate = self;
+    _homeTableView.backgroundColor = [UIColor whiteColor];
     [_homeTableView registerNib:[UINib nibWithNibName:@"MainTableHeaderReusableView" bundle:nil] forCellReuseIdentifier:userHeaderPhotoDetailIdentifier];
     [_homeTableView registerNib:[UINib nibWithNibName:@"MainTableFooterReusableView" bundle:nil] forCellReuseIdentifier:userFooterPhotoDetailIdentifier];
 }
