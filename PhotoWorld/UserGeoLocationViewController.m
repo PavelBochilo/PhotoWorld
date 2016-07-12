@@ -10,10 +10,10 @@
 #import "UserInfoViewController.h"
 #import "WebServiceManager.h"
 #import <QuartzCore/QuartzCore.h>
-@import GoogleMaps;
+#define DEFAULT_MAP_ZOOM 12
 
 @interface UserGeoLocationViewController () {
-    GMSMapView *mapView;
+    GMSMapView *myMapView;
 }
 
 @end
@@ -22,32 +22,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    myMapView.delegate = self;
+    _defaultZoom = 12;
     [self makingCoordinates];
-    [self setCollectionViewAppear];
+    [self setCollectionViewDisappear];
   //  NSLog(@"%@", [WebServiceManager sharedInstance].userMediaDictionary);
     
 }
-
-- (void)setCollectionViewAppear {
-    
+- (void)setCollectionViewDisappear {
+    _viewOfCollectionView.clipsToBounds = YES;
+    _viewOfCollectionView.hidden = YES;
+    _viewOfCollectionView.frame = CGRectMake(self.view.center.x, self.view.center.y, 0, 0);
+    _viewForDetailedPhoto.clipsToBounds = YES;
+    _viewForDetailedPhoto.hidden = YES;
+    _viewForDetailedPhoto.frame = CGRectMake(self.view.center.x, self.view.center.y, 0, 0);
 }
-
 -(void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:YES];
-    [self.view addSubview:_viewOfCollectionView];
-    _viewOfCollectionView.layer.frame = CGRectMake(1, 1, 1, 1);
-    _viewOfCollectionView.frame = CGRectMake(1, 1, 1, 1);
-//    _viewOfCollectionView.layer.frame.size = CGSizeZero;
-    _viewOfCollectionView.clipsToBounds = YES;
 }
 
 - (void)setCameraAndMapViewOfGoogleMaps: (double)Latitude andWith: (double)Longitude  {
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:Latitude
                                                             longitude:Longitude
-                                                                 zoom:12];
-    mapView = [GMSMapView mapWithFrame:self.view.frame camera:camera];
-    mapView.myLocationEnabled = YES;
-    [self.view addSubview:mapView];
+                                                                 zoom:DEFAULT_MAP_ZOOM];
+    myMapView = [GMSMapView mapWithFrame:self.view.frame camera:camera];
+    myMapView.myLocationEnabled = YES;
+    [_viewForMap addSubview:myMapView];
+    myMapView.delegate = self;
     [self setAllButtons];
     for (int i = 0; i < _resultArray.count; i++) {
         NSMutableDictionary *indexDict = _resultArray[i];
@@ -64,10 +65,6 @@
     _zoomInButton = (UIButton *)[self setLayerOfButton:_zoomInButton];
     _zoomOut = (UIButton *)[self setLayerOfButton:_zoomOut];
     _collectionViewButton = (UIButton *)[self setLayerOfButton:_collectionViewButton];
-    [self.view addSubview:_backButtonOutlet];
-    [self.view addSubview:_zoomOut];
-    [self.view addSubview:_zoomInButton];
-    [self.view addSubview:_collectionViewButton];
 }
 
 - (void)makingCoordinates {
@@ -77,7 +74,9 @@
         NSMutableDictionary  *dict = [[NSMutableDictionary alloc] init];
         if (!([array[i] valueForKey:@"location"] == [NSNull null])) {
             [dict setObject:[array[i] valueForKey:@"location"] forKey:@"location"];
-            [dict setObject:[array[i] valueForKeyPath:@"images.thumbnail.url"] forKey:@"image_url"];
+            [dict setObject:[array[i] valueForKeyPath:@"images.standard_resolution.url"] forKey:@"image_url"];
+            NSNumber *index = [NSNumber numberWithInt:i];
+            [dict setObject:index forKey:@"index"];
             [_resultArray addObject:dict];
         }
     }
@@ -107,8 +106,8 @@
                                    markeView.layer.cornerRadius = 5;
                                    markeView.clipsToBounds = YES;
                                    marker.iconView = markeView;
-                                   marker.map = mapView;
-                                   marker.appearAnimation = kGMSMarkerAnimationPop;
+                                   marker.userData = _resultArray[IndexUrl];
+                                   marker.map = myMapView;
                                 });
                                }
                            }];
@@ -121,14 +120,27 @@
 }
 
 - (IBAction)showCollectionView:(id)sender {
-    _viewOfCollectionView.frame = CGRectMake(0, 0, self.view.frame.size.width , self.view.frame.size.height);
-  
+   _viewOfCollectionView.frame = CGRectMake(self.view.center.x, self.view.center.y, 0, 0);
+    _viewOfCollectionView.hidden = NO;
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationDelay:.2f];
+    [UIView setAnimationDuration:0.2f];
+    _viewOfCollectionView.frame = self.view.bounds;
+    [UIView commitAnimations];
+    _viewOfCollectionView.frame = self.view.bounds;
 }
 
 - (IBAction)zoomIn:(id)sender {
+    _defaultZoom = _defaultZoom + 1;
+    GMSCameraUpdate *update = [GMSCameraUpdate zoomTo:_defaultZoom];
+    [myMapView animateWithCameraUpdate:update];
 }
 
 - (IBAction)zoomOut:(id)sender {
+    _defaultZoom = _defaultZoom - 1;
+    GMSCameraUpdate *update = [GMSCameraUpdate zoomTo:_defaultZoom];
+    [myMapView animateWithCameraUpdate:update];
 }
 - (UIView *)roundCornersOnView:(UIView *)view onTopLeft:(BOOL)tl topRight:(BOOL)tr bottomLeft:(BOOL)bl bottomRight:(BOOL)br radius:(float)radius
 {
@@ -159,5 +171,81 @@
     layerButton.layer.shadowOffset = CGSizeMake(0.0, 2.0);
     layerButton.layer.cornerRadius = 2;
     return layerButton;
+}
+- (IBAction)hideView:(id)sender {
+    [self setCollectionViewDisappear];
+    NSLog(@"result== %@", _resultArray);
+}
+- (void)addTapToImage: (UIView *)image withLabelIndex: (int)index {
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] init];
+    [tapRecognizer setNumberOfTapsRequired:1];
+    [image addGestureRecognizer:tapRecognizer];
+    image.userInteractionEnabled = YES;
+    if (tapRecognizer.numberOfTouches == 1) {
+        NSLog(@"tapped");
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        [UIView setAnimationDelay:.2f];
+        [UIView setAnimationDuration:0.2f];
+        image.frame = CGRectMake(10, self.view.frame.size.height/2 - (self.view.frame.size.width - 10)/2, self.view.frame.size.width - 10, self.view.frame.size.width - 10);
+        [UIView commitAnimations];
+    }
+
+}
+
+- (BOOL) tracksViewChanges {
+    return NO;
+}
+- (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker {
+    if (marker) {
+        UIView *markerView = [[UIView alloc] init];
+        NSMutableDictionary * location = [_resultArray[0] objectForKey:@"location"];
+        double latitude = [[location objectForKey:@"latitude"] floatValue];
+        double longitude = [[location objectForKey:@"longitude"] floatValue];
+        GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:latitude
+                                                                longitude:longitude
+                                                                     zoom:3];
+        [myMapView setCamera:camera];
+        myMapView.selectedMarker = nil;
+        markerView = marker.iconView;
+        NSString *string = marker.userData;
+        [self deatailedViewOfTappedMarker:markerView andPhotoData:string];
+    }
+    myMapView.trafficEnabled = NO;
+    return YES;
+}
+
+- (void)deatailedViewOfTappedMarker:(UIView *)marker andPhotoData: (NSString *)data {
+    [myMapView stopRendering];
+   // [myMapView startRendering];
+    _viewForDetailedPhoto.frame = CGRectMake(self.view.center.x, self.view.center.y, 0, 0);
+    _viewForDetailedPhoto.backgroundColor = [UIColor grayColor];
+    _viewForDetailedPhoto.alpha = 0.7;
+    _viewForDetailedPhoto.hidden = NO;
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationDelay:.3f];
+    [UIView setAnimationDuration:0.2f];
+    _viewForDetailedPhoto.frame = self.view.bounds;
+    [UIView commitAnimations];
+    _viewForDetailedPhoto.frame = self.view.bounds;
+    UIView *markerView = [[UIView alloc] init];
+    markerView = marker;
+    markerView.frame = CGRectMake(_viewForDetailedPhoto.center.x, _viewForDetailedPhoto.center.y, 0, 0);
+    markerView.alpha = 1;
+    markerView.backgroundColor = [UIColor whiteColor];
+    [_viewForDetailedPhoto insertSubview:markerView aboveSubview:_viewForDetailedPhoto];
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationDelay:.1f];
+    [UIView setAnimationDuration:0.7f];
+    markerView.frame = CGRectMake(10, _viewForDetailedPhoto.frame.size.height/2 - (_viewForDetailedPhoto.frame.size.width - 10)/2, _viewForDetailedPhoto.frame.size.width - 20, _viewForDetailedPhoto.frame.size.width - 20);
+    [UIView commitAnimations];
+    markerView.alpha = 1;
+    NSLog(@"%@", data);
+
+}
+
+- (IBAction)backToMap:(id)sender {
 }
 @end

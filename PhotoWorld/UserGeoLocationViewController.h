@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "WebServiceManager.h"
 
-
-@interface UserGeoLocationViewController : UIViewController
+@import GoogleMaps;
+@interface UserGeoLocationViewController : UIViewController <GMSMapViewDelegate>
 @property (nonatomic, strong) NSMutableArray *resultArray;
 @property (weak, nonatomic) IBOutlet UIButton *backButtonOutlet;
 - (IBAction)returnToPreviousView:(id)sender;
@@ -21,5 +21,11 @@
 @property (strong, nonatomic) IBOutlet UIButton *collectionViewButton;
 @property (strong, nonatomic) IBOutlet UIButton *zoomInButton;
 @property (strong, nonatomic) IBOutlet UIButton *zoomOut;
+@property (strong, nonatomic) IBOutlet UIView *viewForMap;
+@property (nonatomic) int defaultZoom;
+- (IBAction)hideView:(id)sender;
+@property (strong, nonatomic) IBOutlet UIView *viewForDetailedPhoto;
+- (IBAction)backToMap:(id)sender;
+@property (strong, nonatomic) IBOutlet UIImageView *imageViewFormarker;
 
 @end
