@@ -12,6 +12,7 @@
 #import "UserPhotoDetailViewController.h"
 #import "UserCollectionViewCommonHeader.h"
 #import "UserCollectionReusableViewCommonFooter.h"
+#import "UserGeoLocationViewController.h"
 
 static NSString *commonFooter = @"UserCollectionReusableViewCommonFooter";
 static NSString *commonHeader = @"UserCollectionViewCommonHeader";
@@ -38,7 +39,7 @@ int SECOND_STATE = 2;
     [self indicatorStartLoading];
     [[WebServiceManager sharedInstance] sendRequestForUserMedia:[WebServiceManager sharedInstance].myAccessToken andMyID:[WebServiceManager sharedInstance].mySessionID];    
     [self startNoticicationProcess];
-  // [self collectionViewLayout];
+    NSLog(@"segueString %@", _segueDataString);
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -61,6 +62,11 @@ int SECOND_STATE = 2;
     [_userCollectionView setDelegate:self];
     _userCollectionView.backgroundColor = [UIColor whiteColor];
 }
+
+- (void)goToDetaileddata {
+[self performSegueWithIdentifier:@"userPhotodetail" sender:nil];
+    
+}
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"userPhotodetail"]) {
@@ -74,15 +80,21 @@ int SECOND_STATE = 2;
                 imageVC.detailUrl = stringTwo;
             }
         } else {
-        NSInteger path = indexPath.row;
-        NSString *string = [WebServiceManager sharedInstance].userStandartPhotoUrlArray[path];        
-        if ([segue.destinationViewController isKindOfClass:[UserPhotoDetailViewController class]]) {
-            UserPhotoDetailViewController * imageVC = [[UserPhotoDetailViewController alloc] init];
-            imageVC = segue.destinationViewController;
-            imageVC.detailUrl = string;
+            NSInteger path = indexPath.row;
+            NSString *string = [WebServiceManager sharedInstance].userStandartPhotoUrlArray[path];
+            if ([segue.destinationViewController isKindOfClass:[UserPhotoDetailViewController class]]) {
+                UserPhotoDetailViewController * imageVC = [[UserPhotoDetailViewController alloc] init];
+                imageVC = segue.destinationViewController;
+                imageVC.detailUrl = string;
+            }
+        }
+        
+    } else if ([[segue identifier] isEqualToString:@"userGeo"]) {
+        if ([segue.destinationViewController isKindOfClass:[UserGeoLocationViewController class]]) {
+            UserGeoLocationViewController * childVC = (UserGeoLocationViewController*)segue.destinationViewController;
+            childVC.parentVC = self;
         }
     }
-}
 }
 - (void) registerNibForHeader {
     UINib *nib = [UINib nibWithNibName:NSStringFromClass([UserHeaderCollectionReusableView class]) bundle:[NSBundle mainBundle]];
@@ -246,6 +258,8 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
 - (void)moveToGeoLocation {
     [self performSegueWithIdentifier:@"userGeo" sender:nil];
 }
+
+
 
 //-(NSArray*)layoutAttributesForElementsInRect:(CGRect)rect
 //{

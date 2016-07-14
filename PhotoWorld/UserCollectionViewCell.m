@@ -45,5 +45,14 @@
                                }
                            }];
 }
+- (void) setMyGeoImageForKey: (NSUInteger)key {
+    UIImage *image = [[UIImage alloc] init];
+    image = [[SDImageCache sharedImageCache] imageFromMemoryCacheForKey:[NSString stringWithFormat:@"Item-%lu", (unsigned long)key]];
+    if (image == NULL) {
+        image = [[SDImageCache sharedImageCache] imageFromMemoryCacheForKey:[NSString stringWithFormat:@"Item-%lu", (unsigned long)key]];
+    }
+    //    NSLog(@"%@", image);
+    userGeoImage.image = image;
+}
 
 @end

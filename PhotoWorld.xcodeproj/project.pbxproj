@@ -22,6 +22,8 @@
 		DAC1F9081D2117040008CE16 /* UserHeaderCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAC1F9071D2117040008CE16 /* UserHeaderCollectionReusableView.m */; };
 		DAC1F9101D2135730008CE16 /* UserHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAC1F90F1D2135730008CE16 /* UserHeaderCollectionReusableView.xib */; };
 		DAD35C671D26B43C0067CC68 /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD35C661D26B43C0067CC68 /* EditProfileViewController.m */; };
+		DADB4D0C1D37A27900E049DE /* UserGeoCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DADB4D0B1D37A27900E049DE /* UserGeoCollectionReusableView.m */; };
+		DADB4D0E1D37A29300E049DE /* UserGeoCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DADB4D0D1D37A29300E049DE /* UserGeoCollectionReusableView.xib */; };
 		DAE230CD1D2255E3001AAFC3 /* BillabongW00-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DAE230CC1D2255E3001AAFC3 /* BillabongW00-Regular.ttf */; };
 		DAE230D21D227B37001AAFC3 /* UserPhotoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE230D11D227B37001AAFC3 /* UserPhotoDetailViewController.m */; };
 		DAE3B0661D23B51500F68CE7 /* MainTableHeaderReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAE3B0651D23B51500F68CE7 /* MainTableHeaderReusableView.xib */; };
@@ -95,6 +97,9 @@
 		DAC1F90F1D2135730008CE16 /* UserHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
 		DAD35C651D26B43C0067CC68 /* EditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
 		DAD35C661D26B43C0067CC68 /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
+		DADB4D0A1D37A27900E049DE /* UserGeoCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserGeoCollectionReusableView.h; sourceTree = "<group>"; };
+		DADB4D0B1D37A27900E049DE /* UserGeoCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserGeoCollectionReusableView.m; sourceTree = "<group>"; };
+		DADB4D0D1D37A29300E049DE /* UserGeoCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserGeoCollectionReusableView.xib; sourceTree = "<group>"; };
 		DAE230CC1D2255E3001AAFC3 /* BillabongW00-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BillabongW00-Regular.ttf"; sourceTree = "<group>"; };
 		DAE230D01D227B37001AAFC3 /* UserPhotoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPhotoDetailViewController.h; sourceTree = "<group>"; };
 		DAE230D11D227B37001AAFC3 /* UserPhotoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPhotoDetailViewController.m; sourceTree = "<group>"; };
@@ -209,6 +214,9 @@
 				DAF46A551D2E2CC60095EEC6 /* UserCollectionReusableViewCommonFooter.h */,
 				DAF46A561D2E2CC60095EEC6 /* UserCollectionReusableViewCommonFooter.m */,
 				DAF46A581D2E2CF30095EEC6 /* UserCollectionReusableViewCommonFooter.xib */,
+				DADB4D0A1D37A27900E049DE /* UserGeoCollectionReusableView.h */,
+				DADB4D0B1D37A27900E049DE /* UserGeoCollectionReusableView.m */,
+				DADB4D0D1D37A29300E049DE /* UserGeoCollectionReusableView.xib */,
 			);
 			name = XibClasses;
 			sourceTree = "<group>";
@@ -463,6 +471,7 @@
 				DAF46A591D2E2CF30095EEC6 /* UserCollectionReusableViewCommonFooter.xib in Resources */,
 				DAF090221D2BAA3600DBD8F6 /* SearchBarTableViewHeader.xib in Resources */,
 				DAF172331D12A118000E848B /* LaunchScreen.storyboard in Resources */,
+				DADB4D0E1D37A29300E049DE /* UserGeoCollectionReusableView.xib in Resources */,
 				DA1067871D2D55FE001A3446 /* UserCollectionViewCommonHeader.xib in Resources */,
 				DAE3B0661D23B51500F68CE7 /* MainTableHeaderReusableView.xib in Resources */,
 				DAF172301D12A118000E848B /* Assets.xcassets in Resources */,
@@ -554,6 +563,7 @@
 				DAF172581D12A654000E848B /* Defines.m in Sources */,
 				DAF090201D2BAA2500DBD8F6 /* SearchBarTableViewHeader.m in Sources */,
 				DA10678A1D2D568F001A3446 /* UserCollectionViewCommonHeader.m in Sources */,
+				DADB4D0C1D37A27900E049DE /* UserGeoCollectionReusableView.m in Sources */,
 				DAEA07571D17D87C00C53EAB /* MainTabBarViewController.m in Sources */,
 				DAEA075D1D17DAC900C53EAB /* UserInfoViewController.m in Sources */,
 				DAEA07601D17EA6F00C53EAB /* WebServiceManager.m in Sources */,

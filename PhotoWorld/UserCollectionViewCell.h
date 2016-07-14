@@ -12,7 +12,9 @@
 
 @interface UserCollectionViewCell : UICollectionViewCell {
     IBOutlet UIImageView *userImage;
+    IBOutlet UIImageView *userGeoImage;
 }
 - (void) setMyImageForKey: (NSUInteger)key;
 - (void)dowloadUserStandartResolutionPhotoWithUrl: (NSString *)url;
+- (void) setMyGeoImageForKey: (NSUInteger)key;
 @end

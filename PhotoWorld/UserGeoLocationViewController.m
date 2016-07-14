@@ -10,8 +10,14 @@
 #import "UserInfoViewController.h"
 #import "WebServiceManager.h"
 #import <QuartzCore/QuartzCore.h>
-#define DEFAULT_MAP_ZOOM 12
+#import "UserPhotoDetailViewController.h"
 
+#define DEFAULT_MAP_ZOOM 12
+#define DEFAULT_MARKER_ZOOM 15
+#define DEFAULT_OFFSET 8
+static NSString *CellIdentifier = @"userViewOffMap";
+static NSString *headerReusView = @"UserGeoCollectionReusableView";
+static NSString *segueID = @"userPhotodetail";
 @interface UserGeoLocationViewController () {
     GMSMapView *myMapView;
 }
@@ -23,24 +29,47 @@ typedef void(^myCompletion)(BOOL);
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    myMapView.delegate = self;
-    _defaultZoom = 12;
-    _emptyCalloutView = nil;
+    [self setGMSData];
+    [self setCollectionViewData];
     [self makingCoordinates];
     [self setCollectionViewDisappear];
   //  NSLog(@"%@", [WebServiceManager sharedInstance].userMediaDictionary);
     
 }
-- (void)tapped {
-    NSLog(@"taapped");
-    if (myMapView.selectedMarker != nil) {
-        NSLog(@"taapped");
-    }
+-(BOOL)prefersStatusBarHidden{
+    return YES;
 }
+- (void)setCollectionViewData {
+    [_userCollectionViewOffMap setDataSource:self];
+    [_userCollectionViewOffMap setDelegate:self];
+    _userCollectionViewOffMap.backgroundColor = [UIColor whiteColor];
+    _userCollectionViewOffMap.layer.cornerRadius = 3;
+    UINib *nib = [UINib nibWithNibName:NSStringFromClass([UserGeoCollectionReusableView class]) bundle:[NSBundle mainBundle]];
+    [_userCollectionViewOffMap registerNib:nib forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:headerReusView];
+   
+}
+
+- (void)setGMSData {
+    myMapView.delegate = self;
+    _defaultZoom = 12;
+    _emptyCalloutView = nil;
+}
+
 - (void)setCollectionViewDisappear {
-    _viewOfCollectionView.clipsToBounds = YES;
-    _viewOfCollectionView.hidden = YES;
+    _viewOfCollectionView.frame = self.view.bounds;
+    [CATransaction begin];
+    [CATransaction setValue:[NSNumber numberWithFloat: 0.5f] forKey:kCATransactionAnimationDuration];
+    [CATransaction setCompletionBlock:^{
+        _viewOfCollectionView.clipsToBounds = YES;
+        _viewOfCollectionView.hidden = YES;
+    }];
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
+    [UIView setAnimationDelay:.1f];
+    [UIView setAnimationDuration:0.4f];
     _viewOfCollectionView.frame = CGRectMake(self.view.center.x, self.view.center.y, 0, 0);
+    [UIView commitAnimations];
+    [CATransaction commit]; //Transaction controling animation with completion block (self idea)
     _viewForDetailedPhoto.clipsToBounds = YES;
     _viewForDetailedPhoto.hidden = YES;
     _viewForDetailedPhoto.frame = CGRectMake(self.view.center.x, self.view.center.y, 0, 0);
@@ -133,9 +162,9 @@ typedef void(^myCompletion)(BOOL);
    _viewOfCollectionView.frame = CGRectMake(self.view.center.x, self.view.center.y, 0, 0);
     _viewOfCollectionView.hidden = NO;
     [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
     [UIView setAnimationDelay:.2f];
-    [UIView setAnimationDuration:0.2f];
+    [UIView setAnimationDuration:0.3f];
     _viewOfCollectionView.frame = self.view.bounds;
     [UIView commitAnimations];
     _viewOfCollectionView.frame = self.view.bounds;
@@ -182,27 +211,6 @@ typedef void(^myCompletion)(BOOL);
     layerButton.layer.cornerRadius = 2;
     return layerButton;
 }
-- (IBAction)hideView:(id)sender {
-    [self setCollectionViewDisappear];
-    NSLog(@"result== %@", _resultArray);
-}
-- (void)addTapToImage: (UIView *)image withLabelIndex: (int)index {
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] init];
-    [tapRecognizer setNumberOfTapsRequired:1];
-    [image addGestureRecognizer:tapRecognizer];
-    image.userInteractionEnabled = YES;
-    if (tapRecognizer.numberOfTouches == 1) {
-        NSLog(@"tapped");
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-        [UIView setAnimationDelay:.2f];
-        [UIView setAnimationDuration:0.2f];
-        image.frame = CGRectMake(10, self.view.frame.size.height/2 - (self.view.frame.size.width - 10)/2, self.view.frame.size.width - 10, self.view.frame.size.width - 10);
-        [UIView commitAnimations];
-    }
-
-}
-
 - (BOOL) tracksViewChanges {
     return NO;
 }
@@ -271,13 +279,11 @@ typedef void(^myCompletion)(BOOL);
     double longitude = [[location objectForKey:@"longitude"] floatValue];
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:latitude
                                                             longitude:longitude
-                                                                 zoom:15];
-    
+                                                                 zoom:DEFAULT_MARKER_ZOOM];
+    _defaultZoom = DEFAULT_MARKER_ZOOM;
     [CATransaction begin];
     [CATransaction setValue:[NSNumber numberWithFloat: 0.5f] forKey:kCATransactionAnimationDuration];
     [CATransaction setCompletionBlock:^{
-        //[myMapView removeFromSuperview]; solve printing bug issue ofGoogle maps, but remove map.
-        //
         compblock(YES);
     }];
    [myMapView animateToCameraPosition:camera];
@@ -340,5 +346,63 @@ typedef void(^myCompletion)(BOOL);
     _zoomInButton.hidden = NO;
     _zoomOut.hidden = NO;
     _collectionViewButton.hidden = NO;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout *)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        CGFloat screenWidth = screenRect.size.width - 2*DEFAULT_OFFSET;
+        float cellWidth = screenWidth / 3.0 - 1;
+        CGSize size = CGSizeMake(cellWidth, cellWidth);
+        return size;
+}
+- (CGFloat)collectionView:(UICollectionView *)collectionView
+                   layout:(UICollectionViewLayout *)collectionViewLayout
+minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    
+    return 1;
+}
+- (CGFloat)collectionView:(UICollectionView *)collectionView
+                   layout:(UICollectionViewLayout *)collectionViewLayout
+minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    return 1;
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    if ([WebServiceManager sharedInstance].userPhotoUrlArray) {
+        return [WebServiceManager sharedInstance].userPhotoUrlArray.count;
+    } else
+        return 1;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UserCollectionViewCell *cell = (UserCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+    [cell setMyGeoImageForKey:indexPath.row];
+    return cell;
+}
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    UICollectionReusableView *view = [_userCollectionViewOffMap dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:headerReusView forIndexPath:indexPath];
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+        UserGeoCollectionReusableView *header = (UserGeoCollectionReusableView *)view;
+        [header.closeButton addTarget:self action:@selector(setCollectionViewDisappear) forControlEvents:UIControlEventTouchUpInside];
+        [header setNumberOfPublications];
+}
+    return  view;
+}
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    return CGSizeMake(self.view.frame.size.width - 2*DEFAULT_OFFSET, 44);
+}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"tapped %lu", indexPath.row);
+    [self goToDetailedViewController];
+}
+- (void)goToDetailedViewController {
+     [self.parentVC goToDetaileddata];
+    [self dismissViewControllerAnimated:NO completion:nil];
+
 }
 @end

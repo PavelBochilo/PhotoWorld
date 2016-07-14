@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "WebServiceManager.h"
+#import "UserCollectionViewCell.h"
+#import "UserGeoCollectionReusableView.h"
 
 @import GoogleMaps;
-@interface UserGeoLocationViewController : UIViewController <GMSMapViewDelegate, GMSPanoramaViewDelegate>
+@interface UserGeoLocationViewController : UIViewController <GMSMapViewDelegate, GMSPanoramaViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) NSMutableArray *resultArray;
 @property (weak, nonatomic) IBOutlet UIButton *backButtonOutlet;
 - (IBAction)returnToPreviousView:(id)sender;
@@ -23,7 +25,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *zoomOut;
 @property (strong, nonatomic) IBOutlet UIView *viewForMap;
 @property (nonatomic) int defaultZoom;
-- (IBAction)hideView:(id)sender;
 @property (strong, nonatomic) IBOutlet UIView *viewForDetailedPhoto;
+@property (strong, nonatomic) IBOutlet UICollectionView *userCollectionViewOffMap;
+@property (nonatomic, strong) UserInfoViewController * parentVC;
 
 @end
