@@ -28,7 +28,6 @@ typedef void(^myCompletion)(BOOL);
     _emptyCalloutView = nil;
     [self makingCoordinates];
     [self setCollectionViewDisappear];
-    [_testButton addTarget:self action:@selector(tapped) forControlEvents:UIControlEventTouchUpInside];
   //  NSLog(@"%@", [WebServiceManager sharedInstance].userMediaDictionary);
     
 }
@@ -85,6 +84,7 @@ typedef void(^myCompletion)(BOOL);
         if (!([array[i] valueForKey:@"location"] == [NSNull null])) {
             [dict setObject:[array[i] valueForKey:@"location"] forKey:@"location"];
             [dict setObject:[array[i] valueForKeyPath:@"images.standard_resolution.url"] forKey:@"image_url"];
+            [dict setObject:[array[i] valueForKeyPath:@"images.thumbnail.url"] forKey:@"thumbnails_url"];
             NSNumber *index = [NSNumber numberWithInt:i];
             [dict setObject:index forKey:@"index"];
             [_resultArray addObject:dict];
@@ -99,7 +99,7 @@ typedef void(^myCompletion)(BOOL);
 - (void)makeMarkersWithLatitude: (double)Latitude andWithLongitude: (double)Longitude withUrlIndex: (int)IndexUrl {
     GMSMarker *marker = [[GMSMarker alloc] init];
     marker.position = CLLocationCoordinate2DMake(Latitude, Longitude);
-    NSString *imageUrlString = [_resultArray[IndexUrl] valueForKey:@"image_url"];
+    NSString *imageUrlString = [_resultArray[IndexUrl] valueForKey:@"thumbnails_url"];
     SDWebImageDownloader *downloader = [SDWebImageDownloader sharedDownloader];
     NSURL *url = [NSURL URLWithString:imageUrlString];
     [downloader downloadImageWithURL: url
@@ -116,10 +116,6 @@ typedef void(^myCompletion)(BOOL);
                                    markeView.layer.cornerRadius = 5;
                                    markeView.clipsToBounds = YES;
                                    marker.iconView = markeView;
-                                   _testButton.frame = marker.iconView.frame;
-                                   [marker.iconView insertSubview:_testButton aboveSubview:marker.iconView];
-                                   [marker.iconView addSubview:_testButton];
-                                   [_testButton addTarget:self action:@selector(tapped) forControlEvents:UIControlEventTouchUpInside];
                                    marker.userData = _resultArray[IndexUrl];
                                    marker.map = myMapView;
                                 });
@@ -212,26 +208,8 @@ typedef void(^myCompletion)(BOOL);
 }
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker {
         [myMapView setSelectedMarker:marker];
-    
-//        UIView *markerView = [[UIView alloc] init];
-//        markerView = myMapView.selectedMarker.iconView;
-//        marker.iconView = markerView;
-//        NSString *string = myMapView.selectedMarker.userData;
-//        [self myMethod:^(BOOL finished) {
-//            if(finished){
-//                double delayInSeconds = 0.1;
-//                dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-//                dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-//                    [self deatailedViewOfTappedMarker:markerView andPhotoData:string];
-//                    
-//                });
-//         }
-//        }];
+
     return YES;
-}
-- (BOOL) panoramaView:		(GMSPanoramaView *) 	panoramaView
-         didTapMarker:		(GMSMarker *) 	marker {
-    return NO;
 }
 - (void)deatailedViewOfTappedMarker:(UIView *)marker andPhotoData: (NSString *)data {
     [self hideMapButtons];
@@ -278,8 +256,6 @@ typedef void(^myCompletion)(BOOL);
     UIImageView *view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"info"]];
     view.frame = CGRectMake(5, 5, 20, 20);
     [button addSubview:view];
-   // [button setImage:[UIImage imageNamed:@"info"] forState:UIControlStateNormal];
-
 }
 - (void)hideMapButtons {
     _backButtonOutlet.hidden = YES;
@@ -290,7 +266,7 @@ typedef void(^myCompletion)(BOOL);
 
 -(void) myMethod:(myCompletion) compblock{
     NSMutableDictionary * location = [myMapView.selectedMarker.userData objectForKey:@"location"];
-    NSLog(@"%@", location);
+//    NSLog(@"%@", location);
     double latitude = [[location objectForKey:@"latitude"] floatValue];
     double longitude = [[location objectForKey:@"longitude"] floatValue];
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:latitude
@@ -319,30 +295,50 @@ typedef void(^myCompletion)(BOOL);
 }
      
 - (void)returnToGoogleMap {
-    [_viewForDetailedPhoto removeFromSuperview];
-    _viewForDetailedPhoto = nil;
-    _viewForDetailedPhoto = [[UIView alloc] init];
+    [[_viewForDetailedPhoto subviews]
+     makeObjectsPerformSelector:@selector(removeFromSuperview)];
     _viewForDetailedPhoto.frame = CGRectMake(self.view.center.x, self.view.center.y, 0, 0);
     _viewForDetailedPhoto.clipsToBounds = YES;
     _viewForDetailedPhoto.hidden = YES;
-    NSLog(@"%@", _viewForDetailedPhoto);
+    [self allButonsAppear];
+   // NSLog(@"%@", _viewForDetailedPhoto);
      }
 - (UIView *)mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker {
-    UIView *markerView = [[UIView alloc] init];
-            markerView = myMapView.selectedMarker.iconView;
-            marker.iconView = markerView;
-            NSString *string = myMapView.selectedMarker.userData;
-            [self myMethod:^(BOOL finished) {
-                if(finished){
-                    double delayInSeconds = 0.1;
-                    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-                    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                        [self deatailedViewOfTappedMarker:markerView andPhotoData:string];
+    NSDictionary *dict = myMapView.selectedMarker.userData;
+    NSString *string = [dict valueForKey:@"image_url"];
+    NSURL *url = [NSURL URLWithString:string];
+    SDWebImageDownloader *downloader = [SDWebImageDownloader sharedDownloader];
+    [downloader downloadImageWithURL: url
+                             options:0
+                            progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                            }
+                           completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
+                               if (image && finished) {
+                                   dispatch_async(dispatch_get_main_queue(), ^{
+                                       UIImageView *markerView = [[UIImageView alloc] initWithImage:image];
+                                       markerView.layer.borderWidth = 5.0;
+                                       markerView.layer.borderColor = [UIColor whiteColor].CGColor;
+                                       [self myMethod:^(BOOL finished) {
+                                           if(finished){
+                                               double delayInSeconds = 0.1;
+                                               dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+                                               dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                                                   [self deatailedViewOfTappedMarker:markerView andPhotoData:string];
+                                                   
+                                               });
+                                           }
+                                       }];
+                                       
+                                   });
+                               }
+                           }];
     
-                    });
-             }
-            }];
     return self.emptyCalloutView;
 }
-
+- (void)allButonsAppear {
+    _backButtonOutlet.hidden = NO;
+    _zoomInButton.hidden = NO;
+    _zoomOut.hidden = NO;
+    _collectionViewButton.hidden = NO;
+}
 @end

@@ -22,7 +22,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *zoomInButton;
 @property (strong, nonatomic) IBOutlet UIButton *zoomOut;
 @property (strong, nonatomic) IBOutlet UIView *viewForMap;
-@property (strong, nonatomic) IBOutlet UIButton *testButton;
 @property (nonatomic) int defaultZoom;
 - (IBAction)hideView:(id)sender;
 @property (strong, nonatomic) IBOutlet UIView *viewForDetailedPhoto;
