@@ -641,7 +641,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Xgm-df-AI6">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="homeCell" id="Igw-8n-FQi">
                                         <rect key="frame" x="0.0" y="114" width="600" height="44"/>
@@ -656,10 +656,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Xgm-df-AI6" firstAttribute="leading" secondItem="vev-jp-DXx" secondAttribute="leading" id="4uI-qB-W0U"/>
-                            <constraint firstItem="1Dh-GW-8Ei" firstAttribute="top" secondItem="Xgm-df-AI6" secondAttribute="bottom" id="8dV-UP-7fc"/>
-                            <constraint firstItem="Xgm-df-AI6" firstAttribute="top" secondItem="vev-jp-DXx" secondAttribute="top" id="OW9-7n-oZ3"/>
-                            <constraint firstAttribute="trailing" secondItem="Xgm-df-AI6" secondAttribute="trailing" id="puZ-Ep-OcL"/>
+                            <constraint firstItem="Xgm-df-AI6" firstAttribute="top" secondItem="vev-jp-DXx" secondAttribute="top" id="8Zu-Hd-hIH"/>
+                            <constraint firstItem="1Dh-GW-8Ei" firstAttribute="top" secondItem="Xgm-df-AI6" secondAttribute="bottom" id="hxW-2b-B4H"/>
+                            <constraint firstItem="Xgm-df-AI6" firstAttribute="leading" secondItem="vev-jp-DXx" secondAttribute="leading" id="iVJ-GI-e18"/>
+                            <constraint firstAttribute="trailing" secondItem="Xgm-df-AI6" secondAttribute="trailing" id="kmL-FA-YNF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Photo World" id="9nR-mg-MTj">

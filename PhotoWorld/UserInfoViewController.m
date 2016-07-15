@@ -39,7 +39,6 @@ int SECOND_STATE = 2;
     [self indicatorStartLoading];
     [[WebServiceManager sharedInstance] sendRequestForUserMedia:[WebServiceManager sharedInstance].myAccessToken andMyID:[WebServiceManager sharedInstance].mySessionID];    
     [self startNoticicationProcess];
-    NSLog(@"segueString %@", _segueDataString);
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -65,10 +64,9 @@ int SECOND_STATE = 2;
 
 - (void)goToDetaileddata {
 [self performSegueWithIdentifier:@"userPhotodetail" sender:nil];
-    
 }
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if (_segueDataString == nil) {
     if ([[segue identifier] isEqualToString:@"userPhotodetail"]) {
         NSIndexPath *indexPath = [[_userCollectionView indexPathsForSelectedItems] lastObject];
         if (_standartFlowlayout == false) {
@@ -95,6 +93,19 @@ int SECOND_STATE = 2;
             childVC.parentVC = self;
         }
     }
+    }  else {
+        if (_segueDataString != nil) {
+            if ([[segue identifier] isEqualToString:@"userPhotodetail"]) {
+                int index = [_segueDataString floatValue];
+                NSString *stringUrl = [WebServiceManager sharedInstance].userStandartPhotoUrlArray[index];
+                UserPhotoDetailViewController * imageVC = [[UserPhotoDetailViewController alloc] init];
+                imageVC = segue.destinationViewController;
+                imageVC.detailUrl = stringUrl;
+            _segueDataString = nil;
+            }
+        }
+    }
+    
 }
 - (void) registerNibForHeader {
     UINib *nib = [UINib nibWithNibName:NSStringFromClass([UserHeaderCollectionReusableView class]) bundle:[NSBundle mainBundle]];

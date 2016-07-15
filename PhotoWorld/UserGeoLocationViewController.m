@@ -251,6 +251,7 @@ typedef void(^myCompletion)(BOOL);
     UIButton *returnButton = [[UIButton alloc] init];
     CGFloat coordinate = (_viewForDetailedPhoto.frame.size.height/2 - (_viewForDetailedPhoto.frame.size.width - 10)/2) + _viewForDetailedPhoto.frame.size.width;
     [self setButtonData:returnButton withFloat:coordinate];
+    [returnButton addTarget:self action:@selector(goToDetailedViewController) forControlEvents:UIControlEventTouchUpInside];
     [self addTapToView:_viewForDetailedPhoto];
     [_viewForDetailedPhoto insertSubview:returnButton aboveSubview:_viewForDetailedPhoto];
 }
@@ -398,11 +399,19 @@ minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"tapped %lu", indexPath.row);
-    [self goToDetailedViewController];
+    [self goToDetailedViewControllerWithPhotoIndex:indexPath.row];
 }
-- (void)goToDetailedViewController {
+- (void)goToDetailedViewControllerWithPhotoIndex: (float)Index{
+    _parentVC.segueDataString = [NSString stringWithFormat:@"%f",Index];
      [self.parentVC goToDetaileddata];
     [self dismissViewControllerAnimated:NO completion:nil];
 
+}
+- (void)goToDetailedViewController {
+    NSDictionary *dict = myMapView.selectedMarker.userData;
+    NSString *string = [dict valueForKey:@"index"];
+    _parentVC.segueDataString = string;
+    [self.parentVC goToDetaileddata];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end
