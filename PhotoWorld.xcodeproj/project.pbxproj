@@ -16,6 +16,9 @@
 		DA10678A1D2D568F001A3446 /* UserCollectionViewCommonHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1067891D2D568F001A3446 /* UserCollectionViewCommonHeader.m */; };
 		DA1836131D1C24C80032CFB4 /* UserCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1836121D1C24C80032CFB4 /* UserCollectionViewCell.m */; };
 		DA1836161D1C32560032CFB4 /* classic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DA1836151D1C32560032CFB4 /* classic.jpg */; };
+		DA39B7E81D38D439009AE2D8 /* UserActionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39B7E71D38D439009AE2D8 /* UserActionsViewController.m */; };
+		DA39B7EB1D38D676009AE2D8 /* ActionHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39B7EA1D38D676009AE2D8 /* ActionHeaderTableViewCell.m */; };
+		DA39B7ED1D38D687009AE2D8 /* ActionHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA39B7EC1D38D687009AE2D8 /* ActionHeaderTableViewCell.xib */; };
 		DA81CB9B1D1ABB8000D71BE3 /* HomeViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA81CB9A1D1ABB8000D71BE3 /* HomeViewViewController.m */; };
 		DA81CB9E1D1ABC2700D71BE3 /* HomeNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA81CB9D1D1ABC2700D71BE3 /* HomeNavigationViewController.m */; };
 		DAA946DE1D2FC67400B5C2E7 /* UserGeoLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA946DD1D2FC67400B5C2E7 /* UserGeoLocationViewController.m */; };
@@ -86,6 +89,11 @@
 		DA1836111D1C24C80032CFB4 /* UserCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCollectionViewCell.h; sourceTree = "<group>"; };
 		DA1836121D1C24C80032CFB4 /* UserCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCollectionViewCell.m; sourceTree = "<group>"; };
 		DA1836151D1C32560032CFB4 /* classic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = classic.jpg; sourceTree = "<group>"; };
+		DA39B7E61D38D439009AE2D8 /* UserActionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserActionsViewController.h; sourceTree = "<group>"; };
+		DA39B7E71D38D439009AE2D8 /* UserActionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserActionsViewController.m; sourceTree = "<group>"; };
+		DA39B7E91D38D676009AE2D8 /* ActionHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionHeaderTableViewCell.h; sourceTree = "<group>"; };
+		DA39B7EA1D38D676009AE2D8 /* ActionHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionHeaderTableViewCell.m; sourceTree = "<group>"; };
+		DA39B7EC1D38D687009AE2D8 /* ActionHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		DA81CB991D1ABB8000D71BE3 /* HomeViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewViewController.h; sourceTree = "<group>"; };
 		DA81CB9A1D1ABB8000D71BE3 /* HomeViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewViewController.m; sourceTree = "<group>"; };
 		DA81CB9C1D1ABC2700D71BE3 /* HomeNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeNavigationViewController.h; sourceTree = "<group>"; };
@@ -246,6 +254,8 @@
 				DA0671951D2A6E820008AA97 /* UserFolloweByViewController.m */,
 				DAA946DC1D2FC67400B5C2E7 /* UserGeoLocationViewController.h */,
 				DAA946DD1D2FC67400B5C2E7 /* UserGeoLocationViewController.m */,
+				DA39B7E61D38D439009AE2D8 /* UserActionsViewController.h */,
+				DA39B7E71D38D439009AE2D8 /* UserActionsViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -268,6 +278,9 @@
 				DAF090231D2BB78E00DBD8F6 /* EditTableViewCell.h */,
 				DAF090241D2BB78E00DBD8F6 /* EditTableViewCell.m */,
 				DAF090261D2BB7BB00DBD8F6 /* EditTableViewCell.xib */,
+				DA39B7E91D38D676009AE2D8 /* ActionHeaderTableViewCell.h */,
+				DA39B7EA1D38D676009AE2D8 /* ActionHeaderTableViewCell.m */,
+				DA39B7EC1D38D687009AE2D8 /* ActionHeaderTableViewCell.xib */,
 			);
 			name = "Main Table Xib Model";
 			sourceTree = "<group>";
@@ -471,6 +484,7 @@
 				DAF46A591D2E2CF30095EEC6 /* UserCollectionReusableViewCommonFooter.xib in Resources */,
 				DAF090221D2BAA3600DBD8F6 /* SearchBarTableViewHeader.xib in Resources */,
 				DAF172331D12A118000E848B /* LaunchScreen.storyboard in Resources */,
+				DA39B7ED1D38D687009AE2D8 /* ActionHeaderTableViewCell.xib in Resources */,
 				DADB4D0E1D37A29300E049DE /* UserGeoCollectionReusableView.xib in Resources */,
 				DA1067871D2D55FE001A3446 /* UserCollectionViewCommonHeader.xib in Resources */,
 				DAE3B0661D23B51500F68CE7 /* MainTableHeaderReusableView.xib in Resources */,
@@ -570,8 +584,10 @@
 				DAF090251D2BB78E00DBD8F6 /* EditTableViewCell.m in Sources */,
 				DAA946DE1D2FC67400B5C2E7 /* UserGeoLocationViewController.m in Sources */,
 				DA1836131D1C24C80032CFB4 /* UserCollectionViewCell.m in Sources */,
+				DA39B7E81D38D439009AE2D8 /* UserActionsViewController.m in Sources */,
 				DAC1F9081D2117040008CE16 /* UserHeaderCollectionReusableView.m in Sources */,
 				DAF172251D12A118000E848B /* main.m in Sources */,
+				DA39B7EB1D38D676009AE2D8 /* ActionHeaderTableViewCell.m in Sources */,
 				DA81CB9E1D1ABC2700D71BE3 /* HomeNavigationViewController.m in Sources */,
 				DA0671961D2A6E820008AA97 /* UserFolloweByViewController.m in Sources */,
 				DAF1725B1D12D28B000E848B /* LoginViewController.m in Sources */,
